@@ -1,0 +1,153 @@
+:root{
+    --roxo: #190282;
+    --laranja: #ff5e33;
+    --amarelo: #f7b500;
+    --bege: #f0e7d6;
+    --branco: #ffffff;
+}
+
+/* FUNDO DA PÁGINA */
+.payment-container{
+    min-height: 100vh;
+
+    background: #190282;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px;
+}
+
+/* CAIXA PRINCIPAL */
+.payment-box{
+    width: 700px;
+
+    background: var(--roxo);
+
+    border: 25px solid var(--amarelo);
+
+    border-radius: 8px;
+
+    padding: 18px;
+}
+
+/* CABEÇALHO */
+.payment-header{
+    background: var(--roxo);
+
+    border-radius: 20px;
+
+    padding: 18px 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.payment-header h2{
+    color: var(--branco);
+
+    font-size: 42px;
+
+    font-weight: 400;
+}
+
+.payment-header span{
+    background: var(--amarelo);
+
+    color: black;
+
+    padding: 12px 18px;
+
+    border-radius: 10px;
+
+    font-size: 16px;
+}
+
+/* ÁREA INTERNA */
+.payment-content{
+    background: var(--roxo);
+
+    border-radius: 35px;
+
+    padding: 40px 35px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 28px;
+}
+
+/* OPÇÕES */
+.payment-option{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.payment-option p{
+    color: var(--branco);
+
+    font-size: 20px;
+}
+
+/* CHECKBOX */
+.payment-option input{
+    width: 42px;
+    height: 42px;
+
+    cursor: pointer;
+
+    accent-color: var(--laranja);
+}
+
+/* CAIXA FINAL */
+.final-box{
+    background: var(--laranja);
+
+    border-radius: 25px;
+
+    padding: 25px;
+
+    text-align: center;
+
+    margin-top: 10px;
+}
+
+.final-box h3{
+    color: var(--branco);
+
+    font-size: 40px;
+
+    font-weight: 400;
+
+    margin-bottom: 15px;
+}
+
+/* BOTÃO */
+.btn{
+    background: var(--amarelo);
+
+    color: var(--branco);
+
+    border: none;
+
+    padding: 12px 50px;
+
+    border-radius: 6px;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.btn:hover{
+    transform: scale(1.05);
+
+    background: var(--roxo);
+}

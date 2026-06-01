@@ -1,0 +1,27 @@
+.footer{
+
+  background:#190282;
+
+  padding: 3px 0;
+
+  margin-top:50px;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;}
+
+/* ACESSIBILIDADE */
+
+.acessibilidade {
+
+  max-width: 1230px;
+
+  margin: 0 auto 40px;
+
+  padding: 0 32px;
+
+  font-size: 0.95rem;
+
+  color: rgba(255, 255, 255, 0.88);
+
+  position: relative;
+}

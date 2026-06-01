@@ -1,0 +1,97 @@
+/* CONTAINER DO CARD */
+
+.card-container{
+
+  width:220px;
+
+  background:#f7b500;
+
+  border-radius:20px;
+
+  overflow:hidden;
+
+  padding:12px;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+  transition:0.3s;
+
+  box-shadow:0 6px 15px rgba(0,0,0,0.2);
+}
+
+.card-container:hover{
+
+  transform:translateY(-8px) scale(1.02);
+
+  box-shadow:0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* IMAGEM */
+
+.card-imagem{
+
+  width:100%;
+  height:220px;
+
+  object-fit:cover;
+
+  border-radius:15px;
+
+  margin-bottom:15px;
+}
+
+/* LINK */
+
+.card-container a{
+
+  width:100%;
+
+  text-decoration:none;
+}
+
+/* BOTÃO */
+
+.card-botao{
+
+  width:100%;
+
+  height:45px;
+
+  border:none;
+
+  border-radius:12px;
+
+  color:white;
+
+  font-size:16px;
+  font-weight:600;
+
+  cursor:pointer;
+
+  transition:0.3s;
+}
+
+.card-botao:hover{
+
+  filter:brightness(1.1);
+
+  transform:scale(1.03);
+}
+
+/* RESPONSIVO */
+
+@media(max-width:768px){
+
+  .card-container{
+
+    width:180px;
+  }
+
+  .card-imagem{
+
+    height:180px;
+  }
+
+}
