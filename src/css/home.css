@@ -2,42 +2,122 @@ html, body, #root {
   min-height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #190282;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
-  background-color: #190282;
+  background-color: #f74d27;
 }
 
 /* ==========================================================================
    HERO SECTION - Mais fiel ao Figma
    ========================================================================== */
 .home{
-  background-color: #190282;
+  background-color: #f06d50;
+  min-height: 100vh;
+  width: 100%;
 }
-.hero{
-  background-color: #190282;
+
+/* ====================== HEADER COM ONDA ====================== */
+.header {
+  width: 100%;
+  background: linear-gradient(180deg, #2400a8 0%, #1a0077 100%);
+  position: relative;
+  z-index: 10;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 78%, 90% 88%, 80% 78%, 70% 90%, 60% 80%, 50% 92%, 40% 80%, 30% 90%, 20% 78%, 10% 88%, 0% 78%);
+  padding-bottom: 100px;
 }
+
+.home-navbar{
+  width:100%;
+  height:70px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0 40px;
+}
+
+.nav-left{
+  display:flex;
+  align-items:center;
+  gap:40px;
+}
+
+.nav-left .logo {
+  width:120px;
+  height:auto;
+}
+
+.nav-links {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.nav-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  background: #f7b500;
+  color: #2400a8;
+  font-weight: 700;
+}
+
+.nav-links a:hover {
+  background: linear-gradient(90deg, #ff5e3a, #ff744f);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ====================== HERO (sem clip-path, conectado ao header) ====================== */
+.home-hero{
+  min-height: 80vh;
+  display: flex;
+  align-items: stretch;
+  padding-top: 0;
+  width: 100%;
+  margin: 0;
+  margin-top: -1px;
+}
+
 /* Lado Esquerdo */
 .hero-left {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 24px;
+  padding: 40px 60px;
+  justify-content: flex-start;
 }
+
 .hero-img{
   width: 90%;
   border: 7px solid #ff5733;
   border-radius: 22px;
-  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.967);
 }
-/* ====================== LOGO / TÕTULO ====================== */
+/* ====================== LOGO / T√çTULO ====================== */
+.hero-brand {
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+}
+
 .logo-img {
-  width: 100%;
-  max-width: 480px;
+  width: 400px;
   height: auto;
   display: block;
-  margin-bottom: 12px;
+  margin: 8px 0 0 0;
+  padding: 0;
+  border-radius: 4px;
 }
 
 /* Textos */
@@ -53,9 +133,11 @@ body {
     font-size: 4.2rem;
   font-weight: 900;
   line-height: 0.95;
-  color: #190282;
-  /* Se quiser o efeito colorido como no Figma: */
-  background: orange;
+  color: #fff;
+    margin-bottom: 4px;
+    align-self: flex-start;;
+    padding: 12px 24px;
+    border-radius: 30px;
   }
 
 .hero-subtitle {
@@ -66,7 +148,7 @@ body {
   margin: 0;
 }
 
-/* ====================== BOT√O ====================== */
+/* ====================== BOT√ÉO ====================== */
 .badge-duplo {
   display: inline-flex;
   align-items: center;
@@ -99,11 +181,28 @@ body {
 }
 
 /* ====================== IMAGEM DIREITA ====================== */
-.hero-right {
-  max-width: 480px;
+.home .hero-right {
+  width: 45%;
   flex-shrink: 0;
-  padding-top: 25px;
-  background: #ff5733;
+  background: #f06d50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 40px;
+  min-height: 100%;
+}
+
+.hero-card {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .hero-img {
@@ -113,32 +212,7 @@ body {
   border-radius: 22px;
   box-shadow: 0 25px 45px rgba(0, 0, 0, 0.35);
   display: block;
-}
-.home-navbar{
-
-  width:100%;
-  height:70px;
-
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-
-  padding:0 20px;
-
-  margin-bottom:30px;
   
-}
-.nav-left{
-
-  display:flex;
-  align-items:center;
-  background-color: #ff5733;
-  gap:40px;
-}
-
-.nav-left .logo{
-  width:120px;
-  height:auto;
 }
 
 .home-main{
@@ -177,30 +251,17 @@ body {
 }
 
 .hero-chip{
-  position:absolute;
-  top:50%;
-  left:90%;
-  transform:translate(-50%,-50%);
-
   background-color:#ff5733;
-
-  padding:10px 20px;
-
+  padding: 8px 16px;
   border-radius:30px;
-
   color:#fff;
-
   font-weight:bold;
-
-  font-size:16px;
+  font-size:14px;
 }
 
 .hero-card-header{
- display:flex;
+  display:flex;
   align-items:center;
-  gap:10px;
-  width:200%;
-  padding:200px;
-  justify-items: space-between;
- 
+  width: 100%;
+  justify-content: flex-start;
 }

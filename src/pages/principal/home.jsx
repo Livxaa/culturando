@@ -11,19 +11,19 @@ export default function Home(){
                     <div className="nav-left">
                         {/* Espaço para logo ou outro elemento à esquerda */}
                     </div>
-                    <nav>
+                    <div className="nav-links">
                         <Link to="/">Início</Link>
                         <Link to="/shows">Eventos</Link>
                         <Link to="/pagamento">Ingressos</Link>
-                    </nav>
+                    </div>
                 </div>
             </header>
 
             {/* HERO */}
-            <section className="hero">
+            <section className="home-hero">
                 <div className="hero-left">
                     <div className="hero-brand">
-                        <h1>Bem-vindo ao</h1>
+                        <h1 className="main-title">Bem-vindo ao</h1>
                         <img 
                             src={logo}
                             alt="Logo"
@@ -31,15 +31,10 @@ export default function Home(){
                         />
                     </div>
                     
-                    <div className="home-content">
-                        <div className="home-main">
-                            {/* TEXTO */}
-                            <div className="home-text">
-                                <p>
-                                    Sua melhor experiência cultural aqui!
-                                </p>
-                            </div>
-                        </div>
+                    <div className="home-text">
+                        <p>
+                            Sua melhor experiência cultural aqui!
+                        </p>
                     </div>
                 </div>
 
@@ -49,7 +44,9 @@ export default function Home(){
                             <span className="hero-chip">Eventos</span>
                         </div>
                         
-                        <div className="hero-img"></div>
+                        <div className="hero-img-container">
+                             <div className="hero-img"></div>
+                        </div>
 
                         <div className="hero-slider">
                             <span className="slider-dot active"></span>
@@ -61,10 +58,6 @@ export default function Home(){
                     </div>
                 </div>
             </section>
-
-            <div className="acessibilidade">
-                ?
-            </div>
         </div>
     );
 }
