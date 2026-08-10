@@ -1,0 +1,215 @@
+.checkout-page {
+  min-height: 48rem;
+  background: var(--color-primary-950);
+  color: var(--color-text-on-dark);
+}
+
+.checkout-page__content {
+  padding-block: clamp(4rem, 8vw, 7rem);
+}
+
+.page-heading--light h1 {
+  color: var(--color-text-on-dark);
+}
+
+.page-heading--light p:last-child {
+  color: rgb(255 255 255 / 0.85);
+}
+
+.checkout-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 22rem);
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.checkout-form,
+.order-summary {
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border-radius: var(--radius-lg);
+  background: var(--color-primary-900);
+  box-shadow: var(--shadow-card);
+}
+
+.checkout-form {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.ticket-selector {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.ticket-selector legend {
+  margin-bottom: var(--space-5);
+  color: var(--color-text-on-dark);
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+}
+
+.ticket-options {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.ticket-option {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 4.3rem;
+  padding: 0.85rem 1rem;
+  border: 0.12rem solid rgb(255 255 255 / 0.24);
+  border-radius: var(--radius-md);
+  background: rgb(255 255 255 / 0.06);
+  cursor: pointer;
+  transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.ticket-option:hover,
+.ticket-option:has(input:checked) {
+  border-color: var(--color-accent-yellow-bright);
+  background: rgb(255 201 40 / 0.16);
+  transform: translateX(0.15rem);
+}
+
+.ticket-option input {
+  width: 1.35rem;
+  height: 1.35rem;
+  accent-color: var(--color-accent-orange-600);
+}
+
+.ticket-option__copy {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.ticket-option__copy small {
+  color: rgb(255 255 255 / 0.75);
+  font-size: 0.82rem;
+}
+
+.ticket-option__price {
+  color: var(--color-accent-yellow-bright);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.quantity-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-top: var(--space-5);
+  border-top: 0.08rem solid rgb(255 255 255 / 0.24);
+  font-weight: 700;
+}
+
+.quantity-field select {
+  min-width: 5rem;
+  padding: 0.55rem 0.75rem;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-white);
+  color: var(--color-text-strong);
+}
+
+.field-note {
+  margin-bottom: 0;
+  color: rgb(255 255 255 / 0.75);
+  font-size: 0.9rem;
+}
+
+.checkout-form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-5);
+  padding-top: var(--space-2);
+}
+
+.order-summary {
+  position: sticky;
+  top: 1rem;
+  background: var(--color-accent-orange-600);
+}
+
+.order-summary h2 {
+  margin-bottom: var(--space-6);
+  color: var(--color-text-on-dark);
+}
+
+.order-summary dl {
+  display: grid;
+  gap: var(--space-4);
+  margin: 0;
+}
+
+.order-summary dl > div {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: 0.08rem solid rgb(255 255 255 / 0.25);
+}
+
+.order-summary dt,
+.order-summary dd {
+  margin: 0;
+}
+
+.order-summary dt {
+  color: rgb(255 255 255 / 0.8);
+}
+
+.order-summary dd {
+  font-weight: 700;
+  text-align: right;
+}
+
+.order-summary__total {
+  padding-top: var(--space-2);
+  border-bottom: 0 !important;
+  font-size: 1.3rem;
+}
+
+.checkout-form .status-message {
+  background: var(--color-surface-white);
+}
+
+@media (max-width: 50rem) {
+  .checkout-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .order-summary {
+    position: static;
+    order: -1;
+  }
+}
+
+@media (max-width: 38rem) {
+  .ticket-option {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .ticket-option__price {
+    grid-column: 2;
+  }
+
+  .checkout-form__actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .checkout-form__actions .button,
+  .checkout-form__actions .text-link {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}

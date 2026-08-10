@@ -1,13 +1,12 @@
-import Rotas from './src/routes'
-import Footer from './src/components/footer'
+import { RouterProvider } from 'react-router-dom'
+import router from './src/routes'
+import { AuthProvider } from './src/context/authContext'
 
 function App() {
-
   return (
-    <>
-      <Rotas />
-      <Footer />
-    </>
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   )
 }
 

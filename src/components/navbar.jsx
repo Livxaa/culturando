@@ -1,17 +1,1 @@
-import { Link } from "react-router-dom";
-
-function Navbar() {
-  return (
-    <nav className="navbar">
-      <h1>Brand</h1>
-
-      <div>
-        <Link to="/">Home</Link>
-        <Link to="/login">Login</Link>
-        <Link to="/cadastro">Cadastro</Link>
-      </div>
-    </nav>
-  );
-}
-
-export default Navbar;
+export { default } from './layout/SiteHeader'

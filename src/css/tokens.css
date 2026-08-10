@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+:root {
+  --color-primary-950: #14005d;
+  --color-primary-900: #190282;
+  --color-primary-800: #2d13a6;
+  --color-primary-700: #4c2fd6;
+  --color-accent-yellow: #f7b500;
+  --color-accent-yellow-bright: #ffc928;
+  --color-accent-orange-500: #f9653b;
+  --color-accent-orange-600: #ff5e33;
+  --color-surface-cream: #fff6df;
+  --color-surface-white: #ffffff;
+  --color-text-strong: #171322;
+  --color-text-muted: #605970;
+  --color-text-on-dark: #ffffff;
+  --color-focus-ring: #00a3ff;
+  --color-success: #1d713d;
+  --color-error: #a52235;
+  --color-border: rgb(25 2 130 / 0.22);
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --radius-sm: 0.75rem;
+  --radius-md: 1.25rem;
+  --radius-lg: 2rem;
+  --radius-pill: 999px;
+  --shadow-card: 0 1rem 2.5rem rgb(20 0 93 / 0.22);
+  --shadow-floating: 0 1.5rem 3.5rem rgb(20 0 93 / 0.3);
+  --content-max: 76rem;
+  --font-sans: 'Atkinson Hyperlegible', 'Trebuchet MS', sans-serif;
+  --font-display: 'Space Grotesk', 'Atkinson Hyperlegible', sans-serif;
+}
