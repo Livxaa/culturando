@@ -1,267 +1,168 @@
-html, body, #root {
-  min-height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
+.home-page {
+  background: var(--color-surface-cream);
 }
 
-* {
-  box-sizing: border-box;
-}
-
-body {
-  background-color: #f74d27;
-}
-
-/* ==========================================================================
-   HERO SECTION - Mais fiel ao Figma
-   ========================================================================== */
-.home{
-  background-color: #f06d50;
-  min-height: 100vh;
-  width: 100%;
-}
-
-/* ====================== HEADER COM ONDA ====================== */
-.header {
-  width: 100%;
-  background: linear-gradient(180deg, #2400a8 0%, #1a0077 100%);
+.home-hero {
   position: relative;
-  z-index: 10;
-  clip-path: polygon(0% 0%, 100% 0%, 100% 78%, 90% 88%, 80% 78%, 70% 90%, 60% 80%, 50% 92%, 40% 80%, 30% 90%, 20% 78%, 10% 88%, 0% 78%);
-  padding-bottom: 100px;
+  overflow: hidden;
+  background: var(--color-accent-orange-500);
 }
 
-.home-navbar{
-  width:100%;
-  height:70px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:0 40px;
+.home-hero::after {
+  position: absolute;
+  right: -4%;
+  bottom: -10rem;
+  left: -4%;
+  height: 16rem;
+  content: '';
+  background: var(--color-accent-yellow);
+  border-radius: 50% 50% 0 0 / 30% 30% 0 0;
+  transform: rotate(-2deg);
 }
 
-.nav-left{
-  display:flex;
-  align-items:center;
-  gap:40px;
-}
-
-.nav-left .logo {
-  width:120px;
-  height:auto;
-}
-
-.nav-links {
-  display: flex;
-  gap: 12px;
+.home-hero__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(22rem, 0.9fr);
   align-items: center;
+  gap: clamp(2rem, 6vw, 6rem);
 }
 
-.nav-links a {
-  color: #ffffff;
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: 600;
-  padding: 10px 24px;
-  border-radius: 50px;
-  transition: all 0.3s ease;
-  background: #f7b500;
-  color: #2400a8;
-  font-weight: 700;
+.home-hero__copy {
+  display: grid;
+  gap: var(--space-4);
 }
 
-.nav-links a:hover {
-  background: linear-gradient(90deg, #ff5e3a, #ff744f);
-  color: #fff;
-  transform: translateY(-2px);
+.home-hero__copy .eyebrow,
+.home-hero__copy h1,
+.home-hero__lead {
+  color: var(--color-primary-950);
 }
 
-/* ====================== HERO (sem clip-path, conectado ao header) ====================== */
-.home-hero{
-  min-height: 80vh;
+.home-hero__copy h1 {
+  max-width: 12ch;
+  margin-bottom: 0;
+  font-size: clamp(3.2rem, 7vw, 6.8rem);
+  letter-spacing: -0.06em;
+}
+
+.home-hero__lead {
+  max-width: 32rem;
+  margin-bottom: 0;
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+}
+
+.home-hero__actions {
   display: flex;
-  align-items: stretch;
-  padding-top: 0;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.home-hero__copy .brand-logo {
+  width: 10rem;
+  margin-top: var(--space-4);
+}
+
+.event-carousel {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.featured-card {
+  display: grid;
+  overflow: hidden;
+  background: var(--color-surface-white);
+  border: 0.35rem solid var(--color-primary-950);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+.featured-card__media {
+  position: relative;
+  min-height: 18rem;
+}
+
+.featured-card__media img {
   width: 100%;
-  margin: 0;
-  margin-top: -1px;
+  height: 100%;
+  min-height: 18rem;
+  object-fit: cover;
 }
 
-/* Lado Esquerdo */
-.hero-left {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  padding: 40px 60px;
-  justify-content: flex-start;
+.featured-card__body {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-6);
 }
 
-.hero-img{
-  width: 90%;
-  border: 7px solid #ff5733;
-  border-radius: 22px;
-  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.967);
-}
-/* ====================== LOGO / TÍTULO ====================== */
-.hero-brand {
-  margin-top: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+.featured-card__body .eyebrow {
+  margin-bottom: 0;
 }
 
-.logo-img {
-  width: 500px;
-  height: auto;
-  display: block;
-  margin-top: -12px;
-  margin-left: 24px;
-  padding: 0;
+.featured-card__body h2 {
+  margin-bottom: 0;
+  color: var(--color-primary-950);
+  font-size: clamp(1.7rem, 3vw, 2.7rem);
 }
 
-/* Textos */
-.hero-text h2 {
-  color: #190282;
-  font-size: 2.35rem;
+.event-card__badge {
+  position: absolute;
+  right: var(--space-3);
+  bottom: var(--space-3);
+  display: inline-flex;
+  padding: var(--space-2) var(--space-3);
+  color: var(--color-text-strong);
+  background: var(--color-accent-yellow);
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem;
   font-weight: 700;
-  margin: 0 0 8px 0;
-  line-height: 1.1;
 }
 
-  .main-title{
-    font-size: 4.2rem;
-  font-weight: 900;
-  line-height: 0.95;
-  color: #fff;
-    margin-bottom: 4px;
-    align-self: flex-start;;
-    padding: 12px 24px;
-    border-radius: 30px;
+.carousel-controls {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+.carousel-dot {
+  width: 2.75rem;
+  height: 1rem;
+  min-height: 1rem;
+  padding: 0;
+  background: var(--color-surface-white);
+  border: 0.15rem solid var(--color-primary-950);
+  border-radius: var(--radius-pill);
+}
+
+.carousel-dot.is-active {
+  background: var(--color-primary-950);
+}
+
+.home-intro {
+  background: var(--color-accent-yellow);
+}
+
+.home-intro h2 {
+  max-width: 14ch;
+  color: var(--color-primary-950);
+  font-size: clamp(2rem, 4vw, 4rem);
+}
+
+.text-link {
+  color: var(--color-primary-950);
+  font-weight: 700;
+  text-decoration-thickness: 0.14rem;
+  text-underline-offset: 0.25rem;
+}
+
+@media (max-width: 800px) {
+  .home-hero__grid {
+    grid-template-columns: 1fr;
   }
 
-.hero-subtitle {
-  color: #190282;
-  font-size: 1.4rem;
-  line-height: 1.35;
-  max-width: 460px;
-  margin: 0;
-}
-
-/* ====================== BOTÃO ====================== */
-.badge-duplo {
-  display: inline-flex;
-  align-items: center;
-  background-color: #3f14ff;
-  border-radius: 50px;
-  padding: 6px;
-  align-self: flex-start;
-  margin-top: 10px;
-}
-
-.badge-duplo .btn-esquerda {
-  color: rgb(255, 255, 255);
-  padding: 14px 28px;
-  font-size: 1.15rem;
-  font-weight: bold;
-  border-radius: 50px 0 0 50px;
-}
-
-.badge-duplo .btn-direita {
-  background-color: #ff5733;
-  color: rgb(255, 251, 251);
-  padding: 14px 34px;
-  border-radius: 50px;
-  font-size: 1.15rem;
-  font-weight: bold;
-}
-
-.badge-duplo .btn-direita:hover {
-  background-color: #e64a19;
-}
-
-/* ====================== IMAGEM DIREITA ====================== */
-.home .hero-right {
-  width: 45%;
-  flex-shrink: 0;
-  background: #f06d50;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 40px;
-  min-height: 100%;
-}
-
-.hero-card {
-  background: white;
-  border-radius: 20px;
-  padding: 24px;
-  width: 100%;
-  max-width: 380px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.hero-img {
-  width: 100%;
-  height: auto;
-  border: 7px solid #ff5733;
-  border-radius: 22px;
-  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.35);
-  display: block;
-}
-
-.home-main{
-
-  position:relative;
-  z-index:2;
-
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-
-  margin-top:120px;
-  
-}
-
-/* TEXTO */
-
-.home-text{
-  max-width:350px;
-}
-
-.home-text h1{
-
-  color:var(--roxo);
-
-  font-size:42px;
-
-  margin-bottom:20px;
-}
-
-.home-text p{
-
-  font-size:18px;
-
-  line-height:1.5;
-}
-
-.hero-chip{
-  background-color:#ff5733;
-  padding: 8px 16px;
-  border-radius:30px;
-  color:#fff;
-  font-weight:bold;
-  font-size:14px;
-}
-
-.hero-card-header{
-  display:flex;
-  align-items:center;
-  width: 100%;
-  justify-content: flex-start;
+  .home-hero__copy h1 {
+    max-width: 15ch;
+  }
 }
