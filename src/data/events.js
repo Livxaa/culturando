@@ -9,6 +9,7 @@ const images = {
 export const events = [
   {
     id: 'festival-cultural',
+    organizerId: 'seed-organizer',
     title: 'Festival Cultural Plural',
     category: 'Música e cultura',
     date: '2026-09-12T19:00:00-03:00',
@@ -28,6 +29,7 @@ export const events = [
   },
   {
     id: 'feira-criativa',
+    organizerId: 'seed-organizer',
     title: 'Feira Criativa do Centro',
     category: 'Gastronomia',
     date: '2026-09-19T11:00:00-03:00',
@@ -47,6 +49,7 @@ export const events = [
   },
   {
     id: 'teatro-de-portas-abertas',
+    organizerId: 'seed-organizer',
     title: 'Teatro de Portas Abertas',
     category: 'Teatro',
     date: '2026-10-03T20:30:00-03:00',
@@ -66,5 +69,4 @@ export const events = [
   },
 ]
 
-export const getEventById = (eventId) => events.find((event) => event.id === eventId)
 export const fallbackEventImage = fallbackLogo

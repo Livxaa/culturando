@@ -1,4 +1,4 @@
-import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
+import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { useEffect, useRef } from 'react'
 import { useAuth } from '../../context/authContext.jsx'
 import { ROUTES } from '../../data/routes.js'
@@ -25,9 +25,9 @@ export default function OrganizerLayout() {
       <div className="container organizer-header__inner">
         <Link to={ROUTES.ORGANIZER_DASHBOARD} aria-label="Ir para o painel do organizador"><BrandLogo /></Link>
         <nav aria-label="Navegação da área do organizador"><ul className="organizer-nav">
-          <li><Link to={ROUTES.ORGANIZER_DASHBOARD}>Painel</Link></li>
-          <li><Link to={ROUTES.ORGANIZER_NEW_EVENT}>Novo evento</Link></li>
-          <li><Link to={ROUTES.ORGANIZER_ACCESSIBILITY}>Acessibilidade</Link></li>
+          <li><NavLink to={ROUTES.ORGANIZER_DASHBOARD} end>Painel</NavLink></li>
+          <li><NavLink to={ROUTES.ORGANIZER_NEW_EVENT}>Novo evento</NavLink></li>
+          <li><NavLink to={ROUTES.ORGANIZER_ACCESSIBILITY}>Acessibilidade</NavLink></li>
           <li><button type="button" onClick={handleLogout}>Sair<span className="visually-hidden"> da conta de {session?.email}</span></button></li>
         </ul></nav>
       </div>

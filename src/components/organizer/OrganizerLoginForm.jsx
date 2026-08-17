@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { Form, Link, useActionData, useNavigate, useNavigation } from 'react-router-dom'
 import { useAuth } from '../../context/authContext.jsx'
+import { ROUTES } from '../../data/routes.js'
 import BrandLogo from '../ui/BrandLogo.jsx'
 
 export default function OrganizerLoginForm() {
@@ -12,7 +13,7 @@ export default function OrganizerLoginForm() {
   useEffect(() => {
     if (actionData?.ok && actionData.session) {
       loginOrganizer(actionData.session)
-      navigate('/organizador', { replace: true })
+      navigate(ROUTES.ORGANIZER_DASHBOARD, { replace: true })
     }
     if (actionData && !actionData.ok) summaryRef.current?.focus()
   }, [actionData, loginOrganizer, navigate])

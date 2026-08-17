@@ -8,30 +8,45 @@ import EventsPage from '../pages/events/EventsPage.jsx'
 import EventDetailPage from '../pages/events/EventDetailPage.jsx'
 import LoginPage from '../pages/auth/LoginPage.jsx'
 import RegisterPage from '../pages/auth/RegisterPage.jsx'
+import BookingsPage from '../pages/auth/BookingsPage.jsx'
 import CheckoutPage from '../pages/checkout/CheckoutPage.jsx'
 import OrganizerLoginPage from '../pages/organizer/OrganizerLoginPage.jsx'
 import OrganizerDashboardPage from '../pages/organizer/OrganizerDashboardPage.jsx'
 import OrganizerEventPage from '../pages/organizer/OrganizerEventPage.jsx'
+import OrganizerEditEventPage from '../pages/organizer/OrganizerEditEventPage.jsx'
 import AccessibilityInfoPage from '../pages/organizer/AccessibilityInfoPage.jsx'
-import { eventsLoader, featuredEventsLoader, eventLoader } from './loaders.js'
-import { checkoutAction, createEventAction, legacyPaymentRedirect, loginAction, organizerLoginAction, registerAction } from './actions.js'
+import { eventsLoader, featuredEventsLoader, eventLoader, organizerEventsLoader, organizerEventLoader, bookingsLoader } from './loaders.js'
+import { checkoutAction, createEventAction, legacyPaymentRedirect, loginAction, organizerEventMutationAction, organizerLoginAction, registerAction, updateEventAction } from './actions.js'
 
 export const router = createBrowserRouter([
-  { element: <PublicLayout />, errorElement: <RouteErrorPage />, children: [
-    { path: '/', element: <HomePage />, loader: featuredEventsLoader },
-    { path: '/shows', element: <EventsPage />, loader: eventsLoader },
-    { path: '/shows/:eventId', element: <EventDetailPage />, loader: eventLoader },
-    { path: '/login', element: <LoginPage />, action: loginAction },
-    { path: '/cadastro', element: <RegisterPage />, action: registerAction },
-    { path: '/pagamento', loader: legacyPaymentRedirect },
-    { path: '/pagamento/:eventId', element: <CheckoutPage />, loader: eventLoader, action: checkoutAction },
-    { path: '/shows_card', element: <Navigate to="/shows" replace /> },
-    { path: '/auth', element: <Navigate to="/login" replace /> },
-  ] },
+  {
+    element: <PublicLayout />,
+    errorElement: <RouteErrorPage />,
+    children: [
+      { path: '/', element: <HomePage />, loader: featuredEventsLoader },
+      { path: '/shows', element: <EventsPage />, loader: eventsLoader },
+      { path: '/shows/:eventId', element: <EventDetailPage />, loader: eventLoader },
+      { path: '/login', element: <LoginPage />, action: loginAction },
+      { path: '/cadastro', element: <RegisterPage />, action: registerAction },
+      { path: '/ingressos', element: <BookingsPage />, loader: bookingsLoader },
+      { path: '/pagamento', loader: legacyPaymentRedirect },
+      { path: '/pagamento/:eventId', element: <CheckoutPage />, loader: eventLoader, action: checkoutAction },
+      { path: '/shows_card', element: <Navigate to="/shows" replace /> },
+      { path: '/auth', element: <Navigate to="/login" replace /> },
+    ],
+  },
   { path: '/organizador/login', element: <OrganizerLoginPage />, action: organizerLoginAction, errorElement: <RouteErrorPage /> },
-  { element: <OrganizerGuard />, errorElement: <RouteErrorPage />, children: [{ element: <OrganizerLayout />, children: [
-    { path: '/organizador', element: <OrganizerDashboardPage />, loader: eventsLoader },
-    { path: '/organizador/eventos/novo', element: <OrganizerEventPage />, action: createEventAction },
-    { path: '/organizador/acessibilidade', element: <AccessibilityInfoPage /> },
-  ] }] },
+  {
+    element: <OrganizerGuard />,
+    errorElement: <RouteErrorPage />,
+    children: [{
+      element: <OrganizerLayout />,
+      children: [
+        { path: '/organizador', element: <OrganizerDashboardPage />, loader: organizerEventsLoader, action: organizerEventMutationAction },
+        { path: '/organizador/eventos/novo', element: <OrganizerEventPage />, action: createEventAction },
+        { path: '/organizador/eventos/:eventId/editar', element: <OrganizerEditEventPage />, loader: organizerEventLoader, action: updateEventAction },
+        { path: '/organizador/acessibilidade', element: <AccessibilityInfoPage /> },
+      ],
+    }],
+  },
 ])

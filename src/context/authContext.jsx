@@ -1,34 +1,27 @@
-import { createContext, useContext, useMemo, useState } from 'react'
-import { ORGANIZER_SESSION_KEY } from '../data/routes.js'
+import { createContext, useCallback, useContext, useMemo, useState } from 'react'
+import { authService } from '../services/dataService.js'
 
 const AuthContext = createContext(null)
 
-function readOrganizerSession() {
-  if (typeof window === 'undefined') return null
-  try {
-    const value = window.sessionStorage.getItem(ORGANIZER_SESSION_KEY)
-    return value ? JSON.parse(value) : null
-  } catch {
-    return null
-  }
-}
-
 export function AuthProvider({ children }) {
-  const [session, setSession] = useState(readOrganizerSession)
-
+  const [session, setSession] = useState(() => authService.getSession())
+  const setPersistentSession = useCallback((nextSession) => {
+    authService.setSession(nextSession)
+    setSession(nextSession)
+  }, [])
+  const logout = useCallback(() => {
+    authService.logout()
+    setSession(null)
+  }, [])
   const value = useMemo(() => ({
     session,
+    isAuthenticated: Boolean(session?.userId),
     isOrganizer: session?.role === 'organizer',
-    loginOrganizer(nextSession) {
-      setSession(nextSession)
-      window.sessionStorage.setItem(ORGANIZER_SESSION_KEY, JSON.stringify(nextSession))
-    },
-    logout() {
-      setSession(null)
-      window.sessionStorage.removeItem(ORGANIZER_SESSION_KEY)
-    },
-  }), [session])
-
+    isBuyer: session?.role === 'buyer',
+    login: setPersistentSession,
+    loginOrganizer: setPersistentSession,
+    logout,
+  }), [session, setPersistentSession, logout])
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }
 

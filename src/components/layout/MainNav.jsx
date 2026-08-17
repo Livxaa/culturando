@@ -4,7 +4,7 @@ import { ROUTES } from '../../data/routes.js'
 const links = [
   ['Início', ROUTES.HOME, true],
   ['Eventos', ROUTES.EVENTS, false],
-  ['Ingressos', '/pagamento', false],
+  ['Ingressos', ROUTES.BOOKINGS, false],
   ['Login', ROUTES.LOGIN, false],
   ['Cadastro', ROUTES.REGISTER, false],
   ['Para organizadores', ROUTES.ORGANIZER_LOGIN, false],

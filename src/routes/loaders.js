@@ -1,17 +1,35 @@
-import { events, getEventById } from '../data/events.js'
+import { redirect } from 'react-router-dom'
+import { authService, bookingsService, eventsService } from '../services/dataService.js'
 
 export function eventsLoader() {
-  return events
+  return eventsService.list()
 }
 
 export function featuredEventsLoader() {
-  return events.filter((event) => event.featured)
+  return eventsService.listFeatured()
 }
 
-export function eventLoader({ params }) {
-  const event = getEventById(params.eventId)
-  if (!event) {
-    throw new Response('Evento não encontrado', { status: 404, statusText: 'Evento não encontrado' })
-  }
+export async function eventLoader({ params }) {
+  const event = await eventsService.getById(params.eventId)
+  if (!event) throw new Response('Evento não encontrado', { status: 404, statusText: 'Evento não encontrado' })
   return event
+}
+
+export async function organizerEventsLoader() {
+  const session = authService.getSession()
+  if (session?.role !== 'organizer') throw redirect('/organizador/login')
+  return eventsService.list({ organizerId: session.userId })
+}
+
+export async function organizerEventLoader({ params }) {
+  const session = authService.getSession()
+  if (session?.role !== 'organizer') throw redirect('/organizador/login')
+  const event = await eventsService.getById(params.eventId)
+  if (!event || event.organizerId !== session.userId) throw new Response('Evento não encontrado', { status: 404, statusText: 'Evento não encontrado' })
+  return event
+}
+
+export async function bookingsLoader() {
+  const session = authService.getSession()
+  return session?.userId ? bookingsService.list({ userId: session.userId }) : []
 }
