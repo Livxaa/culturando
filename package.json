@@ -4,10 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server/index.js",
+    "start": "node backend/src/server.js",
     "dev": "vite",
-    "server": "node server/index.js",
-    "db:setup": "node server/init-db.js",
+    "server": "node backend/src/server.js",
+    "test": "node --test backend/tests/*.test.js",
+    "migrate": "node backend/seeders/001_initial_seed.js",
+    "seed": "node backend/seeders/001_initial_seed.js",
+    "db:setup": "node backend/seeders/001_initial_seed.js",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -16,9 +19,11 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
     "pg": "^8.23.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",

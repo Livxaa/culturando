@@ -1,16 +1,19 @@
-import { apiRequest } from './apiClient.js'
+import { httpClient } from './httpClient.js'
 
 export const bookingsService = {
-  list() {
-    return apiRequest('/bookings')
+  async list(options = {}) {
+    return httpClient.get('/bookings', { params: options })
   },
-  getById(bookingId) {
-    return apiRequest(`/bookings/${encodeURIComponent(bookingId)}`)
+
+  async getById(bookingId) {
+    return httpClient.get(`/orders/${bookingId}`)
   },
-  create(data) {
-    return apiRequest('/bookings', { method: 'POST', body: JSON.stringify(data) })
+
+  async create(data) {
+    return httpClient.post('/orders', data)
   },
-  cancel(bookingId) {
-    return apiRequest(`/bookings/${encodeURIComponent(bookingId)}/cancel`, { method: 'PATCH' })
+
+  async cancel(bookingId) {
+    return httpClient.patch(`/orders/${bookingId}/cancel`)
   },
 }

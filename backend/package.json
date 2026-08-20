@@ -1,0 +1,22 @@
+{
+  "name": "culturando-backend",
+  "version": "1.0.0",
+  "description": "API REST N-Camadas do Culturando",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node src/server.js",
+    "test": "node --test tests/*.test.js",
+    "migrate": "node seeders/001_initial_seed.js",
+    "seed": "node seeders/001_initial_seed.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.5",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.23.0"
+  }
+}
