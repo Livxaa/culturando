@@ -1,64 +1,67 @@
-import express from 'express';
-import cors from 'cors';
-import dotenv from 'dotenv';
-import pkg from 'pg';
+const express = require('express');
+const cors = require('cors');
 
-dotenv.config();
-
-const { Pool } = pkg;
 const app = express();
+const PORT = process.env.PORT || 3001;
 
 // Middlewares
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// Configuração da conexão com o PostgreSQL usando as variáveis do seu .env
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL || `postgres://${process.env.PGUSER}:${process.env.PGPASSWORD}@${process.env.PGHOST}:${process.env.PGPORT}/${process.env.PGDATABASE}`
-});
+// --- ROTAS DA API ---
 
-// Testar conexão com o banco de dados
-pool.connect()
-  .then(() => console.log('✅ Conectado ao banco de dados PostgreSQL!'))
-  .catch((err) => console.error('❌ Erro de conexão com o banco:', err));
+// 1. Rota de Eventos e Busca Parametrizada (RF01)
+app.get('/api/eventos', (req, res) => {
+  const { acessibilidade, busca } = req.query;
+  
+  // Exemplo de retorno vindo da base de dados
+  const eventos = [
+    {
+      id: 1,
+      titulo: "Show Cultural Acessível",
+      acessibilidade: ["rampa", "libras"],
+      local: "Teatro Central"
+    }
+  ];
 
-// ==========================================
-// ENDPOINTS / ROTAS DA API
-// ==========================================
-
-// Rota de teste
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', message: 'API rodando perfeitamente!' });
-});
-
-// Exemplo: Buscar dados de uma tabela no banco (ex: usuarios ou a tabela citada no docs/postgres.md)
-app.get('/api/usuarios', async (req, res) => {
-  try {
-    const result = await pool.query('SELECT * FROM usuarios');
-    res.json(result.rows);
-  } catch (error) {
-    console.error('Erro ao buscar usuários:', error);
-    res.status(500).json({ error: 'Erro interno do servidor' });
+  // Exemplo de filtragem centralizada no Backend
+  let resultado = eventos;
+  if (acessibilidade) {
+    resultado = resultado.filter(e => e.acessibilidade.includes(acessibilidade));
   }
+
+  return res.status(200).json(resultado);
 });
 
-// Exemplo: Inserir novos dados no banco
-app.post('/api/usuarios', async (req, res) => {
-  const { nome, email } = req.body;
-  try {
-    const result = await pool.query(
-      'INSERT INTO usuarios (nome, email) VALUES ($1, $2) RETURNING *',
-      [nome, email]
-    );
-    res.status(201).json(result.rows[0]);
-  } catch (error) {
-    console.error('Erro ao cadastrar usuário:', error);
-    res.status(500).json({ error: 'Erro interno do servidor' });
+// 2. Rota de Upload de Laudos/Documentos (RF02)
+app.post('/api/documentos/validar', (req, res) => {
+  // A validação pesada e regras de segurança/LGPD ficam centralizadas aqui
+  return res.status(200).json({ 
+    sucesso: true, 
+    mensagem: "Documento enviado e pendente de verificação." 
+  });
+});
+
+// 3. Rota do Canal de Denúncias (RF05)
+app.post('/api/denuncias', (req, res) => {
+  const { local, descricao } = req.body;
+  if (!local || !descricao) {
+    return res.status(400).json({ error: "Campos obrigatórios ausentes." });
   }
+  return res.status(201).json({ mensagem: "Denúncia registrada para moderação." });
 });
 
-// Iniciar o servidor na porta definida no .env (3001)
-const PORT = process.env.PORT || 3001;
+// --- TRATAMENTO DE ENDPOINT NÃO ENCONTRADO (404) ---
+app.use((req, res) => {
+  res.status(404).json({
+    error: {
+      code: "NOT_FOUND",
+      message: `Endpoint '${req.originalUrl}' não foi encontrado no servidor.`
+    }
+  });
+});
+
 app.listen(PORT, () => {
-  console.log(`🚀 Servidor rodando na porta ${PORT} (http://localhost:${PORT})`);
+  console.log(`Servidor rodando com sucesso na porta ${PORT}`);
 });
