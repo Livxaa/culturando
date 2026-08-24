@@ -37,3 +37,28 @@ export class ForbiddenError extends DomainError {
     super(message, 403, 'FORBIDDEN')
   }
 }
+class DomainError extends Error {
+  constructor(message, statusCode = 400) {
+    super(message);
+    this.name = this.constructor.name;
+    this.statusCode = statusCode;
+  }
+}
+
+class NotFoundError extends DomainError {
+  constructor(message = 'Recurso não encontrado.') {
+    super(message, 404);
+  }
+}
+
+class UnauthorizedError extends DomainError {
+  constructor(message = 'Acesso não autorizado.') {
+    super(message, 401);
+  }
+}
+
+module.exports = {
+  DomainError,
+  NotFoundError,
+  UnauthorizedError
+};

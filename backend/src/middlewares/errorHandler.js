@@ -47,3 +47,27 @@ export function errorHandler(error, _request, response, _next) {
     },
   })
 }
+const { DomainError } = require('../errors/DomainErrors');
+
+function errorHandler(err, req, res, next) {
+  // Erros conhecidos da regra de negócio
+  if (err instanceof DomainError) {
+
+    return res.status(err.statusCode).json({
+      error: err.name,
+      message: err.message
+    });
+  }
+
+  // Erros inesperados do sistema
+  console.error('Erro não tratado:', err);
+
+  return res.status(500).json({
+    error: 'InternalServerError',
+    message: process.env.NODE_ENV === 'production' 
+      ? 'Ocorreu um erro interno no servidor.' 
+      : err.message
+  });
+}
+
+module.exports = errorHandler;
