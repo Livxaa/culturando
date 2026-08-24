@@ -1,8 +1,8 @@
 import { httpClient } from './httpClient.js'
 
 export const bookingsService = {
-  async list(options = {}) {
-    return httpClient.get('/bookings', { params: options })
+  async list() {
+    return httpClient.get('/bookings')
   },
 
   async getById(bookingId) {
@@ -11,9 +11,5 @@ export const bookingsService = {
 
   async create(data) {
     return httpClient.post('/orders', data)
-  },
-
-  async cancel(bookingId) {
-    return httpClient.patch(`/orders/${bookingId}/cancel`)
   },
 }

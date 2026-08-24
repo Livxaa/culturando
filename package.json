@@ -1,38 +1,14 @@
 {
-  "name": "culturando",
+  "name": "culturando-backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "backend/src/server.js",
+  "description": "API REST N-Camadas do Culturando",
+  "main": "src/server-main.js",
   "type": "module",
   "scripts": {
-    "start": "node backend/src/server.js",
-    "dev": "vite",
-    "server": "nodemon backend/src/server.js",
-    "test": "node --test backend/tests/*.test.js",
-    "migrate": "node backend/seeders/001_initial_seed.js",
-    "seed": "node backend/seeders/001_initial_seed.js",
-    "db:setup": "node backend/seeders/001_initial_seed.js",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "bcryptjs": "^3.0.3",
-    "cors": "^2.8.6",
-    "dotenv": "^17.4.2",
-    "express": "^5.2.1",
-    "jsonwebtoken": "^9.0.3",
-    "pg": "^8.23.0",
-    "react": "^19.2.5",
-    "react-dom": "^19.2.5",
-    "react-router-dom": "^7.15.1"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-react": "^6.0.1",
-    "nodemon": "^3.1.14",
-    "vite": "^8.0.8",
-    "vite-plugin-svgr": "^5.2.0"
+    "start": "node src/server-main.js",
+    "dev": "node src/server-main.js",
+    "test": "node --test tests/*.test.js",
+    "migrate": "node seeders/001_initial_seed.js",
+    "seed": "node seeders/001_initial_seed.js"
   }
 }

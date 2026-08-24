@@ -2,22 +2,28 @@ import crypto from 'node:crypto'
 import { DomainError } from '../errors/DomainErrors.js'
 
 export function errorHandler(error, _request, response, _next) {
-  const requestId = crypto.randomUUID ? crypto.randomUUID() : String(Date.now())
+  const requestId = crypto.randomUUID
+    ? crypto.randomUUID()
+    : String(Date.now())
 
+  // Erros conhecidos da aplicação
   if (error instanceof DomainError) {
     const errorBody = {
       code: error.code,
       message: error.message,
+      requestId,
     }
+
     if (error.fields) {
       errorBody.fields = error.fields
     }
-    errorBody.requestId = requestId
 
-    return response.status(error.status).json({ error: errorBody })
+    return response
+      .status(error.status)
+      .json({ error: errorBody })
   }
 
-  // Tratamento de erros do Postgres de unicidade ou chave estrangeira
+  // PostgreSQL: registro duplicado
   if (error.code === '23505') {
     return response.status(409).json({
       error: {
@@ -28,17 +34,20 @@ export function errorHandler(error, _request, response, _next) {
     })
   }
 
+  // PostgreSQL: chave estrangeira
   if (error.code === '23503') {
     return response.status(409).json({
       error: {
         code: 'CONFLICT',
-        message: 'Não é possível concluir a operação porque existem registros vinculados.',
+        message:
+          'Não é possível concluir a operação porque existem registros vinculados.',
         requestId,
       },
     })
   }
 
   console.error('[Culturando Backend Error]', error)
+
   return response.status(500).json({
     error: {
       code: 'INTERNAL_SERVER_ERROR',
@@ -47,27 +56,3 @@ export function errorHandler(error, _request, response, _next) {
     },
   })
 }
-const { DomainError } = require('../errors/DomainErrors');
-
-function errorHandler(err, req, res, next) {
-  // Erros conhecidos da regra de negócio
-  if (err instanceof DomainError) {
-
-    return res.status(err.statusCode).json({
-      error: err.name,
-      message: err.message
-    });
-  }
-
-  // Erros inesperados do sistema
-  console.error('Erro não tratado:', err);
-
-  return res.status(500).json({
-    error: 'InternalServerError',
-    message: process.env.NODE_ENV === 'production' 
-      ? 'Ocorreu um erro interno no servidor.' 
-      : err.message
-  });
-}
-
-module.exports = errorHandler;

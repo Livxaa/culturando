@@ -5,14 +5,19 @@ import { v1Router } from './routes/v1/index.js'
 
 export const app = express()
 
-app.use(cors())
+app.use(
+  cors({
+    origin: true,
+    credentials: true,
+  })
+)
+
 app.use(express.json({ limit: '2mb' }))
 
-// Versionamento REST em /api/v1 e fallback para /api
+// API oficial
 app.use('/api/v1', v1Router)
-app.use('/api', v1Router)
 
-// Rota 404 para endpoints nao encontrados
+// Endpoint 404
 app.use((_req, res) => {
   res.status(404).json({
     error: {
@@ -22,5 +27,5 @@ app.use((_req, res) => {
   })
 })
 
-// Middleware centralizado de tratamento de erros
+// Tratamento global de erros
 app.use(errorHandler)
