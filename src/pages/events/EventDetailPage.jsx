@@ -8,6 +8,16 @@ export default function EventDetailPage() {
   const loadedEvent = useLoaderData()
   const [event, setEvent] = useState(loadedEvent)
 
+  if (!event) {
+    return (
+      <section className="event-detail-page page-section">
+        <div className="container">
+          <p>Evento não encontrado ou carregando…</p>
+        </div>
+      </section>
+    )
+  }
+
   return (
     <section className="event-detail-page page-section">
       <div className="container">
@@ -17,3 +27,4 @@ export default function EventDetailPage() {
     </section>
   )
 }
+

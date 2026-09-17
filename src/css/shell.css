@@ -87,6 +87,20 @@
   background: var(--color-accent-yellow);
 }
 
+html[data-high-contrast="true"] .main-nav__link {
+  color: #ffff00 !important;
+  background: #000000 !important;
+  border: 1px solid #ffff00;
+}
+
+html[data-high-contrast="true"] .main-nav__link:hover,
+html[data-high-contrast="true"] .main-nav__link:focus-visible,
+html[data-high-contrast="true"] .main-nav__link[aria-current="page"] {
+  color: #000000 !important;
+  background: #ffff00 !important;
+  border-color: #ffff00;
+}
+
 .site-footer {
   padding: var(--space-8) 0;
   color: var(--color-text-on-dark);
@@ -183,6 +197,7 @@ html[data-high-contrast="true"] .accessibility-bar {
 }
 
 .accessibility-bar__inner {
+  position: fixed;
   width: min(calc(100% - 2rem), var(--content-max));
   margin-inline: auto;
   display: flex;
@@ -231,13 +246,28 @@ html[data-high-contrast="true"] .accessibility-bar {
 .accessibility-bar__button:hover,
 .accessibility-bar__button:focus-visible {
   background: var(--color-accent-yellow);
-  color: #ffff00 !important;
+  color: var(--color-primary-950);
 }
 
 .accessibility-bar__button--active {
   background: var(--color-accent-yellow);
-  color: #ffffff;
+  color: var(--color-primary-950);
   border-color: var(--color-accent-yellow);
+}
+
+/* Em alto contraste, mantenha texto e ícones legíveis durante o foco do botão. */
+html[data-high-contrast="true"] .accessibility-bar__button,
+html[data-high-contrast="true"] .accessibility-bar__button:hover,
+html[data-high-contrast="true"] .accessibility-bar__button:focus-visible {
+  background: #ffff00 !important;
+  color: #000000 !important;
+  border-color: #ffff00 !important;
+}
+
+html[data-high-contrast="true"] .accessibility-bar__button--active {
+  background: #00ffff !important;
+  color: #000000 !important;
+  border-color: #00ffff !important;
 }
 
 html[data-high-contrast="true"] .button--primary,

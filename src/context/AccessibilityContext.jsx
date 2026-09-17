@@ -85,6 +85,103 @@ export function AccessibilityProvider({ children }) {
     }
   }, [highContrast, fontSize]);
 
+  const [isSpeaking, setIsSpeaking] = useState(false);
+
+  const stopSpeaking = useCallback(() => {
+    try {
+      if (typeof window !== "undefined" && "speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+      }
+    } catch {}
+    setIsSpeaking(false);
+  }, []);
+
+  const speak = useCallback(
+    (text) => {
+      try {
+        if (typeof window === "undefined" || !("speechSynthesis" in window)) {
+          announce(text);
+          return;
+        }
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = "pt-BR";
+        utterance.rate = 1.0;
+        utterance.onend = () => setIsSpeaking(false);
+        utterance.onerror = () => setIsSpeaking(false);
+        setIsSpeaking(true);
+        window.speechSynthesis.speak(utterance);
+      } catch {
+        announce(text);
+      }
+    },
+    [announce],
+  );
+
+  const readCurrentPage = useCallback(() => {
+    if (typeof window === "undefined" || !("speechSynthesis" in window)) {
+      announce("Seu navegador não possui suporte nativo para leitura de texto em voz alta.");
+      return;
+    }
+
+    if (isSpeaking) {
+      stopSpeaking();
+      announce("Audiodescrição interrompida.");
+      return;
+    }
+
+    const mainElement =
+      document.querySelector("main") ||
+      document.querySelector("#main-content") ||
+      document.body;
+
+    if (!mainElement) return;
+
+    const clone = mainElement.cloneNode(true);
+    const elementosParaRemover = clone.querySelectorAll(
+      "script, style, noscript, .visually-hidden, .sr-only, .skip-link, .accessibility-bar, nav, [aria-hidden='true']"
+    );
+    elementosParaRemover.forEach((el) => el.remove());
+
+    const imagens = clone.querySelectorAll("img");
+    imagens.forEach((img) => {
+      const altText = img.getAttribute("alt");
+      if (altText && altText.trim()) {
+        const textoDescritivo = document.createTextNode(
+          ` [Imagem: ${altText.trim()}]. `
+        );
+        img.parentNode?.insertBefore(textoDescritivo, img);
+      }
+      img.remove();
+    });
+
+    const h1 = document.querySelector("h1");
+    const pageTitle = h1?.innerText?.trim() || document.title || "Culturando";
+    const corpoTexto = clone.innerText ? clone.innerText.replace(/\s+/g, " ").trim() : "";
+
+    if (!corpoTexto) {
+      announce("Nenhum conteúdo de texto encontrado nesta página.");
+      return;
+    }
+
+    announce("Iniciando audiodescrição da página.");
+    speak(`Início da audiodescrição da página. ${pageTitle}. ${corpoTexto}. Fim da audiodescrição.`);
+  }, [isSpeaking, speak, stopSpeaking, announce]);
+
+  const [pointAndReadActive, setPointAndReadActive] = useState(false);
+
+  const togglePointAndRead = useCallback(() => {
+    setPointAndReadActive((prev) => {
+      const next = !prev;
+      announce(
+        next
+          ? "Modo Apontar e Ler ativado. Clique em qualquer texto ou elemento para ouvir."
+          : "Modo Apontar e Ler desativado."
+      );
+      return next;
+    });
+  }, [announce]);
+
   const value = useMemo(
     () => ({
       highContrast,
@@ -93,6 +190,13 @@ export function AccessibilityProvider({ children }) {
       changeFontSize,
       announcement,
       announce,
+      speak,
+      isSpeaking,
+      stopSpeaking,
+      readCurrentPage,
+      pointAndReadActive,
+      setPointAndReadActive,
+      togglePointAndRead,
     }),
     [
       highContrast,
@@ -101,6 +205,12 @@ export function AccessibilityProvider({ children }) {
       changeFontSize,
       announcement,
       announce,
+      speak,
+      isSpeaking,
+      stopSpeaking,
+      readCurrentPage,
+      pointAndReadActive,
+      togglePointAndRead,
     ],
   );
 
@@ -119,12 +229,25 @@ export function AccessibilityProvider({ children }) {
   );
 }
 
+const defaultAccessibilityFallback = {
+  highContrast: false,
+  toggleHighContrast: () => {},
+  fontSize: "normal",
+  changeFontSize: () => {},
+  announcement: "",
+  announce: () => {},
+  speak: () => {},
+  isSpeaking: false,
+  stopSpeaking: () => {},
+  readCurrentPage: () => {},
+  pointAndReadActive: false,
+  setPointAndReadActive: () => {},
+  togglePointAndRead: () => {},
+};
+
 export function useAccessibility() {
   const context = useContext(AccessibilityContext);
-  if (!context) {
-    throw new Error(
-      "useAccessibility deve ser usado dentro de AccessibilityProvider",
-    );
-  }
-  return context;
+  return context || defaultAccessibilityFallback;
 }
+
+

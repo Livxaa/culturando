@@ -7,12 +7,19 @@ import { useAccessibility } from '../../context/AccessibilityContext.jsx'
 export default function EventDetail({ event }) {
   const { speak, isSpeaking, stopSpeaking } = useAccessibility()
 
+  if (!event) return null
+
+  const resources = event.accessibility?.resources || []
+  const onsiteSupport = event.accessibility?.onsiteSupport || 'Apoio no local disponível com a equipe do evento.'
+  const inteiraPrice = event.ticketPrices?.inteira ?? 0
+
   const handleAudioDescription = () => {
     if (isSpeaking) {
       stopSpeaking()
       return
     }
-    const textToRead = `Audiodescrição do evento: ${event.title}. Categoria: ${event.category}. Localização: ${event.location}. Descrição do evento: ${event.description}. Recursos de acessibilidade disponíveis: ${event.accessibility.resources.join(', ')}. Suporte presencial no local: ${event.accessibility.onsiteSupport}. Descrição da imagem: ${event.imageAlt || 'Foto ilustrativa do evento'}.`
+    const resourcesText = resources.length > 0 ? resources.join(', ') : 'Consulte os organizadores.'
+    const textToRead = `Audiodescrição do evento: ${event.title || ''}. Categoria: ${event.category || ''}. Localização: ${event.location || ''}. Descrição do evento: ${event.description || ''}. Recursos de acessibilidade disponíveis: ${resourcesText}. Suporte presencial no local: ${onsiteSupport}. Descrição da imagem: ${event.imageAlt || 'Foto ilustrativa do evento'}.`
     speak(textToRead)
   }
 
@@ -20,8 +27,8 @@ export default function EventDetail({ event }) {
     <article className="event-detail">
       <div className="event-detail__poster">
         <img
-          src={event.image}
-          alt={event.imageAlt}
+          src={event.image || event.fallbackImage}
+          alt={event.imageAlt || event.title}
           onError={(eventTarget) => {
             eventTarget.currentTarget.src = event.fallbackImage
           }}
@@ -29,7 +36,7 @@ export default function EventDetail({ event }) {
       </div>
       <div className="event-detail__content">
         <div className="event-detail__header-bar">
-          <p className="eyebrow">{event.category}</p>
+          <p className="eyebrow">{event.category || 'Evento cultural'}</p>
           <button
             type="button"
             className={`button button--ghost event-detail__audio-btn ${isSpeaking ? 'event-detail__audio-btn--active' : ''}`}
@@ -48,16 +55,20 @@ export default function EventDetail({ event }) {
 
         <div className="event-detail__accessibility">
           <h2>Recursos de acessibilidade</h2>
-          <ul>
-            {event.accessibility.resources.map((resource) => (
-              <li key={resource}>{resource}</li>
-            ))}
-          </ul>
-          <p>{event.accessibility.onsiteSupport}</p>
+          {resources.length > 0 ? (
+            <ul>
+              {resources.map((resource) => (
+                <li key={resource}>{resource}</li>
+              ))}
+            </ul>
+          ) : (
+            <p>Informações de acessibilidade disponíveis na entrada do evento.</p>
+          )}
+          <p>{onsiteSupport}</p>
         </div>
 
         <div className="event-detail__action">
-          <strong>{formatCurrency(event.ticketPrices.inteira)}</strong>
+          <strong>{formatCurrency(inteiraPrice)}</strong>
           <Link className="button button--primary" to={ROUTES.CHECKOUT(event.id)}>
             Comprar ingresso
           </Link>
@@ -66,3 +77,4 @@ export default function EventDetail({ event }) {
     </article>
   )
 }
+

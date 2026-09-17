@@ -20,21 +20,20 @@ export default function PublicLayout() {
   }, [location.pathname])
 
   return (
-    <AccessibilityProvider>
-      <div className="site-shell">
-        <SkipLink />
-        <SiteHeader />
-        {navigation.state !== 'idle' && (
-          <div className="route-progress" role="status" aria-live="polite">
-            Carregando…
-          </div>
-        )}
-        <main id="main-content" className="site-main" ref={mainRef} tabIndex="-1">
-          <Outlet />
-        </main>
-        <SiteFooter />
-      </div>
-    </AccessibilityProvider>
+    <div className="site-shell">
+      <SkipLink />
+      <SiteHeader />
+      {navigation.state !== 'idle' && (
+        <div className="route-progress" role="status" aria-live="polite">
+          Carregando…
+        </div>
+      )}
+      <main id="main-content" className="site-main" ref={mainRef} tabIndex="-1">
+        <Outlet />
+      </main>
+      <SiteFooter />
+    </div>
   )
 }
+
 

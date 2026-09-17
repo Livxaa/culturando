@@ -601,4 +601,418 @@ html[data-high-contrast='true'] :focus-visible {
   outline-offset: 3px !important;
 }
 
+/* ==========================================================================
+   WIDGET FLUTUANTE DE AUDIODESCRIÇÃO (ACESSIBILIDADE UNIVERSAL)
+   ========================================================================== */
+.audio-reader-widget {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 9999;
+}
+
+.audio-reader-widget__container {
+  display: none;
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.45rem 0.65rem;
+  background: var(--color-surface-white, #ffffff);
+  border: 2px solid var(--color-primary-950, #14005d);
+  border-radius: var(--radius-pill, 999px);
+  box-shadow: 0 0.5rem 1.75rem rgba(20, 0, 93, 0.22);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.audio-reader-widget__container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.75rem 2.25rem rgba(20, 0, 93, 0.3);
+}
+
+.audio-reader-widget__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 2.4rem;
+  padding: 0.3rem 0.85rem;
+  border-radius: var(--radius-pill, 999px);
+  font-weight: 700;
+  font-size: 0.92rem;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+}
+
+.audio-reader-widget__btn--primary {
+  background: var(--color-primary-950, #14005d);
+  color: #ffffff;
+}
+
+.audio-reader-widget__btn--primary:hover {
+  background: var(--color-accent-orange-500, #f9653b);
+  color: #ffffff;
+}
+
+.audio-reader-widget__btn--active {
+  background: var(--color-accent-yellow, #f7b500) !important;
+  color: var(--color-primary-950, #14005d) !important;
+  box-shadow: 0 0 0 2px var(--color-primary-950, #14005d);
+}
+
+.audio-reader-widget__controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding-left: 0.25rem;
+  border-left: 1.5px solid var(--color-border, #c8bfab);
+}
+
+.audio-reader-widget__btn--secondary {
+  background: var(--color-surface-cream, #fff6df);
+  color: var(--color-primary-950, #14005d);
+  border: 1px solid var(--color-primary-950, #14005d);
+}
+
+.audio-reader-widget__btn--secondary:hover {
+  background: var(--color-accent-yellow, #f7b500);
+}
+
+.audio-reader-widget__btn--stop {
+  background: #fde8e8;
+  color: var(--color-danger, #9c2430);
+  border: 1px solid var(--color-danger, #9c2430);
+}
+
+.audio-reader-widget__btn--stop:hover {
+  background: var(--color-danger, #9c2430);
+  color: #ffffff;
+}
+
+/* Modo de Alto Contraste para o widget de audiodescrição */
+html[data-high-contrast='true'] .audio-reader-widget__container {
+  background: #000000 !important;
+  border: 3px solid #ffff00 !important;
+  box-shadow: 0 0 0 2px #000000, 0 0 16px #ffff00 !important;
+}
+
+html[data-high-contrast='true'] .audio-reader-widget__btn--primary {
+  background: #ffff00 !important;
+  color: #000000 !important;
+  border: 2px solid #000000 !important;
+}
+
+html[data-high-contrast='true'] .audio-reader-widget__btn--active {
+  background: #00ffff !important;
+  color: #000000 !important;
+  border: 2px solid #000000 !important;
+}
+
+html[data-high-contrast='true'] .audio-reader-widget__btn--secondary {
+  background: #111111 !important;
+  color: #ffff00 !important;
+  border: 2px solid #ffff00 !important;
+}
+
+html[data-high-contrast='true'] .audio-reader-widget__btn--stop {
+  background: #ff3366 !important;
+  color: #000000 !important;
+  border: 2px solid #000000 !important;
+}
+
+/* Modo de Apontar e Ler - Realce de Elementos */
+body.audio-reader-pointing-mode {
+  cursor: crosshair !important;
+}
+
+body.audio-reader-pointing-mode a,
+body.audio-reader-pointing-mode button,
+body.audio-reader-pointing-mode p,
+body.audio-reader-pointing-mode h1,
+body.audio-reader-pointing-mode h2,
+body.audio-reader-pointing-mode h3,
+body.audio-reader-pointing-mode li,
+body.audio-reader-pointing-mode article {
+  cursor: pointer !important;
+}
+
+.audio-reader-hovered {
+  outline: 3px solid var(--color-accent-orange-500, #f9653b) !important;
+  outline-offset: 3px !important;
+  background-color: rgba(249, 101, 59, 0.08) !important;
+  border-radius: var(--radius-sm, 0.5rem);
+  transition: outline 0.1s ease, background-color 0.1s ease;
+}
+
+html[data-high-contrast='true'] .audio-reader-hovered {
+  outline: 4px solid #00ffff !important;
+  outline-offset: 4px !important;
+  background-color: rgba(0, 255, 255, 0.18) !important;
+}
+
+/* Banner Informativo Superior para o Modo Apontar e Ler */
+.audio-reader-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3, 0.75rem);
+  padding: 0.75rem 1.25rem;
+  background: var(--color-primary-950, #14005d);
+  color: #ffffff;
+  border-bottom: 3px solid var(--color-accent-yellow, #f7b500);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  font-size: 0.95rem;
+  text-align: center;
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.audio-reader-banner__icon {
+  font-size: 1.2rem;
+}
+
+.audio-reader-banner__close {
+  padding: 0.25rem 0.75rem;
+  background: var(--color-accent-yellow, #f7b500);
+  color: var(--color-primary-950, #14005d);
+  border: 1px solid var(--color-primary-950, #14005d);
+  border-radius: var(--radius-pill, 999px);
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+.audio-reader-banner__close:hover {
+  background: #ffffff;
+}
+
+html[data-high-contrast='true'] .audio-reader-banner {
+  background: #000000 !important;
+  border-bottom: 3px solid #ffff00 !important;
+  color: #ffff00 !important;
+}
+
+html[data-high-contrast='true'] .audio-reader-banner__close {
+  background: #ffff00 !important;
+  color: #000000 !important;
+  border: 2px solid #000000 !important;
+}
+
+/* Botões específicos no widget */
+.audio-reader-widget__btn--select-part {
+  background: var(--color-surface-cream, #fff6df);
+  color: var(--color-primary-950, #14005d);
+  border: 1px solid var(--color-primary-950, #14005d);
+}
+
+.audio-reader-widget__btn--select-part:hover {
+  background: var(--color-accent-yellow, #f7b500);
+}
+
+.audio-reader-widget__btn--sections {
+  background: var(--color-surface-white, #ffffff);
+  color: var(--color-primary-950, #14005d);
+  border: 1px solid var(--color-border, #c8bfab);
+}
+
+.audio-reader-widget__btn--sections:hover {
+  background: var(--color-surface-cream, #fff6df);
+}
+
+.audio-reader-widget__btn--selected-text {
+  background: var(--color-accent-orange-500, #f9653b);
+  color: #ffffff;
+  animation: pulseHighlight 1.5s infinite;
+}
+
+@keyframes pulseHighlight {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Menu de Seções */
+.audio-reader-sections-menu {
+  position: absolute;
+  bottom: calc(100% + 0.75rem);
+  right: 0;
+  width: min(90vw, 24rem);
+  max-height: 20rem;
+  overflow-y: auto;
+  background: var(--color-surface-white, #ffffff);
+  border: 2px solid var(--color-primary-950, #14005d);
+  border-radius: var(--radius-md, 1rem);
+  box-shadow: 0 0.75rem 2.5rem rgba(20, 0, 93, 0.25);
+  padding: 0.75rem;
+  z-index: 10001;
+}
+
+.audio-reader-sections-menu__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1.5px solid var(--color-border, #c8bfab);
+  font-size: 0.9rem;
+  color: var(--color-primary-950, #14005d);
+}
+
+.audio-reader-sections-menu__close {
+  background: transparent;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--color-text-muted, #625e6c);
+}
+
+.audio-reader-sections-menu__list {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.audio-reader-sections-menu__item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  background: var(--color-surface-cream, #fff6df);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm, 0.5rem);
+  color: var(--color-text-strong, #171322);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.audio-reader-sections-menu__item:hover,
+.audio-reader-sections-menu__item:focus-visible {
+  background: var(--color-accent-yellow, #f7b500);
+  border-color: var(--color-primary-950, #14005d);
+  outline: none;
+}
+
+.audio-reader-sections-menu__empty {
+  padding: 0.75rem;
+  color: var(--color-text-muted, #625e6c);
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+html[data-high-contrast='true'] .audio-reader-sections-menu {
+  background: #000000 !important;
+  border: 3px solid #ffff00 !important;
+  box-shadow: 0 0 16px #ffff00 !important;
+}
+
+html[data-high-contrast='true'] .audio-reader-sections-menu__header {
+  color: #ffff00 !important;
+  border-bottom: 2px solid #ffff00 !important;
+}
+
+html[data-high-contrast='true'] .audio-reader-sections-menu__close {
+  color: #ffff00 !important;
+}
+
+html[data-high-contrast='true'] .audio-reader-sections-menu__item {
+  background: #111111 !important;
+  color: #ffffff !important;
+  border: 1px solid #ffff00 !important;
+}
+
+html[data-high-contrast='true'] .audio-reader-sections-menu__item:hover,
+html[data-high-contrast='true'] .audio-reader-sections-menu__item:focus-visible {
+  background: #ffff00 !important;
+  color: #000000 !important;
+}
+
+html[data-high-contrast='true'] .audio-reader-widget__btn--select-part,
+html[data-high-contrast='true'] .audio-reader-widget__btn--sections {
+  background: #000000 !important;
+  color: #ffff00 !important;
+  border: 2px solid #ffff00 !important;
+}
+
+html[data-high-contrast='true'] .audio-reader-widget__btn--select-part:hover,
+html[data-high-contrast='true'] .audio-reader-widget__btn--sections:hover {
+  background: #ffff00 !important;
+  color: #000000 !important;
+}
+
+/* Classe utilitária sr-only para leitores de tela */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+@media (max-width: 600px) {
+  .audio-reader-widget {
+    bottom: 0.75rem;
+    right: 0.75rem;
+  }
+  .audio-reader-widget__label {
+    font-size: 0.82rem;
+  }
+  .audio-reader-widget__btn {
+    padding: 0.25rem 0.55rem;
+  }
+}
+
+/* Mantém todos os controles de audiodescrição visíveis e legíveis no alto contraste. */
+html[data-high-contrast='true'] .audio-reader-widget__btn,
+html[data-high-contrast='true'] .audio-reader-widget__btn:hover,
+html[data-high-contrast='true'] .audio-reader-widget__btn:focus-visible {
+  background: #ffff00 !important;
+  color: #000000 !important;
+  border: 2px solid #000000 !important;
+}
+
+html[data-high-contrast='true'] .audio-reader-widget__btn *,
+html[data-high-contrast='true'] .audio-reader-widget__btn:hover *,
+html[data-high-contrast='true'] .audio-reader-widget__btn:focus-visible * {
+  color: #000000 !important;
+}
+
+html[data-high-contrast='true'] .audio-reader-widget__btn--active {
+  background: #00ffff !important;
+  color: #000000 !important;
+}
+
+html[data-high-contrast='true'] .audio-reader-widget__btn--stop {
+  background: #ff3366 !important;
+  color: #000000 !important;
+}
+
+
 

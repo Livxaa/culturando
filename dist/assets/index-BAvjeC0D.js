@@ -4311,28 +4311,28 @@ Error generating stack: ` +
       no = null;
     function ro(e) {
       var t = e.alternate;
-      (F(H, H.current & 1),
+      (F(co, co.current & 1),
         F(to, e),
         no === null &&
           (t === null || Xa.current !== null || t.memoizedState !== null) &&
           (no = e));
     }
     function io(e) {
-      (F(H, H.current), F(to, e), no === null && (no = e));
+      (F(co, co.current), F(to, e), no === null && (no = e));
     }
     function ao(e) {
       e.tag === 22
-        ? (F(H, H.current), F(to, e), no === null && (no = e))
+        ? (F(co, co.current), F(to, e), no === null && (no = e))
         : oo(e);
     }
     function oo() {
-      (F(H, H.current), F(to, to.current));
+      (F(co, co.current), F(to, to.current));
     }
     function so(e) {
-      (se(to), no === e && (no = null), se(H));
+      (se(to), no === e && (no = null), se(co));
     }
-    var H = P(0);
-    function co(e) {
+    var co = P(0);
+    function lo(e) {
       for (var t = e; t !== null; ) {
         if (t.tag === 13) {
           var n = t.memoizedState;
@@ -4359,18 +4359,18 @@ Error generating stack: ` +
       }
       return null;
     }
-    var lo = 0,
+    var uo = 0,
+      H = null,
       U = null,
-      W = null,
-      uo = null,
-      fo = !1,
+      fo = null,
       po = !1,
       mo = !1,
-      ho = 0,
+      ho = !1,
       go = 0,
-      _o = null,
-      vo = 0;
-    function yo() {
+      _o = 0,
+      vo = null,
+      yo = 0;
+    function W() {
       throw Error(i(321));
     }
     function bo(e, t) {
@@ -4381,36 +4381,36 @@ Error generating stack: ` +
     }
     function xo(e, t, n, r, i, a) {
       return (
-        (lo = a),
-        (U = t),
+        (uo = a),
+        (H = t),
         (t.memoizedState = null),
         (t.updateQueue = null),
         (t.lanes = 0),
         (M.H = e === null || e.memoizedState === null ? Rs : zs),
-        (mo = !1),
+        (ho = !1),
         (a = n(r, i)),
-        (mo = !1),
-        po && (a = Co(t, n, r, i)),
+        (ho = !1),
+        mo && (a = Co(t, n, r, i)),
         So(e),
         a
       );
     }
     function So(e) {
       M.H = Ls;
-      var t = W !== null && W.next !== null;
-      if (((lo = 0), (uo = W = U = null), (fo = !1), (go = 0), (_o = null), t))
+      var t = U !== null && U.next !== null;
+      if (((uo = 0), (fo = U = H = null), (po = !1), (_o = 0), (vo = null), t))
         throw Error(i(300));
       e === null ||
         nc ||
         ((e = e.dependencies), e !== null && $i(e) && (nc = !0));
     }
     function Co(e, t, n, r) {
-      U = e;
+      H = e;
       var a = 0;
       do {
-        if ((po && (_o = null), (go = 0), (po = !1), 25 <= a))
+        if ((mo && (vo = null), (_o = 0), (mo = !1), 25 <= a))
           throw Error(i(301));
-        if (((a += 1), (uo = W = null), e.updateQueue != null)) {
+        if (((a += 1), (fo = U = null), e.updateQueue != null)) {
           var o = e.updateQueue;
           ((o.lastEffect = null),
             (o.events = null),
@@ -4418,7 +4418,7 @@ Error generating stack: ` +
             o.memoCache != null && (o.memoCache.index = 0));
         }
         ((M.H = Bs), (o = t(n, r)));
-      } while (po);
+      } while (mo);
       return o;
     }
     function wo() {
@@ -4427,26 +4427,26 @@ Error generating stack: ` +
       return (
         (t = typeof t.then == `function` ? jo(t) : t),
         (e = e.useState()[0]),
-        (W === null ? null : W.memoizedState) !== e && (U.flags |= 1024),
+        (U === null ? null : U.memoizedState) !== e && (H.flags |= 1024),
         t
       );
     }
     function To() {
-      var e = ho !== 0;
-      return ((ho = 0), e);
+      var e = go !== 0;
+      return ((go = 0), e);
     }
     function Eo(e, t, n) {
       ((t.updateQueue = e.updateQueue), (t.flags &= -2053), (e.lanes &= ~n));
     }
     function Do(e) {
-      if (fo) {
+      if (po) {
         for (e = e.memoizedState; e !== null; ) {
           var t = e.queue;
           (t !== null && (t.pending = null), (e = e.next));
         }
-        fo = !1;
+        po = !1;
       }
-      ((lo = 0), (uo = W = U = null), (po = !1), (go = ho = 0), (_o = null));
+      ((uo = 0), (fo = U = H = null), (mo = !1), (_o = go = 0), (vo = null));
     }
     function Oo() {
       var e = {
@@ -4457,43 +4457,43 @@ Error generating stack: ` +
         next: null,
       };
       return (
-        uo === null ? (U.memoizedState = uo = e) : (uo = uo.next = e),
-        uo
+        fo === null ? (H.memoizedState = fo = e) : (fo = fo.next = e),
+        fo
       );
     }
     function ko() {
-      if (W === null) {
-        var e = U.alternate;
+      if (U === null) {
+        var e = H.alternate;
         e = e === null ? null : e.memoizedState;
-      } else e = W.next;
-      var t = uo === null ? U.memoizedState : uo.next;
-      if (t !== null) ((uo = t), (W = e));
+      } else e = U.next;
+      var t = fo === null ? H.memoizedState : fo.next;
+      if (t !== null) ((fo = t), (U = e));
       else {
         if (e === null)
-          throw U.alternate === null ? Error(i(467)) : Error(i(310));
-        ((W = e),
+          throw H.alternate === null ? Error(i(467)) : Error(i(310));
+        ((U = e),
           (e = {
-            memoizedState: W.memoizedState,
-            baseState: W.baseState,
-            baseQueue: W.baseQueue,
-            queue: W.queue,
+            memoizedState: U.memoizedState,
+            baseState: U.baseState,
+            baseQueue: U.baseQueue,
+            queue: U.queue,
             next: null,
           }),
-          uo === null ? (U.memoizedState = uo = e) : (uo = uo.next = e));
+          fo === null ? (H.memoizedState = fo = e) : (fo = fo.next = e));
       }
-      return uo;
+      return fo;
     }
     function Ao() {
       return { lastEffect: null, events: null, stores: null, memoCache: null };
     }
     function jo(e) {
-      var t = go;
+      var t = _o;
       return (
-        (go += 1),
-        _o === null && (_o = []),
-        (e = Ea(_o, e, t)),
-        (t = U),
-        (uo === null ? t.memoizedState : uo.next) === null &&
+        (_o += 1),
+        vo === null && (vo = []),
+        (e = Ea(vo, e, t)),
+        (t = H),
+        (fo === null ? t.memoizedState : fo.next) === null &&
           ((t = t.alternate),
           (M.H = t === null || t.memoizedState === null ? Rs : zs)),
         e
@@ -4508,9 +4508,9 @@ Error generating stack: ` +
     }
     function No(e) {
       var t = null,
-        n = U.updateQueue;
+        n = H.updateQueue;
       if ((n !== null && (t = n.memoCache), t == null)) {
-        var r = U.alternate;
+        var r = H.alternate;
         r !== null &&
           ((r = r.updateQueue),
           r !== null &&
@@ -4525,7 +4525,7 @@ Error generating stack: ` +
       }
       if (
         ((t ??= { data: [], index: 0 }),
-        n === null && ((n = Ao()), (U.updateQueue = n)),
+        n === null && ((n = Ao()), (H.updateQueue = n)),
         (n.memoCache = t),
         (n = t.data[t.index]),
         n === void 0)
@@ -4537,7 +4537,7 @@ Error generating stack: ` +
       return typeof t == `function` ? t(e) : t;
     }
     function Fo(e) {
-      return Io(ko(), W, e);
+      return Io(ko(), U, e);
     }
     function Io(e, t, n) {
       var r = e.queue;
@@ -4561,7 +4561,7 @@ Error generating stack: ` +
           d = !1;
         do {
           var f = u.lane & -536870913;
-          if (f === u.lane ? (lo & f) === f : (Y & f) === f) {
+          if (f === u.lane ? (uo & f) === f : (Y & f) === f) {
             var p = u.revertLane;
             if (p === 0)
               (l !== null &&
@@ -4576,7 +4576,7 @@ Error generating stack: ` +
                     next: null,
                   }),
                 f === da && (d = !0));
-            else if ((lo & p) === p) {
+            else if ((uo & p) === p) {
               ((u = u.next), p === da && (d = !0));
               continue;
             } else
@@ -4590,10 +4590,10 @@ Error generating stack: ` +
                 next: null,
               }),
                 l === null ? ((c = l = f), (s = o)) : (l = l.next = f),
-                (U.lanes |= p),
+                (H.lanes |= p),
                 (Gl |= p));
             ((f = u.action),
-              mo && n(o, f),
+              ho && n(o, f),
               (o = u.hasEagerState ? u.eagerState : n(o, f)));
           } else
             ((p = {
@@ -4606,7 +4606,7 @@ Error generating stack: ` +
               next: null,
             }),
               l === null ? ((c = l = p), (s = o)) : (l = l.next = p),
-              (U.lanes |= f),
+              (H.lanes |= f),
               (Gl |= f));
           u = u.next;
         } while (u !== null && u !== t);
@@ -4643,19 +4643,19 @@ Error generating stack: ` +
       return [o, r];
     }
     function Ro(e, t, n) {
-      var r = U,
+      var r = H,
         a = ko(),
         o = R;
       if (o) {
         if (n === void 0) throw Error(i(407));
         n = n();
       } else n = t();
-      var s = !wr((W || a).memoizedState, n);
+      var s = !wr((U || a).memoizedState, n);
       if (
         (s && ((a.memoizedState = n), (nc = !0)),
         (a = a.queue),
         ls(Vo.bind(null, r, a, e), [e]),
-        a.getSnapshot !== t || s || (uo !== null && uo.memoizedState.tag & 1))
+        a.getSnapshot !== t || s || (fo !== null && fo.memoizedState.tag & 1))
       ) {
         if (
           ((r.flags |= 2048),
@@ -4663,16 +4663,16 @@ Error generating stack: ` +
           q === null)
         )
           throw Error(i(349));
-        o || lo & 127 || zo(r, t, n);
+        o || uo & 127 || zo(r, t, n);
       }
       return n;
     }
     function zo(e, t, n) {
       ((e.flags |= 16384),
         (e = { getSnapshot: t, value: n }),
-        (t = U.updateQueue),
+        (t = H.updateQueue),
         t === null
-          ? ((t = Ao()), (U.updateQueue = t), (t.stores = [e]))
+          ? ((t = Ao()), (H.updateQueue = t), (t.stores = [e]))
           : ((n = t.stores), n === null ? (t.stores = [e]) : n.push(e)));
     }
     function Bo(e, t, n, r) {
@@ -4701,7 +4701,7 @@ Error generating stack: ` +
       var t = Oo();
       if (typeof e == `function`) {
         var n = e;
-        if (((e = n()), mo)) {
+        if (((e = n()), ho)) {
           ze(!0);
           try {
             n();
@@ -4723,7 +4723,7 @@ Error generating stack: ` +
       );
     }
     function Go(e, t, n, r) {
-      return ((e.baseState = n), Io(e, W, typeof r == `function` ? r : Po));
+      return ((e.baseState = n), Io(e, U, typeof r == `function` ? r : Po));
     }
     function Ko(e, t, n, r, a) {
       if (Ps(e)) throw Error(i(485));
@@ -4818,7 +4818,7 @@ Error generating stack: ` +
         var n = q.formState;
         if (n !== null) {
           a: {
-            var r = U;
+            var r = H;
             if (R) {
               if (L) {
                 b: {
@@ -4857,21 +4857,21 @@ Error generating stack: ` +
           lastRenderedState: t,
         }),
         (n.queue = r),
-        (n = js.bind(null, U, r)),
+        (n = js.bind(null, H, r)),
         (r.dispatch = n),
         (r = Wo(!1)),
-        (a = Ns.bind(null, U, !1, r.queue)),
+        (a = Ns.bind(null, H, !1, r.queue)),
         (r = Oo()),
         (i = { state: t, dispatch: null, action: e, pending: null }),
         (r.queue = i),
-        (n = Ko.bind(null, U, i, a, n)),
+        (n = Ko.bind(null, H, i, a, n)),
         (i.dispatch = n),
         (r.memoizedState = e),
         [t, n, !1]
       );
     }
     function es(e) {
-      return ts(ko(), W, e);
+      return ts(ko(), U, e);
     }
     function ts(e, t, n) {
       if (
@@ -4890,7 +4890,7 @@ Error generating stack: ` +
         a = i.dispatch;
       return (
         n !== t.memoizedState &&
-          ((U.flags |= 2048),
+          ((H.flags |= 2048),
           is(9, { destroy: void 0 }, ns.bind(null, i, n), null)),
         [r, a, e]
       );
@@ -4900,7 +4900,7 @@ Error generating stack: ` +
     }
     function rs(e) {
       var t = ko(),
-        n = W;
+        n = U;
       if (n !== null) return ts(t, n, e);
       (ko(), (t = t.memoizedState), (n = ko()));
       var r = n.queue.dispatch;
@@ -4909,8 +4909,8 @@ Error generating stack: ` +
     function is(e, t, n, r) {
       return (
         (e = { tag: e, create: n, deps: r, inst: t, next: null }),
-        (t = U.updateQueue),
-        t === null && ((t = Ao()), (U.updateQueue = t)),
+        (t = H.updateQueue),
+        t === null && ((t = Ao()), (H.updateQueue = t)),
         (n = t.lastEffect),
         n === null
           ? (t.lastEffect = e.next = e)
@@ -4923,7 +4923,7 @@ Error generating stack: ` +
     }
     function os(e, t, n, r) {
       var i = Oo();
-      ((U.flags |= e),
+      ((H.flags |= e),
         (i.memoizedState = is(
           1 | t,
           { destroy: void 0 },
@@ -4935,9 +4935,9 @@ Error generating stack: ` +
       var i = ko();
       r = r === void 0 ? null : r;
       var a = i.memoizedState.inst;
-      W !== null && r !== null && bo(r, W.memoizedState.deps)
+      U !== null && r !== null && bo(r, U.memoizedState.deps)
         ? (i.memoizedState = is(t, a, n, r))
-        : ((U.flags |= e), (i.memoizedState = is(1 | t, a, n, r)));
+        : ((H.flags |= e), (i.memoizedState = is(1 | t, a, n, r)));
     }
     function cs(e, t) {
       os(8390656, 8, e, t);
@@ -4946,9 +4946,9 @@ Error generating stack: ` +
       ss(2048, 8, e, t);
     }
     function us(e) {
-      U.flags |= 4;
-      var t = U.updateQueue;
-      if (t === null) ((t = Ao()), (U.updateQueue = t), (t.events = [e]));
+      H.flags |= 4;
+      var t = H.updateQueue;
+      if (t === null) ((t = Ao()), (H.updateQueue = t), (t.events = [e]));
       else {
         var n = t.events;
         n === null ? (t.events = [e]) : n.push(e);
@@ -5003,7 +5003,7 @@ Error generating stack: ` +
       t = t === void 0 ? null : t;
       var r = n.memoizedState;
       if (t !== null && bo(t, r[1])) return r[0];
-      if (((r = e()), mo)) {
+      if (((r = e()), ho)) {
         ze(!0);
         try {
           e();
@@ -5014,17 +5014,17 @@ Error generating stack: ` +
       return ((n.memoizedState = [r, t]), r);
     }
     function ys(e, t, n) {
-      return n === void 0 || (lo & 1073741824 && !(Y & 261930))
+      return n === void 0 || (uo & 1073741824 && !(Y & 261930))
         ? (e.memoizedState = t)
-        : ((e.memoizedState = n), (e = mu()), (U.lanes |= e), (Gl |= e), n);
+        : ((e.memoizedState = n), (e = mu()), (H.lanes |= e), (Gl |= e), n);
     }
     function bs(e, t, n, r) {
       return wr(n, t)
         ? n
         : Xa.current === null
-          ? !(lo & 42) || (lo & 1073741824 && !(Y & 261930))
+          ? !(uo & 42) || (uo & 1073741824 && !(Y & 261930))
             ? ((nc = !0), (e.memoizedState = n))
-            : ((e = mu()), (U.lanes |= e), (Gl |= e), t)
+            : ((e = mu()), (H.lanes |= e), (Gl |= e), t)
           : ((e = ys(e, n, r)), wr(e, t) || (nc = !0), e);
     }
     function xs(e, t, n, r, i) {
@@ -5196,10 +5196,10 @@ Error generating stack: ` +
     }
     function Ps(e) {
       var t = e.alternate;
-      return e === U || (t !== null && t === U);
+      return e === H || (t !== null && t === H);
     }
     function Fs(e, t) {
-      po = fo = !0;
+      mo = po = !0;
       var n = e.pending;
       (n === null ? (t.next = t) : ((t.next = n.next), (n.next = t)),
         (e.pending = t));
@@ -5213,29 +5213,29 @@ Error generating stack: ` +
     var Ls = {
       readContext: ta,
       use: Mo,
-      useCallback: yo,
-      useContext: yo,
-      useEffect: yo,
-      useImperativeHandle: yo,
-      useLayoutEffect: yo,
-      useInsertionEffect: yo,
-      useMemo: yo,
-      useReducer: yo,
-      useRef: yo,
-      useState: yo,
-      useDebugValue: yo,
-      useDeferredValue: yo,
-      useTransition: yo,
-      useSyncExternalStore: yo,
-      useId: yo,
-      useHostTransitionStatus: yo,
-      useFormState: yo,
-      useActionState: yo,
-      useOptimistic: yo,
-      useMemoCache: yo,
-      useCacheRefresh: yo,
+      useCallback: W,
+      useContext: W,
+      useEffect: W,
+      useImperativeHandle: W,
+      useLayoutEffect: W,
+      useInsertionEffect: W,
+      useMemo: W,
+      useReducer: W,
+      useRef: W,
+      useState: W,
+      useDebugValue: W,
+      useDeferredValue: W,
+      useTransition: W,
+      useSyncExternalStore: W,
+      useId: W,
+      useHostTransitionStatus: W,
+      useFormState: W,
+      useActionState: W,
+      useOptimistic: W,
+      useMemoCache: W,
+      useCacheRefresh: W,
     };
-    Ls.useEffectEvent = yo;
+    Ls.useEffectEvent = W;
     var Rs = {
         readContext: ta,
         use: Mo,
@@ -5258,7 +5258,7 @@ Error generating stack: ` +
           var n = Oo();
           t = t === void 0 ? null : t;
           var r = e();
-          if (mo) {
+          if (ho) {
             ze(!0);
             try {
               e();
@@ -5272,7 +5272,7 @@ Error generating stack: ` +
           var r = Oo();
           if (n !== void 0) {
             var i = n(t);
-            if (mo) {
+            if (ho) {
               ze(!0);
               try {
                 n(t);
@@ -5291,7 +5291,7 @@ Error generating stack: ` +
               lastRenderedState: i,
             }),
             (r.queue = e),
-            (e = e.dispatch = As.bind(null, U, e)),
+            (e = e.dispatch = As.bind(null, H, e)),
             [r.memoizedState, e]
           );
         },
@@ -5302,7 +5302,7 @@ Error generating stack: ` +
         useState: function (e) {
           e = Wo(e);
           var t = e.queue,
-            n = js.bind(null, U, t);
+            n = js.bind(null, H, t);
           return ((t.dispatch = n), [e.memoizedState, n]);
         },
         useDebugValue: gs,
@@ -5312,13 +5312,13 @@ Error generating stack: ` +
         useTransition: function () {
           var e = Wo(!1);
           return (
-            (e = xs.bind(null, U, e.queue, !0, !1)),
+            (e = xs.bind(null, H, e.queue, !0, !1)),
             (Oo().memoizedState = e),
             [!1, e]
           );
         },
         useSyncExternalStore: function (e, t, n) {
-          var r = U,
+          var r = H,
             a = Oo();
           if (R) {
             if (n === void 0) throw Error(i(407));
@@ -5345,10 +5345,10 @@ Error generating stack: ` +
               r = Oi;
             ((n = (r & ~(1 << (32 - I(r) - 1))).toString(32) + n),
               (t = `_` + t + `R_` + n),
-              (n = ho++),
+              (n = go++),
               0 < n && (t += `H` + n.toString(32)),
               (t += `_`));
-          } else ((n = vo++), (t = `_` + t + `r_` + n.toString(32) + `_`));
+          } else ((n = yo++), (t = `_` + t + `r_` + n.toString(32) + `_`));
           return (e.memoizedState = t);
         },
         useHostTransitionStatus: Es,
@@ -5366,14 +5366,14 @@ Error generating stack: ` +
           };
           return (
             (t.queue = n),
-            (t = Ns.bind(null, U, !0, n)),
+            (t = Ns.bind(null, H, !0, n)),
             (n.dispatch = t),
             [e, t]
           );
         },
         useMemoCache: No,
         useCacheRefresh: function () {
-          return (Oo().memoizedState = ks.bind(null, U));
+          return (Oo().memoizedState = ks.bind(null, H));
         },
         useEffectEvent: function (e) {
           var t = Oo(),
@@ -5404,7 +5404,7 @@ Error generating stack: ` +
         },
         useDebugValue: gs,
         useDeferredValue: function (e, t) {
-          return bs(ko(), W.memoizedState, e, t);
+          return bs(ko(), U.memoizedState, e, t);
         },
         useTransition: function () {
           var e = Fo(Po)[0],
@@ -5417,7 +5417,7 @@ Error generating stack: ` +
         useFormState: es,
         useActionState: es,
         useOptimistic: function (e, t) {
-          return Go(ko(), W, e, t);
+          return Go(ko(), U, e, t);
         },
         useMemoCache: No,
         useCacheRefresh: Os,
@@ -5441,7 +5441,7 @@ Error generating stack: ` +
       useDebugValue: gs,
       useDeferredValue: function (e, t) {
         var n = ko();
-        return W === null ? ys(n, e, t) : bs(n, W.memoizedState, e, t);
+        return U === null ? ys(n, e, t) : bs(n, U.memoizedState, e, t);
       },
       useTransition: function () {
         var e = Lo(Po)[0],
@@ -5455,9 +5455,9 @@ Error generating stack: ` +
       useActionState: rs,
       useOptimistic: function (e, t) {
         var n = ko();
-        return W === null
+        return U === null
           ? ((n.baseState = e), [e, n.queue.dispatch])
-          : Go(n, W, e, t);
+          : Go(n, U, e, t);
       },
       useMemoCache: No,
       useCacheRefresh: Os,
@@ -6142,7 +6142,9 @@ Error generating stack: ` +
       if (
         ((s = o) ||
           (s =
-            e !== null && e.memoizedState === null ? !1 : (H.current & 2) != 0),
+            e !== null && e.memoizedState === null
+              ? !1
+              : (co.current & 2) != 0),
         s && ((a = !0), (t.flags &= -129)),
         (s = (t.flags & 32) != 0),
         (t.flags &= -33),
@@ -6338,11 +6340,11 @@ Error generating stack: ` +
         i = r.revealOrder,
         a = r.tail;
       r = r.children;
-      var o = H.current,
+      var o = co.current,
         s = (o & 2) != 0;
       if (
         (s ? ((o = (o & 1) | 2), (t.flags |= 128)) : (o &= 1),
-        F(H, o),
+        F(co, o),
         rc(e, t, r, n),
         (r = R ? wi : 0),
         !s && e !== null && e.flags & 128)
@@ -6365,7 +6367,7 @@ Error generating stack: ` +
         case `forwards`:
           for (n = t.child, i = null; n !== null; )
             ((e = n.alternate),
-              e !== null && co(e) === null && (i = n),
+              e !== null && lo(e) === null && (i = n),
               (n = n.sibling));
           ((n = i),
             n === null
@@ -6376,7 +6378,7 @@ Error generating stack: ` +
         case `backwards`:
         case `unstable_legacy-backwards`:
           for (n = null, i = t.child, t.child = null; i !== null; ) {
-            if (((e = i.alternate), e !== null && co(e) === null)) {
+            if (((e = i.alternate), e !== null && lo(e) === null)) {
               t.child = i;
               break;
             }
@@ -6463,7 +6465,7 @@ Error generating stack: ` +
             ((i = t.memoizedState),
             i !== null &&
               ((i.rendering = null), (i.tail = null), (i.lastEffect = null)),
-            F(H, H.current),
+            F(co, co.current),
             r)
           )
             break;
@@ -7067,13 +7069,13 @@ Error generating stack: ` +
         case 10:
           return (Yi(t.type), G(t), null);
         case 19:
-          if ((se(H), (r = t.memoizedState), r === null)) return (G(t), null);
+          if ((se(co), (r = t.memoizedState), r === null)) return (G(t), null);
           if (((a = (t.flags & 128) != 0), (o = r.rendering), o === null))
             if (a) Ic(r, !1);
             else {
               if (Wl !== 0 || (e !== null && e.flags & 128))
                 for (e = t.child; e !== null; ) {
-                  if (((o = co(e)), o !== null)) {
+                  if (((o = lo(e)), o !== null)) {
                     for (
                       t.flags |= 128,
                         Ic(r, !1),
@@ -7087,7 +7089,7 @@ Error generating stack: ` +
                     )
                       (pi(n, e), (n = n.sibling));
                     return (
-                      F(H, (H.current & 1) | 2),
+                      F(co, (co.current & 1) | 2),
                       R && Ai(t, r.treeForkCount),
                       t.child
                     );
@@ -7100,7 +7102,7 @@ Error generating stack: ` +
             }
           else {
             if (!a)
-              if (((e = co(o)), e !== null)) {
+              if (((e = lo(o)), e !== null)) {
                 if (
                   ((t.flags |= 128),
                   (a = !0),
@@ -7131,8 +7133,8 @@ Error generating stack: ` +
               (r.tail = e.sibling),
               (r.renderingStartTime = Oe()),
               (e.sibling = null),
-              (n = H.current),
-              F(H, a ? (n & 1) | 2 : n & 1),
+              (n = co.current),
+              F(co, a ? (n & 1) | 2 : n & 1),
               R && Ai(t, r.treeForkCount),
               e);
         case 22:
@@ -7219,7 +7221,7 @@ Error generating stack: ` +
             e & 65536 ? ((t.flags = (e & -65537) | 128), t) : null
           );
         case 19:
-          return (se(H), null);
+          return (se(co), null);
         case 4:
           return (pe(), null);
         case 10:
@@ -7261,7 +7263,7 @@ Error generating stack: ` +
           so(t);
           break;
         case 19:
-          se(H);
+          se(co);
           break;
         case 10:
           Yi(t.type);
@@ -8969,7 +8971,7 @@ Error generating stack: ` +
       return ((Ul = t), ni(), n);
     }
     function Cu(e, t) {
-      ((U = null),
+      ((H = null),
         (M.H = Ls),
         t === xa || t === Ca
           ? ((t = ka()), (X = 3))
@@ -12600,8 +12602,8 @@ Error generating stack: ` +
     (n(), (t.exports = h()));
   }),
   _ = `modulepreload`,
-  v = function (e) {
-    return `/` + e;
+  v = function (e, t) {
+    return new URL(e, t).href;
   },
   y = {},
   b = function (e, t, n) {
@@ -17075,7 +17077,7 @@ function mi(e, t, n, r) {
 async function hi(e, t) {
   if (e.id in t) return t[e.id];
   try {
-    let n = await b(() => import(e.module), []);
+    let n = await b(() => import(e.module), [], import.meta.url);
     return ((t[e.id] = n), n);
   } catch (t) {
     return (
@@ -17988,7 +17990,7 @@ function ia(e) {
   return x.createElement(Wr, { flushSync: ra.flushSync, ...e });
 }
 var aa = c(g(), 1),
-  oa = `/assets/logo-CgRA2rzP.png`,
+  oa = `` + new URL(`logo-CgRA2rzP.png`, import.meta.url).href,
   sa = {
     festival: `https://images.unsplash.com/photo-1729553199933-c897fea4f41f?auto=format&fit=crop&w=1200&q=85`,
     feira: `https://images.unsplash.com/photo-1582192903020-8a5e59dcdcf2?auto=format&fit=crop&w=1200&q=85`,
@@ -18672,8 +18674,9 @@ var Ka = {
     },
   },
   Ya = o((e) => {
-    var t = Symbol.for(`react.transitional.element`);
-    function n(e, n, r) {
+    var t = Symbol.for(`react.transitional.element`),
+      n = Symbol.for(`react.fragment`);
+    function r(e, n, r) {
       var i = null;
       if (
         (r !== void 0 && (i = `` + r),
@@ -18687,7 +18690,7 @@ var Ka = {
         { $$typeof: t, type: e, key: i, ref: n === void 0 ? null : n, props: r }
       );
     }
-    ((e.jsx = n), (e.jsxs = n));
+    ((e.Fragment = n), (e.jsx = r), (e.jsxs = r));
   }),
   V = o((e, t) => {
     t.exports = Ya();
@@ -18720,67 +18723,20 @@ function Qa() {
   if (!e) throw Error(`useAuth deve ser usado dentro de AuthProvider`);
   return e;
 }
-function $a() {
-  return (0, V.jsx)(`a`, {
-    className: `skip-link`,
-    href: `#main-content`,
-    children: `Pular para o conteúdo principal`,
-  });
-}
-function eo({ dark: e = !1 }) {
-  return (0, V.jsx)(`img`, {
-    className: `brand-logo${e ? ` brand-logo--dark` : ``}`,
-    src: oa,
-    alt: `Culturando`,
-  });
-}
-var to = [
-  [`Início`, B.HOME, !0],
-  [`Eventos`, B.EVENTS, !1],
-  [`Ingressos`, B.BOOKINGS, !1],
-  [`Login`, B.LOGIN, !1],
-  [`Cadastro`, B.REGISTER, !1],
-  [`Para organizadores`, B.ORGANIZER_LOGIN, !1],
-];
-function no({ isOpen: e = !0 }) {
-  return (0, V.jsx)(`nav`, {
-    id: `main-navigation`,
-    className: `main-nav`,
-    "aria-label": `Navegação principal`,
-    "data-open": e,
-    children: (0, V.jsx)(`ul`, {
-      className: `main-nav__list`,
-      children: to.map(([e, t, n]) =>
-        (0, V.jsx)(
-          `li`,
-          {
-            children: (0, V.jsx)(zi, {
-              className: `main-nav__link`,
-              to: t,
-              end: n,
-              children: e,
-            }),
-          },
-          `${e}-${t}`,
-        ),
-      ),
-    }),
-  });
-}
-var ro = (0, x.createContext)(null),
-  io = `culturando_high_contrast`,
-  ao = `culturando_font_size`;
-function oo({ children: e }) {
+var $a = (0, x.createContext)(null),
+  eo = `culturando_high_contrast`,
+  to = `culturando_font_size`;
+function no({ children: e }) {
   let [t, n] = (0, x.useState)(() => {
       try {
-        return localStorage.getItem(io) === `true`;
+        return localStorage.getItem(eo) === `true`;
       } catch {
         return !1;
       }
     }),
     [r, i] = (0, x.useState)(() => {
       try {
-        return localStorage.getItem(ao) || `normal`;
+        return localStorage.getItem(to) || `normal`;
       } catch {
         return `normal`;
       }
@@ -18795,7 +18751,7 @@ function oo({ children: e }) {
       n((e) => {
         let t = !e;
         try {
-          localStorage.setItem(io, String(t));
+          localStorage.setItem(eo, String(t));
         } catch {}
         return (
           s(
@@ -18811,7 +18767,7 @@ function oo({ children: e }) {
       (e) => {
         i(e);
         try {
-          localStorage.setItem(ao, e);
+          localStorage.setItem(to, e);
         } catch {}
         s(
           {
@@ -18834,19 +18790,114 @@ function oo({ children: e }) {
           ? e.setAttribute(`data-font-size`, `xlarge`)
           : e.removeAttribute(`data-font-size`));
   }, [t, r]);
-  let u = (0, x.useMemo)(
-    () => ({
-      highContrast: t,
-      toggleHighContrast: c,
-      fontSize: r,
-      changeFontSize: l,
-      announcement: a,
-      announce: s,
-    }),
-    [t, c, r, l, a, s],
-  );
-  return (0, V.jsxs)(ro.Provider, {
-    value: u,
+  let [u, d] = (0, x.useState)(!1),
+    f = (0, x.useCallback)(() => {
+      try {
+        typeof window < `u` &&
+          `speechSynthesis` in window &&
+          window.speechSynthesis.cancel();
+      } catch {}
+      d(!1);
+    }, []),
+    p = (0, x.useCallback)(
+      (e) => {
+        try {
+          if (typeof window > `u` || !(`speechSynthesis` in window)) {
+            s(e);
+            return;
+          }
+          window.speechSynthesis.cancel();
+          let t = new SpeechSynthesisUtterance(e);
+          ((t.lang = `pt-BR`),
+            (t.rate = 1),
+            (t.onend = () => d(!1)),
+            (t.onerror = () => d(!1)),
+            d(!0),
+            window.speechSynthesis.speak(t));
+        } catch {
+          s(e);
+        }
+      },
+      [s],
+    ),
+    m = (0, x.useCallback)(() => {
+      if (typeof window > `u` || !(`speechSynthesis` in window)) {
+        s(
+          `Seu navegador não possui suporte nativo para leitura de texto em voz alta.`,
+        );
+        return;
+      }
+      if (u) {
+        (f(), s(`Audiodescrição interrompida.`));
+        return;
+      }
+      let e =
+        document.querySelector(`main`) ||
+        document.querySelector(`#main-content`) ||
+        document.body;
+      if (!e) return;
+      let t = e.cloneNode(!0);
+      (t
+        .querySelectorAll(
+          `script, style, noscript, .visually-hidden, .sr-only, .skip-link, .accessibility-bar, nav, [aria-hidden='true']`,
+        )
+        .forEach((e) => e.remove()),
+        t.querySelectorAll(`img`).forEach((e) => {
+          let t = e.getAttribute(`alt`);
+          if (t && t.trim()) {
+            let n = document.createTextNode(` [Imagem: ${t.trim()}]. `);
+            e.parentNode?.insertBefore(n, e);
+          }
+          e.remove();
+        }));
+      let n =
+          document.querySelector(`h1`)?.innerText?.trim() ||
+          document.title ||
+          `Culturando`,
+        r = t.innerText ? t.innerText.replace(/\s+/g, ` `).trim() : ``;
+      if (!r) {
+        s(`Nenhum conteúdo de texto encontrado nesta página.`);
+        return;
+      }
+      (s(`Iniciando audiodescrição da página.`),
+        p(
+          `Início da audiodescrição da página. ${n}. ${r}. Fim da audiodescrição.`,
+        ));
+    }, [u, p, f, s]),
+    [h, g] = (0, x.useState)(!1),
+    _ = (0, x.useCallback)(() => {
+      g((e) => {
+        let t = !e;
+        return (
+          s(
+            t
+              ? `Modo Apontar e Ler ativado. Clique em qualquer texto ou elemento para ouvir.`
+              : `Modo Apontar e Ler desativado.`,
+          ),
+          t
+        );
+      });
+    }, [s]),
+    v = (0, x.useMemo)(
+      () => ({
+        highContrast: t,
+        toggleHighContrast: c,
+        fontSize: r,
+        changeFontSize: l,
+        announcement: a,
+        announce: s,
+        speak: p,
+        isSpeaking: u,
+        stopSpeaking: f,
+        readCurrentPage: m,
+        pointAndReadActive: h,
+        setPointAndReadActive: g,
+        togglePointAndRead: _,
+      }),
+      [t, c, r, l, a, s, p, u, f, m, h, _],
+    );
+  return (0, V.jsxs)($a.Provider, {
+    value: v,
     children: [
       e,
       (0, V.jsx)(`div`, {
@@ -18859,21 +18910,488 @@ function oo({ children: e }) {
     ],
   });
 }
-function so() {
-  let e = (0, x.useContext)(ro);
-  if (!e)
-    throw Error(
-      `useAccessibility deve ser usado dentro de AccessibilityProvider`,
-    );
-  return e;
+var ro = {
+  highContrast: !1,
+  toggleHighContrast: () => {},
+  fontSize: `normal`,
+  changeFontSize: () => {},
+  announcement: ``,
+  announce: () => {},
+  speak: () => {},
+  isSpeaking: !1,
+  stopSpeaking: () => {},
+  readCurrentPage: () => {},
+  pointAndReadActive: !1,
+  setPointAndReadActive: () => {},
+  togglePointAndRead: () => {},
+};
+function io() {
+  return (0, x.useContext)($a) || ro;
 }
-function H() {
+function ao() {
+  let {
+      isSpeaking: e,
+      speak: t,
+      stopSpeaking: n,
+      announce: r,
+      pointAndReadActive: i,
+      setPointAndReadActive: a,
+      togglePointAndRead: o,
+    } = io(),
+    [s, c] = (0, x.useState)(!1),
+    [l, u] = (0, x.useState)(``),
+    [d, f] = (0, x.useState)(!1),
+    [p, m] = (0, x.useState)([]),
+    h = (0, x.useRef)(null);
+  (0, x.useEffect)(() => {
+    let e = () => {
+      let e = window.getSelection()?.toString()?.trim();
+      e && e.length > 1 ? u(e) : u(``);
+    };
+    return (
+      document.addEventListener(`selectionchange`, e),
+      () => document.removeEventListener(`selectionchange`, e)
+    );
+  }, []);
+  let g = (0, x.useCallback)(() => {
+    typeof document > `u` ||
+      m(
+        Array.from(
+          document.querySelectorAll(
+            `main h1, main h2, main h3, #main-content h1, #main-content h2, #main-content h3`,
+          ),
+        )
+          .map((e, t) => ({
+            id: e.id || `secao-${t}`,
+            text: e.innerText.replace(/\s+/g, ` `).trim(),
+            element: e,
+          }))
+          .filter((e) => e.text.length > 0),
+      );
+  }, []);
+  ((0, x.useEffect)(() => {
+    let e = () => {
+      (typeof window < `u` &&
+        `speechSynthesis` in window &&
+        window.speechSynthesis.cancel(),
+        c(!1),
+        f(!1),
+        i && a(!1));
+    };
+    return (
+      window.addEventListener(`popstate`, e),
+      () => window.removeEventListener(`popstate`, e)
+    );
+  }, [i, a]),
+    (0, x.useEffect)(() => {
+      if (!i) {
+        ((h.current &&=
+          (h.current.classList.remove(`audio-reader-hovered`), null)),
+          document.body.classList.remove(`audio-reader-pointing-mode`));
+        return;
+      }
+      document.body.classList.add(`audio-reader-pointing-mode`);
+      let e = (e) =>
+          !!(
+            e.closest(`.audio-reader-widget`) ||
+            e.closest(`.accessibility-bar`) ||
+            e.closest(`.audio-reader-banner`)
+          ),
+        n = (t) => {
+          if (e(t.target)) return;
+          let n =
+            t.target.closest(
+              `h1, h2, h3, h4, p, li, article, label, dt, dd, .event-card, .featured-card, .community-reviews__card, .search-filters`,
+            ) || t.target;
+          (h.current &&
+            h.current !== n &&
+            h.current.classList.remove(`audio-reader-hovered`),
+            (h.current = n),
+            n.classList.add(`audio-reader-hovered`));
+        },
+        o = (e) => {
+          h.current &&
+            (!e.relatedTarget || !h.current.contains(e.relatedTarget)) &&
+            (h.current.classList.remove(`audio-reader-hovered`),
+            (h.current = null));
+        },
+        s = (n) => {
+          if (e(n.target)) return;
+          (n.preventDefault(), n.stopPropagation());
+          let i = (
+            n.target.closest(
+              `h1, h2, h3, h4, p, li, article, label, dt, dd, .event-card, .featured-card, .community-reviews__card, .search-filters`,
+            ) || n.target
+          ).cloneNode(!0);
+          (i
+            .querySelectorAll(
+              `script, style, noscript, .visually-hidden, .sr-only`,
+            )
+            .forEach((e) => e.remove()),
+            i.querySelectorAll(`img`).forEach((e) => {
+              let t = e.getAttribute(`alt`);
+              if (t && t.trim()) {
+                let n = document.createElement(`span`);
+                ((n.innerText = ` [Imagem: ${t.trim()}]. `),
+                  e.parentNode?.insertBefore(n, e));
+              }
+              e.remove();
+            }));
+          let a = i.innerText ? i.innerText.replace(/\s+/g, ` `).trim() : ``;
+          a && (r(`Lendo trecho selecionado: ${a.slice(0, 40)}...`), t(a));
+        },
+        c = (e) => {
+          e.key === `Escape` && (a(!1), r(`Modo Apontar e Ler desativado.`));
+        };
+      return (
+        document.addEventListener(`mouseover`, n, !0),
+        document.addEventListener(`mouseout`, o, !0),
+        document.addEventListener(`click`, s, !0),
+        document.addEventListener(`keydown`, c),
+        () => {
+          (document.removeEventListener(`mouseover`, n, !0),
+            document.removeEventListener(`mouseout`, o, !0),
+            document.removeEventListener(`click`, s, !0),
+            document.removeEventListener(`keydown`, c),
+            document.body.classList.remove(`audio-reader-pointing-mode`),
+            (h.current &&=
+              (h.current.classList.remove(`audio-reader-hovered`), null)));
+        }
+      );
+    }, [i, a, r, t]));
+  let _ = (0, x.useCallback)(() => {
+      if (typeof document > `u`) return ``;
+      let e =
+        document.querySelector(`main`) ||
+        document.querySelector(`#main-content`) ||
+        document.body;
+      if (!e) return ``;
+      let t = e.cloneNode(!0);
+      (t
+        .querySelectorAll(
+          `script, style, noscript, .visually-hidden, .sr-only, .skip-link, .accessibility-bar, nav, [aria-hidden="true"]`,
+        )
+        .forEach((e) => e.remove()),
+        t.querySelectorAll(`img`).forEach((e) => {
+          let t = e.getAttribute(`alt`);
+          if (t && t.trim()) {
+            let n = document.createTextNode(` [Imagem: ${t.trim()}]. `);
+            e.parentNode?.insertBefore(n, e);
+          }
+          e.remove();
+        }));
+      let n =
+          document.querySelector(`h1`)?.innerText?.trim() ||
+          document.title ||
+          `Culturando`,
+        r = t.innerText ? t.innerText.replace(/\s+/g, ` `).trim() : ``;
+      return r
+        ? `Início da audiodescrição da página. ${n}. ${r}. Fim da audiodescrição.`
+        : ``;
+    }, []),
+    v = () => {
+      if (typeof window > `u` || !(`speechSynthesis` in window)) {
+        alert(
+          `Seu navegador não possui suporte nativo para leitura de texto em voz alta.`,
+        );
+        return;
+      }
+      if (e && !s) {
+        n();
+        return;
+      }
+      if (s) {
+        (window.speechSynthesis.resume(), c(!1), r(`Audiodescrição retomada.`));
+        return;
+      }
+      let i = _();
+      if (!i) {
+        r(`Nenhum texto encontrado nesta página para leitura.`);
+        return;
+      }
+      (r(`Iniciando audiodescrição completa da página...`), t(i));
+    },
+    y = () => {
+      l && (r(`Lendo texto selecionado.`), t(`Trecho selecionado: ${l}`));
+    },
+    b = (e) => {
+      if (!e?.element) return;
+      (f(!1),
+        e.element.scrollIntoView({ behavior: `smooth`, block: `center` }));
+      let n = e.text + `. `,
+        i = e.element.nextElementSibling;
+      for (; i && ![`H1`, `H2`, `H3`].includes(i.tagName); )
+        (i.innerText && (n += i.innerText.replace(/\s+/g, ` `).trim() + `. `),
+          (i = i.nextElementSibling));
+      (r(`Lendo seção: ${e.text}`), t(`Seção: ${n}`));
+    };
+  return (0, V.jsxs)(V.Fragment, {
+    children: [
+      i &&
+        (0, V.jsxs)(`div`, {
+          className: `audio-reader-banner`,
+          role: `status`,
+          "aria-live": `polite`,
+          children: [
+            (0, V.jsx)(`span`, {
+              className: `audio-reader-banner__icon`,
+              "aria-hidden": `true`,
+              children: `🎯`,
+            }),
+            (0, V.jsxs)(`span`, {
+              className: `audio-reader-banner__text`,
+              children: [
+                (0, V.jsx)(`strong`, { children: `Modo Ler Trecho Ativo:` }),
+                ` Passe o cursor e clique em qualquer parte, card ou texto da página para ouvir.`,
+              ],
+            }),
+            (0, V.jsx)(`button`, {
+              type: `button`,
+              className: `audio-reader-banner__close`,
+              onClick: o,
+              title: `Sair do modo ler trecho (Atalho: ESC)`,
+              children: `✕ Desativar (ESC)`,
+            }),
+          ],
+        }),
+      (0, V.jsxs)(`aside`, {
+        className: `audio-reader-widget`,
+        "aria-label": `Ferramenta de audiodescrição e leitura de partes da página`,
+        children: [
+          (0, V.jsxs)(`div`, {
+            className: `audio-reader-widget__container`,
+            children: [
+              (0, V.jsxs)(`button`, {
+                type: `button`,
+                onClick: v,
+                className: `audio-reader-widget__btn audio-reader-widget__btn--primary ${e ? `audio-reader-widget__btn--active` : ``}`,
+                "aria-pressed": e,
+                title: e ? `Parar audiodescrição` : `Ouvir toda a página`,
+                children: [
+                  (0, V.jsx)(`span`, {
+                    "aria-hidden": `true`,
+                    children: e ? (s ? `⏸️` : `🔊`) : `🎧`,
+                  }),
+                  (0, V.jsx)(`span`, {
+                    className: `audio-reader-widget__label`,
+                    children: e
+                      ? s
+                        ? `Pausado`
+                        : `Ouvindo Página`
+                      : `Audiodescrição`,
+                  }),
+                ],
+              }),
+              (0, V.jsxs)(`button`, {
+                type: `button`,
+                onClick: o,
+                className: `audio-reader-widget__btn audio-reader-widget__btn--select-part ${i ? `audio-reader-widget__btn--active` : ``}`,
+                "aria-pressed": i,
+                title: `Escolher uma parte específica clicando diretamente nela`,
+                children: [
+                  (0, V.jsx)(`span`, { "aria-hidden": `true`, children: `🎯` }),
+                  (0, V.jsx)(`span`, {
+                    className: `audio-reader-widget__label`,
+                    children: i ? `Apontando...` : `Ler Trecho`,
+                  }),
+                ],
+              }),
+              (0, V.jsxs)(`button`, {
+                type: `button`,
+                onClick: () => {
+                  (g(), f((e) => !e));
+                },
+                className: `audio-reader-widget__btn audio-reader-widget__btn--sections`,
+                "aria-expanded": d,
+                title: `Escolher uma seção ou tópico da página para ouvir`,
+                children: [
+                  (0, V.jsx)(`span`, { "aria-hidden": `true`, children: `📑` }),
+                  (0, V.jsx)(`span`, {
+                    className: `audio-reader-widget__label`,
+                    children: `Seções`,
+                  }),
+                ],
+              }),
+              l &&
+                (0, V.jsxs)(`button`, {
+                  type: `button`,
+                  onClick: y,
+                  className: `audio-reader-widget__btn audio-reader-widget__btn--selected-text`,
+                  title: `Ler o texto selecionado: "${l.slice(0, 30)}..."`,
+                  children: [
+                    (0, V.jsx)(`span`, {
+                      "aria-hidden": `true`,
+                      children: `📝`,
+                    }),
+                    (0, V.jsx)(`span`, { children: `Ler Seleção` }),
+                  ],
+                }),
+              e &&
+                (0, V.jsxs)(`div`, {
+                  className: `audio-reader-widget__controls`,
+                  children: [
+                    (0, V.jsxs)(`button`, {
+                      type: `button`,
+                      onClick: () => {
+                        typeof window > `u` ||
+                          !(`speechSynthesis` in window) ||
+                          (s
+                            ? (window.speechSynthesis.resume(),
+                              c(!1),
+                              r(`Audiodescrição retomada.`))
+                            : (window.speechSynthesis.pause(),
+                              c(!0),
+                              r(`Audiodescrição pausada.`)));
+                      },
+                      className: `audio-reader-widget__btn audio-reader-widget__btn--secondary`,
+                      title: s ? `Retomar leitura` : `Pausar leitura`,
+                      "aria-label": s
+                        ? `Retomar audiodescrição`
+                        : `Pausar audiodescrição`,
+                      children: [
+                        (0, V.jsx)(`span`, {
+                          "aria-hidden": `true`,
+                          children: s ? `▶️` : `⏸️`,
+                        }),
+                        (0, V.jsx)(`span`, {
+                          children: s ? `Continuar` : `Pausar`,
+                        }),
+                      ],
+                    }),
+                    (0, V.jsxs)(`button`, {
+                      type: `button`,
+                      onClick: () => {
+                        (n(), c(!1), r(`Audiodescrição interrompida.`));
+                      },
+                      className: `audio-reader-widget__btn audio-reader-widget__btn--stop`,
+                      title: `Parar áudio imediatamente`,
+                      "aria-label": `Parar audiodescrição`,
+                      children: [
+                        (0, V.jsx)(`span`, {
+                          "aria-hidden": `true`,
+                          children: `⏹️`,
+                        }),
+                        (0, V.jsx)(`span`, { children: `Parar` }),
+                      ],
+                    }),
+                  ],
+                }),
+            ],
+          }),
+          d &&
+            (0, V.jsxs)(`div`, {
+              className: `audio-reader-sections-menu`,
+              role: `dialog`,
+              "aria-label": `Selecione uma seção para ouvir`,
+              children: [
+                (0, V.jsxs)(`div`, {
+                  className: `audio-reader-sections-menu__header`,
+                  children: [
+                    (0, V.jsx)(`strong`, {
+                      children: `Partes disponíveis nesta página:`,
+                    }),
+                    (0, V.jsx)(`button`, {
+                      type: `button`,
+                      onClick: () => f(!1),
+                      className: `audio-reader-sections-menu__close`,
+                      "aria-label": `Fechar menu de seções`,
+                      children: `✕`,
+                    }),
+                  ],
+                }),
+                p.length === 0
+                  ? (0, V.jsx)(`p`, {
+                      className: `audio-reader-sections-menu__empty`,
+                      children: `Nenhum título identificado nesta página.`,
+                    })
+                  : (0, V.jsx)(`ul`, {
+                      className: `audio-reader-sections-menu__list`,
+                      children: p.map((e, t) =>
+                        (0, V.jsx)(
+                          `li`,
+                          {
+                            children: (0, V.jsxs)(`button`, {
+                              type: `button`,
+                              onClick: () => b(e),
+                              className: `audio-reader-sections-menu__item`,
+                              children: [
+                                (0, V.jsx)(`span`, {
+                                  "aria-hidden": `true`,
+                                  children: `🔊`,
+                                }),
+                                ` `,
+                                e.text,
+                              ],
+                            }),
+                          },
+                          e.id || t,
+                        ),
+                      ),
+                    }),
+              ],
+            }),
+        ],
+      }),
+    ],
+  });
+}
+function oo() {
+  return (0, V.jsx)(`a`, {
+    className: `skip-link`,
+    href: `#main-content`,
+    children: `Pular para o conteúdo principal`,
+  });
+}
+function so({ dark: e = !1 }) {
+  return (0, V.jsx)(`img`, {
+    className: `brand-logo${e ? ` brand-logo--dark` : ``}`,
+    src: oa,
+    alt: `Culturando`,
+  });
+}
+var co = [
+  [`Início`, B.HOME, !0],
+  [`Eventos`, B.EVENTS, !1],
+  [`Login`, B.LOGIN, !1],
+  [`Cadastro`, B.REGISTER, !1],
+  [`Para organizadores`, B.ORGANIZER_LOGIN, !1],
+];
+function lo({ isOpen: e = !0 }) {
+  return (0, V.jsx)(`nav`, {
+    id: `main-navigation`,
+    className: `main-nav`,
+    "aria-label": `Navegação principal`,
+    "data-open": e,
+    children: (0, V.jsx)(`ul`, {
+      className: `main-nav__list`,
+      children: co.map(([e, t, n]) =>
+        (0, V.jsx)(
+          `li`,
+          {
+            children: (0, V.jsx)(zi, {
+              className: `main-nav__link`,
+              to: t,
+              end: n,
+              children: e,
+            }),
+          },
+          `${e}-${t}`,
+        ),
+      ),
+    }),
+  });
+}
+function uo() {
   let {
     highContrast: e,
     toggleHighContrast: t,
     fontSize: n,
     changeFontSize: r,
-  } = so();
+    isSpeaking: i,
+    readCurrentPage: a,
+    pointAndReadActive: o,
+    togglePointAndRead: s,
+  } = io();
   return (0, V.jsx)(`aside`, {
     className: `accessibility-bar`,
     "aria-label": `Ferramentas de acessibilidade`,
@@ -18935,11 +19453,47 @@ function H() {
             }),
           ],
         }),
+        (0, V.jsxs)(`div`, {
+          className: `accessibility-bar__group`,
+          role: `group`,
+          "aria-label": `Audiodescrição e narração`,
+          children: [
+            (0, V.jsxs)(`button`, {
+              type: `button`,
+              className: `accessibility-bar__button ${i ? `accessibility-bar__button--active` : ``}`,
+              onClick: a,
+              "aria-pressed": i,
+              title: i
+                ? `Parar audiodescrição da página`
+                : `Ouvir audiodescrição completa desta página em voz alta`,
+              children: [
+                (0, V.jsx)(`span`, {
+                  "aria-hidden": `true`,
+                  children: i ? `⏹️` : `🔊`,
+                }),
+                ` `,
+                i ? `Parar Áudio` : `Audiodescrição`,
+              ],
+            }),
+            (0, V.jsxs)(`button`, {
+              type: `button`,
+              className: `accessibility-bar__button ${o ? `accessibility-bar__button--active` : ``}`,
+              onClick: s,
+              "aria-pressed": o,
+              title: `Escolher uma parte específica clicando diretamente nela`,
+              children: [
+                (0, V.jsx)(`span`, { "aria-hidden": `true`, children: `🎯` }),
+                ` `,
+                o ? `Apontando...` : `Ler Trecho`,
+              ],
+            }),
+          ],
+        }),
       ],
     }),
   });
 }
-function co() {
+function H() {
   let [e, t] = (0, x.useState)(!1),
     n = (0, x.useRef)(null);
   return (
@@ -18955,7 +19509,7 @@ function co() {
     (0, V.jsxs)(`header`, {
       className: `site-header`,
       children: [
-        (0, V.jsx)(H, {}),
+        (0, V.jsx)(uo, {}),
         (0, V.jsxs)(`div`, {
           className: `site-header__inner`,
           children: [
@@ -18963,7 +19517,7 @@ function co() {
               className: `site-header__brand`,
               to: `/`,
               "aria-label": `Ir para a página inicial`,
-              children: (0, V.jsx)(eo, {}),
+              children: (0, V.jsx)(so, {}),
             }),
             (0, V.jsx)(`button`, {
               ref: n,
@@ -18974,14 +19528,14 @@ function co() {
               onClick: () => t((e) => !e),
               children: e ? `Fechar menu` : `Abrir menu`,
             }),
-            (0, V.jsx)(no, { isOpen: e }),
+            (0, V.jsx)(lo, { isOpen: e }),
           ],
         }),
       ],
     })
   );
 }
-function lo() {
+function U() {
   return (0, V.jsx)(`footer`, {
     className: `site-footer`,
     children: (0, V.jsxs)(`div`, {
@@ -19006,7 +19560,7 @@ function lo() {
     }),
   });
 }
-function U() {
+function fo() {
   let e = (0, x.useRef)(null),
     t = or(),
     n = Or();
@@ -19018,33 +19572,31 @@ function U() {
       });
       return () => window.cancelAnimationFrame(t);
     }, [t.pathname]),
-    (0, V.jsx)(oo, {
-      children: (0, V.jsxs)(`div`, {
-        className: `site-shell`,
-        children: [
-          (0, V.jsx)($a, {}),
-          (0, V.jsx)(co, {}),
-          n.state !== `idle` &&
-            (0, V.jsx)(`div`, {
-              className: `route-progress`,
-              role: `status`,
-              "aria-live": `polite`,
-              children: `Carregando…`,
-            }),
-          (0, V.jsx)(`main`, {
-            id: `main-content`,
-            className: `site-main`,
-            ref: e,
-            tabIndex: `-1`,
-            children: (0, V.jsx)(Yr, {}),
+    (0, V.jsxs)(`div`, {
+      className: `site-shell`,
+      children: [
+        (0, V.jsx)(oo, {}),
+        (0, V.jsx)(H, {}),
+        n.state !== `idle` &&
+          (0, V.jsx)(`div`, {
+            className: `route-progress`,
+            role: `status`,
+            "aria-live": `polite`,
+            children: `Carregando…`,
           }),
-          (0, V.jsx)(lo, {}),
-        ],
-      }),
+        (0, V.jsx)(`main`, {
+          id: `main-content`,
+          className: `site-main`,
+          ref: e,
+          tabIndex: `-1`,
+          children: (0, V.jsx)(Yr, {}),
+        }),
+        (0, V.jsx)(U, {}),
+      ],
     })
   );
 }
-function W() {
+function po() {
   let { isOrganizer: e } = Qa(),
     t = or();
   return e
@@ -19055,7 +19607,7 @@ function W() {
         state: { from: t.pathname },
       });
 }
-function uo() {
+function mo() {
   let { session: e, logout: t } = Qa(),
     n = lr(),
     r = or(),
@@ -19067,79 +19619,77 @@ function uo() {
       );
       return () => window.cancelAnimationFrame(e);
     }, [r.pathname]),
-    (0, V.jsx)(oo, {
-      children: (0, V.jsxs)(`div`, {
-        className: `organizer-shell`,
-        children: [
-          (0, V.jsxs)(`header`, {
-            className: `organizer-header`,
-            children: [
-              (0, V.jsx)(H, {}),
-              (0, V.jsxs)(`div`, {
-                className: `container organizer-header__inner`,
-                children: [
-                  (0, V.jsx)(z, {
-                    to: B.ORGANIZER_DASHBOARD,
-                    "aria-label": `Ir para o painel do organizador`,
-                    children: (0, V.jsx)(eo, {}),
+    (0, V.jsxs)(`div`, {
+      className: `organizer-shell`,
+      children: [
+        (0, V.jsxs)(`header`, {
+          className: `organizer-header`,
+          children: [
+            (0, V.jsx)(uo, {}),
+            (0, V.jsxs)(`div`, {
+              className: `container organizer-header__inner`,
+              children: [
+                (0, V.jsx)(z, {
+                  to: B.ORGANIZER_DASHBOARD,
+                  "aria-label": `Ir para o painel do organizador`,
+                  children: (0, V.jsx)(so, {}),
+                }),
+                (0, V.jsx)(`nav`, {
+                  "aria-label": `Navegação da área do organizador`,
+                  children: (0, V.jsxs)(`ul`, {
+                    className: `organizer-nav`,
+                    children: [
+                      (0, V.jsx)(`li`, {
+                        children: (0, V.jsx)(zi, {
+                          to: B.ORGANIZER_DASHBOARD,
+                          end: !0,
+                          children: `Painel`,
+                        }),
+                      }),
+                      (0, V.jsx)(`li`, {
+                        children: (0, V.jsx)(zi, {
+                          to: B.ORGANIZER_NEW_EVENT,
+                          children: `Novo evento`,
+                        }),
+                      }),
+                      (0, V.jsx)(`li`, {
+                        children: (0, V.jsx)(zi, {
+                          to: B.ORGANIZER_ACCESSIBILITY,
+                          children: `Acessibilidade`,
+                        }),
+                      }),
+                      (0, V.jsx)(`li`, {
+                        children: (0, V.jsxs)(`button`, {
+                          type: `button`,
+                          onClick: () => {
+                            (t(), n(B.ORGANIZER_LOGIN, { replace: !0 }));
+                          },
+                          children: [
+                            `Sair`,
+                            (0, V.jsxs)(`span`, {
+                              className: `visually-hidden`,
+                              children: [` da conta de `, e?.email],
+                            }),
+                          ],
+                        }),
+                      }),
+                    ],
                   }),
-                  (0, V.jsx)(`nav`, {
-                    "aria-label": `Navegação da área do organizador`,
-                    children: (0, V.jsxs)(`ul`, {
-                      className: `organizer-nav`,
-                      children: [
-                        (0, V.jsx)(`li`, {
-                          children: (0, V.jsx)(zi, {
-                            to: B.ORGANIZER_DASHBOARD,
-                            end: !0,
-                            children: `Painel`,
-                          }),
-                        }),
-                        (0, V.jsx)(`li`, {
-                          children: (0, V.jsx)(zi, {
-                            to: B.ORGANIZER_NEW_EVENT,
-                            children: `Novo evento`,
-                          }),
-                        }),
-                        (0, V.jsx)(`li`, {
-                          children: (0, V.jsx)(zi, {
-                            to: B.ORGANIZER_ACCESSIBILITY,
-                            children: `Acessibilidade`,
-                          }),
-                        }),
-                        (0, V.jsx)(`li`, {
-                          children: (0, V.jsxs)(`button`, {
-                            type: `button`,
-                            onClick: () => {
-                              (t(), n(B.ORGANIZER_LOGIN, { replace: !0 }));
-                            },
-                            children: [
-                              `Sair`,
-                              (0, V.jsxs)(`span`, {
-                                className: `visually-hidden`,
-                                children: [` da conta de `, e?.email],
-                              }),
-                            ],
-                          }),
-                        }),
-                      ],
-                    }),
-                  }),
-                ],
-              }),
-            ],
-          }),
-          (0, V.jsx)(`main`, {
-            className: `organizer-main`,
-            ref: i,
-            children: (0, V.jsx)(Yr, {}),
-          }),
-        ],
-      }),
+                }),
+              ],
+            }),
+          ],
+        }),
+        (0, V.jsx)(`main`, {
+          className: `organizer-main`,
+          ref: i,
+          children: (0, V.jsx)(Yr, {}),
+        }),
+      ],
     })
   );
 }
-function fo({
+function ho({
   variant: e = `info`,
   title: t,
   children: n,
@@ -19155,7 +19705,7 @@ function fo({
     ],
   });
 }
-function po() {
+function go() {
   let e = Mr(),
     t = Ye(e) && e.status === 404;
   return (0, V.jsxs)(`section`, {
@@ -19170,7 +19720,7 @@ function po() {
           ? `Página não encontrada`
           : `Não foi possível carregar esta página`,
       }),
-      (0, V.jsx)(fo, {
+      (0, V.jsx)(ho, {
         variant: `error`,
         title: t ? `O endereço não existe.` : `Tente novamente.`,
         children: t
@@ -19185,32 +19735,31 @@ function po() {
     ],
   });
 }
-var mo = (e) =>
+var _o = (e) =>
     new Intl.NumberFormat(`pt-BR`, {
       style: `currency`,
       currency: `BRL`,
     }).format(e),
-  ho = (e) =>
+  vo = (e) =>
     new Intl.DateTimeFormat(`pt-BR`, {
       dateStyle: `full`,
       timeStyle: `short`,
     }).format(new Date(e)),
-  go = (e) =>
+  yo = (e) =>
     new Intl.DateTimeFormat(`pt-BR`, {
       day: `2-digit`,
       month: `short`,
       year: `numeric`,
     }).format(new Date(e)),
-  _o = (e) =>
-    ({ inteira: `Inteira`, meia: `Meia entrada`, pcd: `PCD` })[e] ?? e;
-function vo({ event: e, compact: t = !1 }) {
+  W = (e) => ({ inteira: `Inteira`, meia: `Meia entrada`, pcd: `PCD` })[e] ?? e;
+function bo({ event: e, compact: t = !1 }) {
   return (0, V.jsxs)(`dl`, {
     className: `event-meta${t ? ` event-meta--compact` : ``}`,
     children: [
       (0, V.jsxs)(`div`, {
         children: [
           (0, V.jsx)(`dt`, { children: `Quando` }),
-          (0, V.jsx)(`dd`, { children: ho(e.date) }),
+          (0, V.jsx)(`dd`, { children: vo(e.date) }),
         ],
       }),
       (0, V.jsxs)(`div`, {
@@ -19222,13 +19771,13 @@ function vo({ event: e, compact: t = !1 }) {
       (0, V.jsxs)(`div`, {
         children: [
           (0, V.jsx)(`dt`, { children: `A partir de` }),
-          (0, V.jsx)(`dd`, { children: mo(e.ticketPrices.inteira) }),
+          (0, V.jsx)(`dd`, { children: _o(e.ticketPrices.inteira) }),
         ],
       }),
     ],
   });
 }
-function yo({ event: e }) {
+function xo({ event: e }) {
   return (0, V.jsxs)(`article`, {
     className: `featured-card`,
     children: [
@@ -19253,7 +19802,7 @@ function yo({ event: e }) {
         children: [
           (0, V.jsx)(`p`, { className: `eyebrow`, children: e.category }),
           (0, V.jsx)(`h2`, { children: e.title }),
-          (0, V.jsx)(vo, { event: e }),
+          (0, V.jsx)(bo, { event: e }),
           (0, V.jsx)(z, {
             className: `button button--secondary`,
             to: B.EVENT_DETAIL(e.id),
@@ -19264,7 +19813,7 @@ function yo({ event: e }) {
     ],
   });
 }
-function bo({ events: e }) {
+function So({ events: e }) {
   let [t, n] = (0, x.useState)(0),
     r = e[t];
   return r
@@ -19272,7 +19821,7 @@ function bo({ events: e }) {
         className: `event-carousel`,
         "aria-label": `Eventos em destaque`,
         children: [
-          (0, V.jsx)(yo, { event: r }),
+          (0, V.jsx)(xo, { event: r }),
           (0, V.jsxs)(`div`, {
             className: `carousel-controls`,
             children: [
@@ -19300,7 +19849,7 @@ function bo({ events: e }) {
       })
     : null;
 }
-function xo() {
+function Co() {
   let e = Ar();
   return (0, V.jsxs)(`div`, {
     className: `home-page`,
@@ -19344,7 +19893,7 @@ function xo() {
                 }),
               ],
             }),
-            (0, V.jsx)(bo, { events: e }),
+            (0, V.jsx)(So, { events: e }),
           ],
         }),
       }),
@@ -19369,12 +19918,16 @@ function xo() {
     ],
   });
 }
-function So({ event: e }) {
+function wo({ event: e }) {
+  let { announce: t } = io();
   return (0, V.jsx)(`li`, {
     className: `event-card`,
     children: (0, V.jsxs)(z, {
       className: `event-card__link`,
       to: B.EVENT_DETAIL(e.id),
+      onFocus: () => t(`Evento ${e.title}, categoria ${e.category}`),
+      onMouseEnter: () => t(`Evento ${e.title}, categoria ${e.category}`),
+      "aria-label": `Evento ${e.title}, categoria ${e.category}`,
       children: [
         (0, V.jsxs)(`div`, {
           className: `event-card__media`,
@@ -19397,7 +19950,7 @@ function So({ event: e }) {
           className: `event-card__body`,
           children: [
             (0, V.jsx)(`h2`, { children: e.title }),
-            (0, V.jsx)(vo, { event: e, compact: !0 }),
+            (0, V.jsx)(bo, { event: e, compact: !0 }),
             (0, V.jsx)(`span`, {
               className: `event-card__cta`,
               children: `Ver detalhes`,
@@ -19408,18 +19961,18 @@ function So({ event: e }) {
     }),
   });
 }
-function Co({ events: e }) {
+function To({ events: e }) {
   return e.length
     ? (0, V.jsx)(`ul`, {
         className: `event-grid`,
-        children: e.map((e) => (0, V.jsx)(So, { event: e }, e.id)),
+        children: e.map((e) => (0, V.jsx)(wo, { event: e }, e.id)),
       })
     : (0, V.jsx)(`p`, {
         className: `empty-state`,
         children: `Nenhum evento encontrado no momento.`,
       });
 }
-var wo = [
+var Eo = [
   {
     id: `fisica`,
     label: `Acessibilidade Motora`,
@@ -19445,7 +19998,7 @@ var wo = [
     icon: `🧩`,
   },
 ];
-function To({
+function Do({
   searchQuery: e,
   onSearchChange: t,
   selectedGroups: n,
@@ -19458,7 +20011,8 @@ function To({
 }) {
   let l = (0, x.useId)(),
     u = (0, x.useId)(),
-    d = e.trim() !== `` || n.length > 0 || i !== ``;
+    { announce: d } = io(),
+    f = e.trim() !== `` || n.length > 0 || i !== ``;
   return (0, V.jsxs)(`section`, {
     className: `search-filters-section`,
     "aria-labelledby": `filters-title`,
@@ -19541,7 +20095,7 @@ function To({
               }),
               (0, V.jsx)(`div`, {
                 className: `search-filters__group-list`,
-                children: wo.map((e) => {
+                children: Eo.map((e) => {
                   let t = n.includes(e.id);
                   return (0, V.jsxs)(
                     `label`,
@@ -19553,6 +20107,8 @@ function To({
                           checked: t,
                           onChange: () => r(e.id),
                           "aria-describedby": `desc-${e.id}`,
+                          onFocus: () => d(`${e.label}: ${e.description}`),
+                          onMouseEnter: () => d(`${e.label}: ${e.description}`),
                         }),
                         (0, V.jsxs)(`span`, {
                           className: `search-filters__checkbox-content`,
@@ -19597,7 +20153,7 @@ function To({
                   c > 0 && ` (de ${c} no total)`,
                 ],
               }),
-              d &&
+              f &&
                 (0, V.jsx)(`button`, {
                   type: `button`,
                   className: `button button--ghost search-filters__reset-btn`,
@@ -19612,7 +20168,7 @@ function To({
     ],
   });
 }
-function Eo() {
+function Oo() {
   let e = Ar() || [],
     [t, n] = (0, x.useState)(``),
     [r, i] = (0, x.useState)([]),
@@ -19662,7 +20218,7 @@ function Eo() {
           className: `events-page__intro`,
           children: `Escolha uma experiência para viver a cultura de um jeito mais acessível, próximo e plural.`,
         }),
-        (0, V.jsx)(To, {
+        (0, V.jsx)(Do, {
           searchQuery: t,
           onSearchChange: n,
           selectedGroups: r,
@@ -19674,7 +20230,7 @@ function Eo() {
           totalEvents: e.length,
         }),
         l.length > 0
-          ? (0, V.jsx)(Co, { events: l })
+          ? (0, V.jsx)(To, { events: l })
           : (0, V.jsxs)(`div`, {
               className: `empty-state`,
               role: `region`,
@@ -19696,16 +20252,22 @@ function Eo() {
     }),
   });
 }
-function Do({ event: e }) {
-  let { speak: t, isSpeaking: n, stopSpeaking: r } = so();
+function ko({ event: e }) {
+  let { speak: t, isSpeaking: n, stopSpeaking: r } = io();
+  if (!e) return null;
+  let i = e.accessibility?.resources || [],
+    a =
+      e.accessibility?.onsiteSupport ||
+      `Apoio no local disponível com a equipe do evento.`,
+    o = e.ticketPrices?.inteira ?? 0;
   return (0, V.jsxs)(`article`, {
     className: `event-detail`,
     children: [
       (0, V.jsx)(`div`, {
         className: `event-detail__poster`,
         children: (0, V.jsx)(`img`, {
-          src: e.image,
-          alt: e.imageAlt,
+          src: e.image || e.fallbackImage,
+          alt: e.imageAlt || e.title,
           onError: (t) => {
             t.currentTarget.src = e.fallbackImage;
           },
@@ -19717,7 +20279,10 @@ function Do({ event: e }) {
           (0, V.jsxs)(`div`, {
             className: `event-detail__header-bar`,
             children: [
-              (0, V.jsx)(`p`, { className: `eyebrow`, children: e.category }),
+              (0, V.jsx)(`p`, {
+                className: `eyebrow`,
+                children: e.category || `Evento cultural`,
+              }),
               (0, V.jsxs)(`button`, {
                 type: `button`,
                 className: `button button--ghost event-detail__audio-btn ${n ? `event-detail__audio-btn--active` : ``}`,
@@ -19726,8 +20291,10 @@ function Do({ event: e }) {
                     r();
                     return;
                   }
+                  let o =
+                    i.length > 0 ? i.join(`, `) : `Consulte os organizadores.`;
                   t(
-                    `Audiodescrição do evento: ${e.title}. Categoria: ${e.category}. Localização: ${e.location}. Descrição do evento: ${e.description}. Recursos de acessibilidade disponíveis: ${e.accessibility.resources.join(`, `)}. Suporte presencial no local: ${e.accessibility.onsiteSupport}. Descrição da imagem: ${e.imageAlt || `Foto ilustrativa do evento`}.`,
+                    `Audiodescrição do evento: ${e.title || ``}. Categoria: ${e.category || ``}. Localização: ${e.location || ``}. Descrição do evento: ${e.description || ``}. Recursos de acessibilidade disponíveis: ${o}. Suporte presencial no local: ${a}. Descrição da imagem: ${e.imageAlt || `Foto ilustrativa do evento`}.`,
                   );
                 },
                 "aria-pressed": n,
@@ -19743,24 +20310,28 @@ function Do({ event: e }) {
             ],
           }),
           (0, V.jsx)(`h1`, { tabIndex: `-1`, children: e.title }),
-          (0, V.jsx)(vo, { event: e }),
+          (0, V.jsx)(bo, { event: e }),
           (0, V.jsx)(`p`, { children: e.description }),
           (0, V.jsxs)(`div`, {
             className: `event-detail__accessibility`,
             children: [
               (0, V.jsx)(`h2`, { children: `Recursos de acessibilidade` }),
-              (0, V.jsx)(`ul`, {
-                children: e.accessibility.resources.map((e) =>
-                  (0, V.jsx)(`li`, { children: e }, e),
-                ),
-              }),
-              (0, V.jsx)(`p`, { children: e.accessibility.onsiteSupport }),
+              i.length > 0
+                ? (0, V.jsx)(`ul`, {
+                    children: i.map((e) =>
+                      (0, V.jsx)(`li`, { children: e }, e),
+                    ),
+                  })
+                : (0, V.jsx)(`p`, {
+                    children: `Informações de acessibilidade disponíveis na entrada do evento.`,
+                  }),
+              (0, V.jsx)(`p`, { children: a }),
             ],
           }),
           (0, V.jsxs)(`div`, {
             className: `event-detail__action`,
             children: [
-              (0, V.jsx)(`strong`, { children: mo(e.ticketPrices.inteira) }),
+              (0, V.jsx)(`strong`, { children: _o(o) }),
               (0, V.jsx)(z, {
                 className: `button button--primary`,
                 to: B.CHECKOUT(e.id),
@@ -19773,25 +20344,26 @@ function Do({ event: e }) {
     ],
   });
 }
-var Oo = {
+var Ao = {
   fisica: { label: `Acessibilidade Motora`, icon: `♿` },
   visual: { label: `Acessibilidade Visual`, icon: `👁️` },
   auditiva: { label: `Acessibilidade Auditiva`, icon: `🤟` },
   neurodivergente: { label: `Neurodivergência / Sensorial`, icon: `🧩` },
   geral: { label: `Acessibilidade Geral`, icon: `🌟` },
 };
-function ko({ event: e, onReviewAdded: t }) {
-  let n = e.communityReviews || [],
-    [r, i] = (0, x.useState)(``),
-    [a, o] = (0, x.useState)(`PCD (Pessoa com Deficiência)`),
-    [s, c] = (0, x.useState)(`fisica`),
-    [l, u] = (0, x.useState)(5),
-    [d, f] = (0, x.useState)(``),
-    [p, m] = (0, x.useState)(!1),
-    [h, g] = (0, x.useState)(``),
-    _ =
-      n.length > 0
-        ? (n.reduce((e, t) => e + t.rating, 0) / n.length).toFixed(1)
+function jo({ event: e, onReviewAdded: t }) {
+  let { announce: n } = io(),
+    r = e.communityReviews || [],
+    [i, a] = (0, x.useState)(``),
+    [o, s] = (0, x.useState)(`PCD (Pessoa com Deficiência)`),
+    [c, l] = (0, x.useState)(`fisica`),
+    [u, d] = (0, x.useState)(5),
+    [f, p] = (0, x.useState)(``),
+    [m, h] = (0, x.useState)(!1),
+    [g, _] = (0, x.useState)(``),
+    v =
+      r.length > 0
+        ? (r.reduce((e, t) => e + t.rating, 0) / r.length).toFixed(1)
         : null;
   return (0, V.jsxs)(`section`, {
     className: `community-reviews`,
@@ -19812,7 +20384,7 @@ function ko({ event: e, onReviewAdded: t }) {
               }),
             ],
           }),
-          _ &&
+          v &&
             (0, V.jsxs)(`div`, {
               className: `community-reviews__score-box`,
               role: `region`,
@@ -19820,15 +20392,15 @@ function ko({ event: e, onReviewAdded: t }) {
               children: [
                 (0, V.jsxs)(`span`, {
                   className: `community-reviews__score-val`,
-                  "aria-label": `Nota média ${_} de 5`,
-                  children: [`⭐ `, _],
+                  "aria-label": `Nota média ${v} de 5`,
+                  children: [`⭐ `, v],
                 }),
                 (0, V.jsxs)(`span`, {
                   className: `community-reviews__score-count`,
                   children: [
-                    n.length,
+                    r.length,
                     ` `,
-                    n.length === 1 ? `avaliação` : `avaliações`,
+                    r.length === 1 ? `avaliação` : `avaliações`,
                   ],
                 }),
               ],
@@ -19838,26 +20410,26 @@ function ko({ event: e, onReviewAdded: t }) {
       (0, V.jsxs)(`form`, {
         className: `community-reviews__form`,
         onSubmit: (n) => {
-          if ((n.preventDefault(), d.trim())) {
-            m(!0);
+          if ((n.preventDefault(), f.trim())) {
+            h(!0);
             try {
               let n = Ka.addReview(e.id, {
-                author: r.trim() || `Usuário Culturando`,
-                userRole: a,
-                accessibilityGroup: s,
-                rating: l,
-                comment: d.trim(),
+                author: i.trim() || `Usuário Culturando`,
+                userRole: o,
+                accessibilityGroup: c,
+                rating: u,
+                comment: f.trim(),
               });
-              (f(``),
-                i(``),
-                g(
+              (p(``),
+                a(``),
+                _(
                   `Obrigado! Sua avaliação sobre a acessibilidade real do local foi publicada com sucesso.`,
                 ),
                 t && n && t(n));
             } catch {
-              g(`Erro ao salvar avaliação. Tente novamente.`);
+              _(`Erro ao salvar avaliação. Tente novamente.`);
             } finally {
-              m(!1);
+              h(!1);
             }
           }
         },
@@ -19867,12 +20439,12 @@ function ko({ event: e, onReviewAdded: t }) {
             id: `add-review-title`,
             children: `Deixar relato sobre a acessibilidade deste local`,
           }),
-          h &&
+          g &&
             (0, V.jsx)(`div`, {
               className: `community-reviews__alert`,
               role: `status`,
               "aria-live": `polite`,
-              children: h,
+              children: g,
             }),
           (0, V.jsxs)(`div`, {
             className: `community-reviews__form-grid`,
@@ -19888,8 +20460,8 @@ function ko({ event: e, onReviewAdded: t }) {
                     id: `rev-author`,
                     type: `text`,
                     className: `community-reviews__input`,
-                    value: r,
-                    onChange: (e) => i(e.target.value),
+                    value: i,
+                    onChange: (e) => a(e.target.value),
                     placeholder: `Ex: Ana Maria`,
                   }),
                 ],
@@ -19904,8 +20476,8 @@ function ko({ event: e, onReviewAdded: t }) {
                   (0, V.jsxs)(`select`, {
                     id: `rev-role`,
                     className: `community-reviews__select`,
-                    value: a,
-                    onChange: (e) => o(e.target.value),
+                    value: o,
+                    onChange: (e) => s(e.target.value),
                     children: [
                       (0, V.jsx)(`option`, {
                         value: `PCD (Pessoa com Deficiência)`,
@@ -19937,8 +20509,8 @@ function ko({ event: e, onReviewAdded: t }) {
                   (0, V.jsxs)(`select`, {
                     id: `rev-group`,
                     className: `community-reviews__select`,
-                    value: s,
-                    onChange: (e) => c(e.target.value),
+                    value: c,
+                    onChange: (e) => l(e.target.value),
                     children: [
                       (0, V.jsx)(`option`, {
                         value: `fisica`,
@@ -19981,9 +20553,9 @@ function ko({ event: e, onReviewAdded: t }) {
                         `button`,
                         {
                           type: `button`,
-                          className: `community-reviews__star-btn ${l >= e ? `community-reviews__star-btn--selected` : ``}`,
-                          onClick: () => u(e),
-                          "aria-pressed": l === e,
+                          className: `community-reviews__star-btn ${u >= e ? `community-reviews__star-btn--selected` : ``}`,
+                          onClick: () => d(e),
+                          "aria-pressed": u === e,
                           "aria-label": `Nota ${e} de 5 estrelas`,
                           children: `★`,
                         },
@@ -20007,8 +20579,8 @@ function ko({ event: e, onReviewAdded: t }) {
                 className: `community-reviews__textarea`,
                 rows: `3`,
                 required: !0,
-                value: d,
-                onChange: (e) => f(e.target.value),
+                value: f,
+                onChange: (e) => p(e.target.value),
                 placeholder: `Conte se o acesso foi fácil, se havia sinalização adequada, equipe prestativa, assentos reservados ou salas de descanso...`,
               }),
             ],
@@ -20016,8 +20588,8 @@ function ko({ event: e, onReviewAdded: t }) {
           (0, V.jsx)(`button`, {
             type: `submit`,
             className: `button button--primary`,
-            disabled: p,
-            children: p ? `Enviando...` : `Publicar Avaliação`,
+            disabled: m,
+            children: m ? `Enviando...` : `Publicar Avaliação`,
           }),
         ],
       }),
@@ -20025,9 +20597,9 @@ function ko({ event: e, onReviewAdded: t }) {
         className: `community-reviews__list-wrapper`,
         children: [
           (0, V.jsxs)(`h3`, {
-            children: [`Relatos publicados (`, n.length, `)`],
+            children: [`Relatos publicados (`, r.length, `)`],
           }),
-          n.length === 0
+          r.length === 0
             ? (0, V.jsx)(`p`, {
                 className: `community-reviews__empty`,
                 children: `Ainda não há avaliações da comunidade para este evento. Seja o primeiro a compartilhar sua experiência!`,
@@ -20035,12 +20607,21 @@ function ko({ event: e, onReviewAdded: t }) {
             : (0, V.jsx)(`ul`, {
                 className: `community-reviews__list`,
                 "aria-label": `Lista de avaliações da comunidade`,
-                children: n.map((e) => {
-                  let t = Oo[e.accessibilityGroup] || Oo.geral;
+                children: r.map((e) => {
+                  let t = Ao[e.accessibilityGroup] || Ao.geral;
                   return (0, V.jsxs)(
                     `li`,
                     {
                       className: `community-reviews__card`,
+                      onFocus: () =>
+                        n(
+                          `Avaliação de ${e.author}, nota ${e.rating} de 5. ${e.comment}`,
+                        ),
+                      onMouseEnter: () =>
+                        n(
+                          `Avaliação de ${e.author}, nota ${e.rating} de 5. ${e.comment}`,
+                        ),
+                      "aria-label": `Avaliação de ${e.author}, nota ${e.rating} de 5. ${e.comment}`,
                       children: [
                         (0, V.jsxs)(`div`, {
                           className: `community-reviews__card-top`,
@@ -20103,20 +20684,30 @@ function ko({ event: e, onReviewAdded: t }) {
     ],
   });
 }
-function Ao() {
+function Mo() {
   let [e, t] = (0, x.useState)(Ar());
-  return (0, V.jsx)(`section`, {
-    className: `event-detail-page page-section`,
-    children: (0, V.jsxs)(`div`, {
-      className: `container`,
-      children: [
-        (0, V.jsx)(Do, { event: e }),
-        (0, V.jsx)(ko, { event: e, onReviewAdded: (e) => t(e) }),
-      ],
-    }),
-  });
+  return e
+    ? (0, V.jsx)(`section`, {
+        className: `event-detail-page page-section`,
+        children: (0, V.jsxs)(`div`, {
+          className: `container`,
+          children: [
+            (0, V.jsx)(ko, { event: e }),
+            (0, V.jsx)(jo, { event: e, onReviewAdded: (e) => t(e) }),
+          ],
+        }),
+      })
+    : (0, V.jsx)(`section`, {
+        className: `event-detail-page page-section`,
+        children: (0, V.jsx)(`div`, {
+          className: `container`,
+          children: (0, V.jsx)(`p`, {
+            children: `Evento não encontrado ou carregando…`,
+          }),
+        }),
+      });
 }
-function jo({
+function No({
   title: e,
   eyebrow: t,
   description: n,
@@ -20143,7 +20734,7 @@ function jo({
     }),
   });
 }
-function Mo({
+function Po({
   id: e,
   label: t,
   error: n,
@@ -20171,7 +20762,7 @@ function Mo({
     ],
   });
 }
-function No({
+function Fo({
   id: e = `password`,
   label: t = `Senha`,
   error: n,
@@ -20225,14 +20816,14 @@ function No({
     ],
   });
 }
-var Po = { name: ``, email: ``, password: ``, state: `` };
-function Fo({ mode: e = `login` }) {
+var Io = { name: ``, email: ``, password: ``, state: `` };
+function Lo({ mode: e = `login` }) {
   let t = e === `register`,
     n = jr(),
     r = Or(),
     i = lr(),
     { login: a } = Qa(),
-    [o, s] = (0, x.useState)(Po),
+    [o, s] = (0, x.useState)(Io),
     c = (0, x.useRef)(null),
     l = n?.fieldErrors || {},
     u = r.state === `submitting`;
@@ -20242,7 +20833,7 @@ function Fo({ mode: e = `login` }) {
       n && !n.ok && c.current?.focus());
   }, [n, a, i]);
   let d = (e) => s((t) => ({ ...t, [e.target.name]: e.target.value }));
-  return (0, V.jsx)(jo, {
+  return (0, V.jsx)(No, {
     title: t ? `Criar cadastro` : `Entrar na Culturando`,
     eyebrow: t ? `Faça parte da agenda` : `Bem-vindo de volta`,
     description: t
@@ -20280,9 +20871,9 @@ function Fo({ mode: e = `login` }) {
               }),
             ],
           }),
-        n?.ok && (0, V.jsx)(fo, { variant: `success`, title: n.message }),
+        n?.ok && (0, V.jsx)(ho, { variant: `success`, title: n.message }),
         t &&
-          (0, V.jsx)(Mo, {
+          (0, V.jsx)(Po, {
             id: `name`,
             label: `Nome completo`,
             error: l.name,
@@ -20298,7 +20889,7 @@ function Fo({ mode: e = `login` }) {
                 onChange: d,
               }),
           }),
-        (0, V.jsx)(Mo, {
+        (0, V.jsx)(Po, {
           id: `email`,
           label: `E-mail`,
           error: l.email,
@@ -20314,7 +20905,7 @@ function Fo({ mode: e = `login` }) {
               onChange: d,
             }),
         }),
-        (0, V.jsx)(No, {
+        (0, V.jsx)(Fo, {
           id: `password`,
           error: l.password,
           value: o.password,
@@ -20322,7 +20913,7 @@ function Fo({ mode: e = `login` }) {
           autoComplete: t ? `new-password` : `current-password`,
         }),
         t &&
-          (0, V.jsx)(Mo, {
+          (0, V.jsx)(Po, {
             id: `state`,
             label: `Estado`,
             error: l.state,
@@ -20363,13 +20954,13 @@ function Fo({ mode: e = `login` }) {
     }),
   });
 }
-function Io() {
-  return (0, V.jsx)(Fo, { mode: `login` });
+function Ro() {
+  return (0, V.jsx)(Lo, { mode: `login` });
 }
-function Lo() {
-  return (0, V.jsx)(Fo, { mode: `register` });
+function zo() {
+  return (0, V.jsx)(Lo, { mode: `register` });
 }
-function Ro({ booking: e, onClose: t }) {
+function Bo({ booking: e, onClose: t }) {
   let n = (0, x.useRef)(null);
   if (
     ((0, x.useEffect)(() => {
@@ -20389,7 +20980,7 @@ function Ro({ booking: e, onClose: t }) {
       paymentMethod: u,
       emailSentLog: d,
     } = e,
-    f = go(l || new Date().toISOString()),
+    f = yo(l || new Date().toISOString()),
     p = u === `pix`;
   return (0, V.jsx)(`div`, {
     className: `receipt-backdrop`,
@@ -20491,14 +21082,14 @@ function Ro({ booking: e, onClose: t }) {
                 (0, V.jsxs)(`div`, {
                   children: [
                     (0, V.jsx)(`dt`, { children: `Tipo de Ingresso` }),
-                    (0, V.jsxs)(`dd`, { children: [_o(a), ` (`, o, `x)`] }),
+                    (0, V.jsxs)(`dd`, { children: [W(a), ` (`, o, `x)`] }),
                   ],
                 }),
                 (0, V.jsxs)(`div`, {
                   children: [
                     (0, V.jsx)(`dt`, { children: `Valor Pago` }),
                     (0, V.jsx)(`dd`, {
-                      children: (0, V.jsx)(`strong`, { children: mo(s) }),
+                      children: (0, V.jsx)(`strong`, { children: _o(s) }),
                     }),
                   ],
                 }),
@@ -20560,7 +21151,7 @@ function Ro({ booking: e, onClose: t }) {
     }),
   });
 }
-function zo() {
+function Vo() {
   let e = Ar(),
     { isAuthenticated: t } = Qa(),
     [n, r] = (0, x.useState)(null);
@@ -20627,7 +21218,7 @@ function zo() {
                           (0, V.jsx)(`h2`, { children: e.eventTitle }),
                           (0, V.jsxs)(`p`, {
                             children: [
-                              _o(e.ticketType),
+                              W(e.ticketType),
                               ` · `,
                               e.quantity,
                               ` ingresso(s)`,
@@ -20650,13 +21241,13 @@ function zo() {
                           (0, V.jsxs)(`div`, {
                             children: [
                               (0, V.jsx)(`dt`, { children: `Data da compra` }),
-                              (0, V.jsx)(`dd`, { children: go(e.createdAt) }),
+                              (0, V.jsx)(`dd`, { children: yo(e.createdAt) }),
                             ],
                           }),
                           (0, V.jsxs)(`div`, {
                             children: [
                               (0, V.jsx)(`dt`, { children: `Total` }),
-                              (0, V.jsx)(`dd`, { children: mo(e.total) }),
+                              (0, V.jsx)(`dd`, { children: _o(e.total) }),
                             ],
                           }),
                         ],
@@ -20679,11 +21270,11 @@ function zo() {
             }),
         ],
       }),
-      n && (0, V.jsx)(Ro, { booking: n, onClose: () => r(null) }),
+      n && (0, V.jsx)(Bo, { booking: n, onClose: () => r(null) }),
     ],
   });
 }
-function Bo({ event: e, value: t, onChange: n }) {
+function Ho({ event: e, value: t, onChange: n }) {
   return (0, V.jsxs)(`fieldset`, {
     className: `ticket-selector`,
     children: [
@@ -20715,7 +21306,7 @@ function Bo({ event: e, value: t, onChange: n }) {
                   (0, V.jsx)(`small`, { children: a }),
                 ],
               }),
-              (0, V.jsx)(`b`, { children: mo(e.ticketPrices[r]) }),
+              (0, V.jsx)(`b`, { children: _o(e.ticketPrices[r]) }),
             ],
           },
           r,
@@ -20724,7 +21315,7 @@ function Bo({ event: e, value: t, onChange: n }) {
     ],
   });
 }
-function Vo({ value: e, onChange: t }) {
+function Uo({ value: e, onChange: t }) {
   return (0, V.jsxs)(`fieldset`, {
     className: `payment-selector`,
     "aria-labelledby": `payment-selector-legend`,
@@ -20796,7 +21387,7 @@ function Vo({ value: e, onChange: t }) {
     ],
   });
 }
-function Ho({ event: e, ticketType: t, quantity: n, total: r }) {
+function Wo({ event: e, ticketType: t, quantity: n, total: r }) {
   return (0, V.jsxs)(`section`, {
     className: `order-summary`,
     "aria-labelledby": `summary-title`,
@@ -20813,7 +21404,7 @@ function Ho({ event: e, ticketType: t, quantity: n, total: r }) {
           (0, V.jsxs)(`div`, {
             children: [
               (0, V.jsx)(`dt`, { children: `Ingresso` }),
-              (0, V.jsx)(`dd`, { children: _o(t) }),
+              (0, V.jsx)(`dd`, { children: W(t) }),
             ],
           }),
           (0, V.jsxs)(`div`, {
@@ -20826,7 +21417,7 @@ function Ho({ event: e, ticketType: t, quantity: n, total: r }) {
             className: `order-summary__total`,
             children: [
               (0, V.jsx)(`dt`, { children: `Valor final` }),
-              (0, V.jsx)(`dd`, { children: mo(r) }),
+              (0, V.jsx)(`dd`, { children: _o(r) }),
             ],
           }),
         ],
@@ -20834,16 +21425,16 @@ function Ho({ event: e, ticketType: t, quantity: n, total: r }) {
     ],
   });
 }
-function Uo({ actionData: e }) {
+function Go({ actionData: e }) {
   return e
-    ? (0, V.jsx)(fo, {
+    ? (0, V.jsx)(ho, {
         variant: e.ok ? `success` : `error`,
         title: e.ok ? `Pagamento encaminhado` : `Revise sua escolha.`,
         children: e.message,
       })
     : null;
 }
-function Wo() {
+function Ko() {
   let e = Ar(),
     t = jr(),
     n = Or(),
@@ -20851,91 +21442,101 @@ function Wo() {
     [a, o] = (0, x.useState)(1),
     [s, c] = (0, x.useState)(`pix`),
     [l, u] = (0, x.useState)(!1),
-    d = e.ticketPrices[r] * a;
+    d = (e?.ticketPrices?.[r] ?? 0) * a;
   return (
     (0, x.useEffect)(() => {
       t?.ok && (window.scrollTo({ top: 0, behavior: `smooth` }), u(!0));
     }, [t]),
-    (0, V.jsxs)(`section`, {
-      className: `checkout-page page-section`,
-      "aria-labelledby": `checkout-title`,
-      children: [
-        (0, V.jsxs)(`div`, {
-          className: `container checkout-shell`,
+    e
+      ? (0, V.jsxs)(`section`, {
+          className: `checkout-page page-section`,
+          "aria-labelledby": `checkout-title`,
           children: [
             (0, V.jsxs)(`div`, {
-              className: `checkout-heading`,
+              className: `container checkout-shell`,
               children: [
-                (0, V.jsx)(`p`, {
-                  className: `eyebrow`,
-                  children: `Compra segura (Sandbox)`,
-                }),
-                (0, V.jsx)(`h1`, {
-                  id: `checkout-title`,
-                  tabIndex: `-1`,
-                  children: `Finalizar Pagamento`,
-                }),
-                (0, V.jsx)(`p`, { children: e.title }),
-              ],
-            }),
-            (0, V.jsxs)(Bi, {
-              method: `post`,
-              className: `checkout-form`,
-              children: [
-                (0, V.jsx)(Bo, { event: e, value: r, onChange: i }),
                 (0, V.jsxs)(`div`, {
-                  className: `quantity-field`,
+                  className: `checkout-heading`,
                   children: [
-                    (0, V.jsx)(`label`, {
-                      htmlFor: `quantity`,
-                      children: `Quantidade de ingressos`,
+                    (0, V.jsx)(`p`, {
+                      className: `eyebrow`,
+                      children: `Compra segura (Sandbox)`,
                     }),
-                    (0, V.jsx)(`input`, {
-                      id: `quantity`,
-                      name: `quantity`,
-                      type: `number`,
-                      min: `1`,
-                      max: `10`,
-                      value: a,
-                      onChange: (e) =>
-                        o(
-                          Math.max(
-                            1,
-                            Math.min(10, Number(e.target.value) || 1),
-                          ),
-                        ),
+                    (0, V.jsx)(`h1`, {
+                      id: `checkout-title`,
+                      tabIndex: `-1`,
+                      children: `Finalizar Pagamento`,
+                    }),
+                    (0, V.jsx)(`p`, { children: e.title }),
+                  ],
+                }),
+                (0, V.jsxs)(Bi, {
+                  method: `post`,
+                  className: `checkout-form`,
+                  children: [
+                    (0, V.jsx)(Ho, { event: e, value: r, onChange: i }),
+                    (0, V.jsxs)(`div`, {
+                      className: `quantity-field`,
+                      children: [
+                        (0, V.jsx)(`label`, {
+                          htmlFor: `quantity`,
+                          children: `Quantidade de ingressos`,
+                        }),
+                        (0, V.jsx)(`input`, {
+                          id: `quantity`,
+                          name: `quantity`,
+                          type: `number`,
+                          min: `1`,
+                          max: `10`,
+                          value: a,
+                          onChange: (e) =>
+                            o(
+                              Math.max(
+                                1,
+                                Math.min(10, Number(e.target.value) || 1),
+                              ),
+                            ),
+                        }),
+                      ],
+                    }),
+                    (0, V.jsx)(Uo, { value: s, onChange: c }),
+                    (0, V.jsx)(Wo, {
+                      event: e,
+                      ticketType: r,
+                      quantity: a,
+                      total: d,
+                    }),
+                    (0, V.jsx)(Go, { actionData: t }),
+                    (0, V.jsx)(`button`, {
+                      className: `button button--primary checkout-submit`,
+                      type: `submit`,
+                      disabled: n.state === `submitting`,
+                      children:
+                        n.state === `submitting`
+                          ? `Processando Pagamento…`
+                          : `Confirmar e Pagar ${_o(d)}`,
                     }),
                   ],
                 }),
-                (0, V.jsx)(Vo, { value: s, onChange: c }),
-                (0, V.jsx)(Ho, {
-                  event: e,
-                  ticketType: r,
-                  quantity: a,
-                  total: d,
-                }),
-                (0, V.jsx)(Uo, { actionData: t }),
-                (0, V.jsx)(`button`, {
-                  className: `button button--primary checkout-submit`,
-                  type: `submit`,
-                  disabled: n.state === `submitting`,
-                  children:
-                    n.state === `submitting`
-                      ? `Processando Pagamento…`
-                      : `Confirmar e Pagar ${mo(d)}`,
-                }),
               ],
             }),
+            l &&
+              t?.booking &&
+              (0, V.jsx)(Bo, { booking: t.booking, onClose: () => u(!1) }),
           ],
-        }),
-        l &&
-          t?.booking &&
-          (0, V.jsx)(Ro, { booking: t.booking, onClose: () => u(!1) }),
-      ],
-    })
+        })
+      : (0, V.jsx)(`section`, {
+          className: `checkout-page page-section`,
+          children: (0, V.jsx)(`div`, {
+            className: `container`,
+            children: (0, V.jsx)(`p`, {
+              children: `Evento não encontrado para pagamento.`,
+            }),
+          }),
+        })
   );
 }
-function Go() {
+function qo() {
   let e = jr(),
     t = Or(),
     n = lr(),
@@ -21075,10 +21676,12 @@ function Go() {
     })
   );
 }
-function Ko() {
-  return (0, V.jsxs)(oo, { children: [(0, V.jsx)(H, {}), (0, V.jsx)(Go, {})] });
+function Jo() {
+  return (0, V.jsxs)(V.Fragment, {
+    children: [(0, V.jsx)(uo, {}), (0, V.jsx)(qo, {})],
+  });
 }
-function qo({ events: e }) {
+function Yo({ events: e }) {
   let t = Xi(),
     [n, r] = (0, x.useState)(null),
     [i, a] = (0, x.useState)(``),
@@ -21145,14 +21748,14 @@ function qo({ events: e }) {
           ],
         }),
         i &&
-          (0, V.jsx)(fo, {
+          (0, V.jsx)(ho, {
             variant: `success`,
             title: `Alteração salva`,
             children: i,
           }),
         t.data &&
           !t.data.ok &&
-          (0, V.jsx)(fo, {
+          (0, V.jsx)(ho, {
             variant: `error`,
             title: `Não foi possível excluir`,
             children: t.data.message,
@@ -21179,7 +21782,7 @@ function qo({ events: e }) {
                       }),
                       (0, V.jsx)(`h3`, { children: e.title }),
                       (0, V.jsxs)(`p`, {
-                        children: [go(e.date), ` · `, e.location],
+                        children: [yo(e.date), ` · `, e.location],
                       }),
                       (0, V.jsxs)(`span`, {
                         children: [
@@ -21285,7 +21888,7 @@ function qo({ events: e }) {
     })
   );
 }
-function Jo() {
+function Xo() {
   let e = Ar();
   return (0, V.jsx)(`section`, {
     className: `organizer-dashboard page-section`,
@@ -21361,7 +21964,7 @@ function Jo() {
             }),
           ],
         }),
-        (0, V.jsx)(qo, { events: e }),
+        (0, V.jsx)(Yo, { events: e }),
         (0, V.jsxs)(`div`, {
           className: `organizer-guide-cta`,
           children: [
@@ -21387,7 +21990,7 @@ function Jo() {
     }),
   });
 }
-var Yo = [
+var Zo = [
   [
     `fisica`,
     `Acessibilidade física`,
@@ -21409,10 +22012,10 @@ var Yo = [
     `Previsibilidade, espaço de pausa e redução de estímulos.`,
   ],
 ];
-function Xo({ message: e }) {
+function Qo({ message: e }) {
   return e ? (0, V.jsx)(`p`, { className: `field-error`, children: e }) : null;
 }
-function Zo() {
+function $o() {
   let e = jr(),
     t = Or(),
     [n, r] = (0, x.useState)(``),
@@ -21448,7 +22051,7 @@ function Zo() {
     return (0, V.jsxs)(`div`, {
       className: `organizer-success`,
       children: [
-        (0, V.jsx)(fo, {
+        (0, V.jsx)(ho, {
           variant: `success`,
           title: `Evento publicado com sucesso!`,
           children: `Sua experiência já está pronta para ser revisada pela equipe.`,
@@ -21529,7 +22132,7 @@ function Zo() {
                 "aria-invalid": !!c.title,
                 defaultValue: d.title || ``,
               }),
-              (0, V.jsx)(Xo, { message: c.title }),
+              (0, V.jsx)(Qo, { message: c.title }),
             ],
           }),
           (0, V.jsxs)(`div`, {
@@ -21547,7 +22150,7 @@ function Zo() {
                     "aria-invalid": !!c.date,
                     defaultValue: d.date || ``,
                   }),
-                  (0, V.jsx)(Xo, { message: c.date }),
+                  (0, V.jsx)(Qo, { message: c.date }),
                 ],
               }),
               (0, V.jsxs)(`div`, {
@@ -21565,7 +22168,7 @@ function Zo() {
                     "aria-invalid": !!c.time,
                     defaultValue: d.time || ``,
                   }),
-                  (0, V.jsx)(Xo, { message: c.time }),
+                  (0, V.jsx)(Qo, { message: c.time }),
                 ],
               }),
             ],
@@ -21586,7 +22189,7 @@ function Zo() {
                 defaultValue: d.location || ``,
                 placeholder: `Endereço, sala, cidade e estado`,
               }),
-              (0, V.jsx)(Xo, { message: c.location }),
+              (0, V.jsx)(Qo, { message: c.location }),
             ],
           }),
           (0, V.jsxs)(`div`, {
@@ -21612,7 +22215,7 @@ function Zo() {
                   }),
                 ],
               }),
-              (0, V.jsx)(Xo, { message: c.price }),
+              (0, V.jsx)(Qo, { message: c.price }),
             ],
           }),
           (0, V.jsxs)(`div`, {
@@ -21631,7 +22234,7 @@ function Zo() {
                 defaultValue: d.description || ``,
                 placeholder: `Conte o que as pessoas encontrarão nesta experiência.`,
               }),
-              (0, V.jsx)(Xo, { message: c.description }),
+              (0, V.jsx)(Qo, { message: c.description }),
             ],
           }),
         ],
@@ -21675,8 +22278,8 @@ function Zo() {
               }),
             ],
           }),
-          (0, V.jsx)(Xo, { message: i || c.coverImage }),
-          (0, V.jsx)(fo, {
+          (0, V.jsx)(Qo, { message: i || c.coverImage }),
+          (0, V.jsx)(ho, {
             variant: `info`,
             title: `Dica de acessibilidade`,
             children: `Prefira imagens com bom contraste e descreva informações essenciais no texto alternativo quando publicar.`,
@@ -21694,7 +22297,7 @@ function Zo() {
           }),
           (0, V.jsx)(`div`, {
             className: `accessibility-options`,
-            children: Yo.map(([e, t, n]) =>
+            children: Zo.map(([e, t, n]) =>
               (0, V.jsxs)(
                 `label`,
                 {
@@ -21718,7 +22321,7 @@ function Zo() {
               ),
             ),
           }),
-          (0, V.jsx)(Xo, { message: c.accessibilityGroups }),
+          (0, V.jsx)(Qo, { message: c.accessibilityGroups }),
           (0, V.jsxs)(`div`, {
             className: `form-field`,
             children: [
@@ -21735,7 +22338,7 @@ function Zo() {
                 defaultValue: d.assistiveResources || ``,
                 placeholder: `Ex.: intérprete de Libras, audiodescrição, rampa…`,
               }),
-              (0, V.jsx)(Xo, { message: c.assistiveResources }),
+              (0, V.jsx)(Qo, { message: c.assistiveResources }),
             ],
           }),
           (0, V.jsxs)(`div`, {
@@ -21754,7 +22357,7 @@ function Zo() {
                 defaultValue: d.onsiteSupport || ``,
                 placeholder: `Explique como a pessoa encontrará a equipe e receberá apoio.`,
               }),
-              (0, V.jsx)(Xo, { message: c.onsiteSupport }),
+              (0, V.jsx)(Qo, { message: c.onsiteSupport }),
             ],
           }),
         ],
@@ -21779,7 +22382,7 @@ function Zo() {
     ],
   });
 }
-function Qo() {
+function es() {
   return (0, V.jsx)(`section`, {
     className: `organizer-form-page page-section`,
     "aria-labelledby": `new-event-title`,
@@ -21799,18 +22402,18 @@ function Qo() {
           className: `organizer-form-intro`,
           children: `Compartilhe informações completas para que cada pessoa consiga se preparar para participar.`,
         }),
-        (0, V.jsx)(Zo, {}),
+        (0, V.jsx)($o, {}),
       ],
     }),
   });
 }
-var $o = {
+var ts = {
     fisica: `Acessibilidade física`,
     auditiva: `Acessibilidade auditiva`,
     visual: `Acessibilidade visual`,
     neurodivergente: `Apoio a pessoas neurodivergentes`,
   },
-  es = (e) =>
+  ns = (e) =>
     Object.fromEntries(
       new Intl.DateTimeFormat(`en-US`, {
         timeZone: `America/Sao_Paulo`,
@@ -21822,7 +22425,7 @@ var $o = {
         .filter(({ type: e }) => e !== `literal`)
         .map(({ type: e, value: t }) => [e, t]),
     ),
-  ts = (e) =>
+  rs = (e) =>
     Object.fromEntries(
       new Intl.DateTimeFormat(`en-US`, {
         timeZone: `America/Sao_Paulo`,
@@ -21834,15 +22437,15 @@ var $o = {
         .filter(({ type: e }) => e !== `literal`)
         .map(({ type: e, value: t }) => [e, t]),
     ),
-  ns = (e) => {
-    let t = es(e);
+  is = (e) => {
+    let t = ns(e);
     return `${t.year}-${t.month}-${t.day}`;
   },
-  rs = (e) => {
-    let t = ts(e);
+  as = (e) => {
+    let t = rs(e);
     return `${t.hour}:${t.minute}`;
   };
-function is() {
+function os() {
   let e = Ar(),
     t = jr(),
     n = Or(),
@@ -21858,7 +22461,7 @@ function is() {
       ? (0, V.jsxs)(`div`, {
           className: `organizer-success`,
           children: [
-            (0, V.jsx)(fo, {
+            (0, V.jsx)(ho, {
               variant: `success`,
               title: `Evento atualizado com sucesso!`,
               children: `As novas informações já estão disponíveis na agenda.`,
@@ -21931,7 +22534,7 @@ function is() {
                       defaultValue: e.title,
                       "aria-invalid": !!i.title,
                     }),
-                    (0, V.jsx)(as, { message: i.title }),
+                    (0, V.jsx)(ss, { message: i.title }),
                   ],
                 }),
                 (0, V.jsxs)(`div`, {
@@ -21949,10 +22552,10 @@ function is() {
                           name: `date`,
                           type: `date`,
                           required: !0,
-                          defaultValue: ns(e.date),
+                          defaultValue: is(e.date),
                           "aria-invalid": !!i.date,
                         }),
-                        (0, V.jsx)(as, { message: i.date }),
+                        (0, V.jsx)(ss, { message: i.date }),
                       ],
                     }),
                     (0, V.jsxs)(`div`, {
@@ -21967,10 +22570,10 @@ function is() {
                           name: `time`,
                           type: `time`,
                           required: !0,
-                          defaultValue: rs(e.date),
+                          defaultValue: as(e.date),
                           "aria-invalid": !!i.time,
                         }),
-                        (0, V.jsx)(as, { message: i.time }),
+                        (0, V.jsx)(ss, { message: i.time }),
                       ],
                     }),
                   ],
@@ -21990,7 +22593,7 @@ function is() {
                       defaultValue: e.location,
                       "aria-invalid": !!i.location,
                     }),
-                    (0, V.jsx)(as, { message: i.location }),
+                    (0, V.jsx)(ss, { message: i.location }),
                   ],
                 }),
                 (0, V.jsxs)(`div`, {
@@ -22019,7 +22622,7 @@ function is() {
                         }),
                       ],
                     }),
-                    (0, V.jsx)(as, { message: i.price }),
+                    (0, V.jsx)(ss, { message: i.price }),
                   ],
                 }),
                 (0, V.jsxs)(`div`, {
@@ -22037,7 +22640,7 @@ function is() {
                       defaultValue: e.description,
                       "aria-invalid": !!i.description,
                     }),
-                    (0, V.jsx)(as, { message: i.description }),
+                    (0, V.jsx)(ss, { message: i.description }),
                   ],
                 }),
               ],
@@ -22067,7 +22670,7 @@ function is() {
                           }),
                           (0, V.jsxs)(`span`, {
                             children: [
-                              (0, V.jsx)(`strong`, { children: $o[t] }),
+                              (0, V.jsx)(`strong`, { children: ts[t] }),
                               (0, V.jsx)(`small`, {
                                 children: `Inclua orientações práticas para esta necessidade.`,
                               }),
@@ -22079,7 +22682,7 @@ function is() {
                     ),
                   ),
                 }),
-                (0, V.jsx)(as, { message: i.accessibilityGroups }),
+                (0, V.jsx)(ss, { message: i.accessibilityGroups }),
                 (0, V.jsxs)(`div`, {
                   className: `form-field`,
                   children: [
@@ -22095,7 +22698,7 @@ function is() {
                       defaultValue: a,
                       "aria-invalid": !!i.assistiveResources,
                     }),
-                    (0, V.jsx)(as, { message: i.assistiveResources }),
+                    (0, V.jsx)(ss, { message: i.assistiveResources }),
                   ],
                 }),
                 (0, V.jsxs)(`div`, {
@@ -22113,7 +22716,7 @@ function is() {
                       defaultValue: e.accessibility.onsiteSupport,
                       "aria-invalid": !!i.onsiteSupport,
                     }),
-                    (0, V.jsx)(as, { message: i.onsiteSupport }),
+                    (0, V.jsx)(ss, { message: i.onsiteSupport }),
                   ],
                 }),
               ],
@@ -22141,10 +22744,10 @@ function is() {
         })
   );
 }
-function as({ message: e }) {
+function ss({ message: e }) {
   return e ? (0, V.jsx)(`p`, { className: `field-error`, children: e }) : null;
 }
-function os() {
+function cs() {
   return (0, V.jsx)(`section`, {
     className: `organizer-form-page page-section`,
     "aria-labelledby": `edit-event-title`,
@@ -22164,12 +22767,12 @@ function os() {
           className: `organizer-form-intro`,
           children: `Atualize os dados para manter as informações públicas corretas e acessíveis.`,
         }),
-        (0, V.jsx)(is, {}),
+        (0, V.jsx)(os, {}),
       ],
     }),
   });
 }
-var ss = [
+var ls = [
   {
     id: `communication`,
     label: `Comunicação`,
@@ -22201,11 +22804,11 @@ var ss = [
     ],
   },
 ];
-function cs() {
+function us() {
   let [e, t] = (0, x.useState)(0),
     n = (0, x.useRef)([]),
     r = (e) => {
-      let r = (e + ss.length) % ss.length;
+      let r = (e + ls.length) % ls.length;
       (t(r), n.current[r]?.focus());
     },
     i = (t) => {
@@ -22214,9 +22817,9 @@ function cs() {
         (t.key === `ArrowLeft` || t.key === `ArrowUp`) &&
           (t.preventDefault(), r(e - 1)),
         t.key === `Home` && (t.preventDefault(), r(0)),
-        t.key === `End` && (t.preventDefault(), r(ss.length - 1)));
+        t.key === `End` && (t.preventDefault(), r(ls.length - 1)));
     },
-    a = ss[e];
+    a = ls[e];
   return (0, V.jsxs)(`div`, {
     className: `guide-tabs`,
     children: [
@@ -22224,7 +22827,7 @@ function cs() {
         className: `guide-tabs__list`,
         role: `tablist`,
         "aria-label": `Orientações de acessibilidade`,
-        children: ss.map((r, a) =>
+        children: ls.map((r, a) =>
           (0, V.jsx)(
             `button`,
             {
@@ -22261,7 +22864,7 @@ function cs() {
     ],
   });
 }
-function ls() {
+function ds() {
   return (0, V.jsx)(`section`, {
     className: `organizer-guide page-section`,
     "aria-labelledby": `accessibility-guide-title`,
@@ -22281,18 +22884,18 @@ function ls() {
           className: `organizer-guide__intro`,
           children: `Informação clara ajuda a equipe a acolher pessoas com deficiência com respeito, autonomia e segurança.`,
         }),
-        (0, V.jsx)(cs, {}),
+        (0, V.jsx)(us, {}),
       ],
     }),
   });
 }
-function us() {
+function fs() {
   return Ka.list();
 }
-function ds() {
+function ps() {
   return Ka.listFeatured();
 }
-async function fs({ params: e }) {
+async function ms({ params: e }) {
   let t = await Ka.getById(e.eventId);
   if (!t)
     throw new Response(`Evento não encontrado`, {
@@ -22301,12 +22904,12 @@ async function fs({ params: e }) {
     });
   return t;
 }
-async function ps() {
+async function hs() {
   let e = qa.getSession();
   if (e?.role !== `organizer`) throw qe(`/organizador/login`);
   return Ka.list({ organizerId: e.userId });
 }
-async function ms({ params: e }) {
+async function gs({ params: e }) {
   let t = qa.getSession();
   if (t?.role !== `organizer`) throw qe(`/organizador/login`);
   let n = await Ka.getById(e.eventId);
@@ -22317,15 +22920,15 @@ async function ms({ params: e }) {
     });
   return n;
 }
-async function hs() {
+async function _s() {
   let e = qa.getSession();
   return e?.userId ? Ja.list({ userId: e.userId }) : [];
 }
-var gs = (e, t) => String(e.get(t) ?? ``).trim(),
-  _s = (e, t) => Object.fromEntries(t.map((t) => [t, gs(e, t)])),
-  vs = () => qa.getSession();
-async function ys({ request: e }) {
-  let t = _s(await e.formData(), [`email`, `password`]),
+var vs = (e, t) => String(e.get(t) ?? ``).trim(),
+  ys = (e, t) => Object.fromEntries(t.map((t) => [t, vs(e, t)])),
+  bs = () => qa.getSession();
+async function xs({ request: e }) {
+  let t = ys(await e.formData(), [`email`, `password`]),
     n = {};
   if (
     (t.email || (n.email = `Informe seu e-mail.`),
@@ -22343,8 +22946,8 @@ async function ys({ request: e }) {
       }
     : { ok: !1, fieldErrors: { email: r.message }, values: t };
 }
-async function bs({ request: e }) {
-  let t = _s(await e.formData(), [`name`, `email`, `password`, `state`]),
+async function Ss({ request: e }) {
+  let t = ys(await e.formData(), [`name`, `email`, `password`, `state`]),
     n = {};
   if (
     (t.name || (n.name = `Informe seu nome completo.`),
@@ -22366,8 +22969,8 @@ async function bs({ request: e }) {
       }
     : { ok: !1, fieldErrors: { email: r.message }, values: t };
 }
-async function xs({ request: e }) {
-  let t = _s(await e.formData(), [`email`, `password`]),
+async function Cs({ request: e }) {
+  let t = ys(await e.formData(), [`email`, `password`]),
     n = {};
   if (
     ((!t.email || !t.email.includes(`@`)) &&
@@ -22387,13 +22990,13 @@ async function xs({ request: e }) {
       }
     : { ok: !1, fieldErrors: { email: r.message }, values: t };
 }
-async function Ss({ request: e }) {
-  let t = vs();
+async function ws({ request: e }) {
+  let t = bs();
   if (t?.role !== `organizer`) throw qe(`/organizador/login`);
   let n = await e.formData(),
     r = n.getAll(`accessibilityGroups`).map(String).filter(Boolean),
     i = n.get(`coverImage`),
-    a = _s(n, [
+    a = ys(n, [
       `title`,
       `date`,
       `time`,
@@ -22447,12 +23050,12 @@ async function Ss({ request: e }) {
         }
   );
 }
-async function Cs({ request: e }) {
-  let t = vs();
+async function Ts({ request: e }) {
+  let t = bs();
   if (t?.role !== `organizer`) throw qe(`/organizador/login`);
   let n = await e.formData(),
-    r = gs(n, `intent`),
-    i = gs(n, `eventId`);
+    r = vs(n, `intent`),
+    i = vs(n, `eventId`);
   if (r !== `delete` || !i)
     return { ok: !1, message: `Não foi possível identificar o evento.` };
   let a = await Ka.getById(i);
@@ -22471,12 +23074,12 @@ async function Cs({ request: e }) {
     };
   }
 }
-async function ws({ request: e, params: t }) {
-  let n = vs();
+async function Es({ request: e, params: t }) {
+  let n = bs();
   if (n?.role !== `organizer`) throw qe(`/organizador/login`);
   let r = await e.formData(),
     i = r.getAll(`accessibilityGroups`).map(String).filter(Boolean),
-    a = _s(r, [
+    a = ys(r, [
       `title`,
       `date`,
       `time`,
@@ -22520,18 +23123,18 @@ async function ws({ request: e, params: t }) {
     ? { ok: !0, message: `Evento atualizado com sucesso.`, event: c }
     : { ok: !1, message: `Não foi possível atualizar o evento.` };
 }
-async function Ts({ request: e, params: t }) {
+async function Ds({ request: e, params: t }) {
   let n = await Ka.getById(t.eventId),
     r = await e.formData(),
-    i = gs(r, `ticketType`),
+    i = vs(r, `ticketType`),
     a = Number(r.get(`quantity`)),
-    o = gs(r, `paymentMethod`) || `pix`;
+    o = vs(r, `paymentMethod`) || `pix`;
   if (!n) return { ok: !1, message: `Não encontramos este evento.` };
   if (!ua.includes(i))
     return { ok: !1, message: `Selecione um tipo de ingresso.` };
   if (!Number.isInteger(a) || a < 1 || a > 10)
     return { ok: !1, message: `Escolha entre 1 e 10 ingressos.` };
-  let s = vs(),
+  let s = bs(),
     c = await Ja.create({
       userId: s?.userId || `guest`,
       buyerName: s?.displayName || `Pessoa visitante`,
@@ -22552,73 +23155,82 @@ async function Ts({ request: e, params: t }) {
     booking: c,
   };
 }
-function Es() {
+function Os() {
   return qe(`/shows`);
 }
-var Ds = L([
+var ks = L([
   {
-    element: (0, V.jsx)(U, {}),
-    errorElement: (0, V.jsx)(po, {}),
+    element: (0, V.jsx)(fo, {}),
+    errorElement: (0, V.jsx)(go, {}),
     children: [
-      { path: `/`, element: (0, V.jsx)(xo, {}), loader: ds },
-      { path: `/shows`, element: (0, V.jsx)(Eo, {}), loader: us },
-      { path: `/shows/:eventId`, element: (0, V.jsx)(Ao, {}), loader: fs },
-      { path: `/login`, element: (0, V.jsx)(Io, {}), action: ys },
-      { path: `/cadastro`, element: (0, V.jsx)(Lo, {}), action: bs },
-      { path: `/ingressos`, element: (0, V.jsx)(zo, {}), loader: hs },
-      { path: `/pagamento`, loader: Es },
+      { path: `/`, element: (0, V.jsx)(Co, {}), loader: ps },
+      { path: `/shows`, element: (0, V.jsx)(Oo, {}), loader: fs },
+      { path: `/shows/:eventId`, element: (0, V.jsx)(Mo, {}), loader: ms },
+      { path: `/login`, element: (0, V.jsx)(Ro, {}), action: xs },
+      { path: `/cadastro`, element: (0, V.jsx)(zo, {}), action: Ss },
+      { path: `/ingressos`, element: (0, V.jsx)(Vo, {}), loader: _s },
+      { path: `/pagamento`, loader: Os },
       {
         path: `/pagamento/:eventId`,
-        element: (0, V.jsx)(Wo, {}),
-        loader: fs,
-        action: Ts,
+        element: (0, V.jsx)(Ko, {}),
+        loader: ms,
+        action: Ds,
       },
       {
         path: `/shows_card`,
         element: (0, V.jsx)(Jr, { to: `/shows`, replace: !0 }),
       },
       { path: `/auth`, element: (0, V.jsx)(Jr, { to: `/login`, replace: !0 }) },
+      {
+        path: `/index.html`,
+        element: (0, V.jsx)(Jr, { to: `/`, replace: !0 }),
+      },
+      { path: `*`, element: (0, V.jsx)(go, {}) },
     ],
   },
   {
     path: `/organizador/login`,
-    element: (0, V.jsx)(Ko, {}),
-    action: xs,
-    errorElement: (0, V.jsx)(po, {}),
+    element: (0, V.jsx)(Jo, {}),
+    action: Cs,
+    errorElement: (0, V.jsx)(go, {}),
   },
   {
-    element: (0, V.jsx)(W, {}),
-    errorElement: (0, V.jsx)(po, {}),
+    element: (0, V.jsx)(po, {}),
+    errorElement: (0, V.jsx)(go, {}),
     children: [
       {
-        element: (0, V.jsx)(uo, {}),
+        element: (0, V.jsx)(mo, {}),
         children: [
           {
             path: `/organizador`,
-            element: (0, V.jsx)(Jo, {}),
-            loader: ps,
-            action: Cs,
+            element: (0, V.jsx)(Xo, {}),
+            loader: hs,
+            action: Ts,
           },
           {
             path: `/organizador/eventos/novo`,
-            element: (0, V.jsx)(Qo, {}),
-            action: Ss,
+            element: (0, V.jsx)(es, {}),
+            action: ws,
           },
           {
             path: `/organizador/eventos/:eventId/editar`,
-            element: (0, V.jsx)(os, {}),
-            loader: ms,
-            action: ws,
+            element: (0, V.jsx)(cs, {}),
+            loader: gs,
+            action: Es,
           },
-          { path: `/organizador/acessibilidade`, element: (0, V.jsx)(ls, {}) },
+          { path: `/organizador/acessibilidade`, element: (0, V.jsx)(ds, {}) },
         ],
       },
     ],
   },
 ]);
-function Os() {
-  return (0, V.jsx)(Za, { children: (0, V.jsx)(ia, { router: Ds }) });
+function As() {
+  return (0, V.jsx)(Za, {
+    children: (0, V.jsxs)(no, {
+      children: [(0, V.jsx)(ia, { router: ks }), (0, V.jsx)(ao, {})],
+    }),
+  });
 }
 aa.createRoot(document.getElementById(`root`)).render(
-  (0, V.jsx)(x.StrictMode, { children: (0, V.jsx)(Os, {}) }),
+  (0, V.jsx)(x.StrictMode, { children: (0, V.jsx)(As, {}) }),
 );

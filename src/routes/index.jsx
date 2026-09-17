@@ -33,8 +33,11 @@ export const router = createBrowserRouter([
       { path: '/pagamento/:eventId', element: <CheckoutPage />, loader: eventLoader, action: checkoutAction },
       { path: '/shows_card', element: <Navigate to="/shows" replace /> },
       { path: '/auth', element: <Navigate to="/login" replace /> },
+      { path: '/index.html', element: <Navigate to="/" replace /> },
+      { path: '*', element: <RouteErrorPage /> },
     ],
   },
+
   { path: '/organizador/login', element: <OrganizerLoginPage />, action: organizerLoginAction, errorElement: <RouteErrorPage /> },
   {
     element: <OrganizerGuard />,

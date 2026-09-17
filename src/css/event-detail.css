@@ -23,6 +23,13 @@
   object-fit: cover;
 }
 
+.event-detail__content {
+  display: grid;
+  align-content: center;
+  gap: var(--space-5);
+  padding: clamp(2rem, 5vw, 4.5rem);
+}
+
 .event-detail__header-bar {
   display: flex;
   align-items: center;

@@ -5,9 +5,10 @@ import { AccessibilityProvider } from '../../context/AccessibilityContext.jsx'
 
 export default function OrganizerLoginPage() {
   return (
-    <AccessibilityProvider>
+    <>
       <AccessibilityBar />
       <OrganizerLoginForm />
-    </AccessibilityProvider>
+    </>
   )
 }
+

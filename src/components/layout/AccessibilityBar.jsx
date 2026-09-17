@@ -1,8 +1,16 @@
 import { useAccessibility } from "../../context/AccessibilityContext.jsx";
 
 export default function AccessibilityBar() {
-  const { highContrast, toggleHighContrast, fontSize, changeFontSize } =
-    useAccessibility();
+  const {
+    highContrast,
+    toggleHighContrast,
+    fontSize,
+    changeFontSize,
+    isSpeaking,
+    readCurrentPage,
+    pointAndReadActive,
+    togglePointAndRead,
+  } = useAccessibility();
 
   return (
     <aside
@@ -61,7 +69,41 @@ export default function AccessibilityBar() {
             A++
           </button>
         </div>
+
+        <div
+          className="accessibility-bar__group"
+          role="group"
+          aria-label="Audiodescrição e narração"
+        >
+          <button
+            type="button"
+            className={`accessibility-bar__button ${isSpeaking ? "accessibility-bar__button--active" : ""}`}
+            onClick={readCurrentPage}
+            aria-pressed={isSpeaking}
+            title={
+              isSpeaking
+                ? "Parar audiodescrição da página"
+                : "Ouvir audiodescrição completa desta página em voz alta"
+            }
+          >
+            <span aria-hidden="true">{isSpeaking ? "⏹️" : "🔊"}</span>{" "}
+            {isSpeaking ? "Parar Áudio" : "Audiodescrição"}
+          </button>
+
+          <button
+            type="button"
+            className={`accessibility-bar__button ${pointAndReadActive ? "accessibility-bar__button--active" : ""}`}
+            onClick={togglePointAndRead}
+            aria-pressed={pointAndReadActive}
+            title="Escolher uma parte específica clicando diretamente nela"
+          >
+            <span aria-hidden="true">🎯</span>{" "}
+            {pointAndReadActive ? "Apontando..." : "Ler Trecho"}
+          </button>
+        </div>
       </div>
     </aside>
   );
 }
+
+

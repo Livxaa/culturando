@@ -664,6 +664,20 @@ html[data-high-contrast='true'] .organizer-nav button:hover {
   background: #ffff00 !important;
 }
 
+html[data-high-contrast='true'] .organizer-nav a:focus-visible,
+html[data-high-contrast='true'] .organizer-nav button:focus-visible {
+  color: #000000 !important;
+  background: #ffff00 !important;
+  outline: 3px solid #00ffff !important;
+  outline-offset: 3px !important;
+}
+
+html[data-high-contrast='true'] .organizer-nav button *,
+html[data-high-contrast='true'] .organizer-nav button:hover *,
+html[data-high-contrast='true'] .organizer-nav button:focus-visible * {
+  color: #000000 !important;
+}
+
 html[data-high-contrast='true'] .organizer-main h1,
 html[data-high-contrast='true'] .organizer-main h2,
 html[data-high-contrast='true'] .organizer-main h3,
@@ -679,3 +693,33 @@ html[data-high-contrast='true'] .accessibility-guide {
   box-shadow: none !important;
 }
 
+html[data-high-contrast='true'] .organizer-shell p,
+html[data-high-contrast='true'] .organizer-shell li,
+html[data-high-contrast='true'] .organizer-shell label,
+html[data-high-contrast='true'] .organizer-shell span {
+  color: #ffffff !important;
+}
+
+html[data-high-contrast='true'] .organizer-shell .button,
+html[data-high-contrast='true'] .organizer-shell .button:hover,
+html[data-high-contrast='true'] .organizer-shell .button:focus-visible,
+html[data-high-contrast='true'] .guide-tabs button,
+html[data-high-contrast='true'] .guide-tabs button:hover,
+html[data-high-contrast='true'] .guide-tabs button:focus-visible {
+  background: #ffff00 !important;
+  color: #000000 !important;
+  border-color: #000000 !important;
+}
+
+html[data-high-contrast='true'] .organizer-shell .button *,
+html[data-high-contrast='true'] .guide-tabs button * {
+  color: #000000 !important;
+}
+
+html[data-high-contrast='true'] .organizer-shell input,
+html[data-high-contrast='true'] .organizer-shell select,
+html[data-high-contrast='true'] .organizer-shell textarea {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border-color: #ffff00 !important;
+}

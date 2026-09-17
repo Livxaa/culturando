@@ -17,7 +17,7 @@ export default function CheckoutPage() {
   const [paymentMethod, setPaymentMethod] = useState('pix')
   const [showReceipt, setShowReceipt] = useState(false)
 
-  const total = event.ticketPrices[ticketType] * quantity
+  const total = (event?.ticketPrices?.[ticketType] ?? 0) * quantity
 
   useEffect(() => {
     if (actionData?.ok) {
@@ -25,6 +25,16 @@ export default function CheckoutPage() {
       setShowReceipt(true)
     }
   }, [actionData])
+
+  if (!event) {
+    return (
+      <section className="checkout-page page-section">
+        <div className="container">
+          <p>Evento não encontrado para pagamento.</p>
+        </div>
+      </section>
+    )
+  }
 
   return (
     <section className="checkout-page page-section" aria-labelledby="checkout-title">
@@ -34,6 +44,7 @@ export default function CheckoutPage() {
           <h1 id="checkout-title" tabIndex="-1">Finalizar Pagamento</h1>
           <p>{event.title}</p>
         </div>
+
 
         <Form method="post" className="checkout-form">
           <TicketSelector event={event} value={ticketType} onChange={setTicketType} />
