@@ -17,9 +17,6 @@
   gap: var(--space-6);
 }
 
-.organizer-header .brand-logo {
-  width: 8rem;
-}
 
 .organizer-nav,
 .organizer-nav ul {
@@ -36,12 +33,13 @@
 .organizer-nav button {
   display: inline-flex;
   align-items: center;
-  min-height: 2.75rem;
-  padding: var(--space-2) var(--space-3);
+  min-height: 3.3rem;
+  padding: calc(var(--space-2) * 1.2) calc(var(--space-4) * 1.2);
   color: var(--color-text-on-dark);
   background: transparent;
   border: 0;
   border-radius: var(--radius-pill);
+  font-size: 1.2rem;
   font-weight: 700;
   text-decoration: none;
 }
@@ -290,11 +288,7 @@
   background: var(--color-surface-cream);
 }
 
-.organizer-login__brand {
-  position: absolute;
-  top: var(--space-8);
-  left: var(--space-8);
-}
+
 
 .organizer-login__card {
   width: min(100%, 44rem);
@@ -627,11 +621,7 @@
 }
 
 @media (max-width: 500px) {
-  .organizer-login__brand {
-    top: var(--space-4);
-    left: var(--space-4);
-  }
-
+  
   .form-section {
     padding: var(--space-4);
   }
@@ -645,3 +635,47 @@
     width: 100%;
   }
 }
+
+/* ==========================================================================
+   Regras de Alto Contraste e Tipografia na Área do Organizador
+   ========================================================================== */
+html[data-high-contrast='true'] .organizer-shell,
+html[data-high-contrast='true'] .organizer-header,
+html[data-high-contrast='true'] .organizer-main,
+html[data-high-contrast='true'] .organizer-card,
+html[data-high-contrast='true'] .form-section,
+html[data-high-contrast='true'] .managed-event-card,
+html[data-high-contrast='true'] .accessibility-guide {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+html[data-high-contrast='true'] .organizer-nav a,
+html[data-high-contrast='true'] .organizer-nav button {
+  color: #ffff00 !important;
+  border: 1px solid #ffff00 !important;
+  background: #000000 !important;
+}
+
+html[data-high-contrast='true'] .organizer-nav a:hover,
+html[data-high-contrast='true'] .organizer-nav a[aria-current='page'],
+html[data-high-contrast='true'] .organizer-nav button:hover {
+  color: #000000 !important;
+  background: #ffff00 !important;
+}
+
+html[data-high-contrast='true'] .organizer-main h1,
+html[data-high-contrast='true'] .organizer-main h2,
+html[data-high-contrast='true'] .organizer-main h3,
+html[data-high-contrast='true'] .form-section legend {
+  color: #ffff00 !important;
+}
+
+html[data-high-contrast='true'] .managed-event-card,
+html[data-high-contrast='true'] .form-section,
+html[data-high-contrast='true'] .organizer-card,
+html[data-high-contrast='true'] .accessibility-guide {
+  border: 2px solid #ffff00 !important;
+  box-shadow: none !important;
+}
+

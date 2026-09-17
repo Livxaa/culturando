@@ -1,14 +1,11 @@
 {
-  "name": "culturando-backend",
+  "name": "culturando",
   "version": "1.0.0",
-  "description": "API REST N-Camadas do Culturando",
-  "main": "src/server-main.js",
+  "description": "Culturando - Plataforma de eventos culturais acessíveis",
   "type": "module",
   "scripts": {
-    "start": "node src/server-main.js",
-    "dev": "node src/server-main.js",
-    "test": "node --test tests/*.test.js",
-    "migrate": "node seeders/001_initial_seed.js",
-    "seed": "node seeders/001_initial_seed.js"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   }
 }

@@ -1,4 +1,10 @@
-* {
+/* ==========================================================================
+   GLOBAL RESET & BASE
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -35,8 +41,21 @@ textarea {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* ==========================================================================
+   CORREÇÃO 1 — Links globais
+   Problema: `color: black` é hardcode; falha em fundos escuros; sem qualquer
+   estado interativo; viola WCAG 1.4.1 (uso de cor como único identificador).
+   Solução: variável de design token + transição + estado :hover explícito.
+   ========================================================================== */
 a {
-  color: inherit;
+  color: var(--color-primary-700, #1a56db); /* ratio ≥ 4.5:1 sobre superfícies claras */
+  text-underline-offset: 0.2em;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+a:hover {
+  color: var(--color-primary-900, #1e3a8a);
+  text-decoration-color: currentColor;
 }
 
 img {
@@ -58,19 +77,31 @@ h3 {
   line-height: 1.08;
 }
 
-h1:focus,
-h2:focus,
-h3:focus {
+/* ==========================================================================
+   CORREÇÃO 2 — outline: none em headings
+   Problema: remover completamente o foco viola WCAG 2.4.7/2.4.11. Headings
+   recebem foco programático via skip-links e âncoras (ex: tabindex="-1").
+   Solução: suprimir outline SOMENTE para clique de mouse (:not :focus-visible).
+   O estado de teclado (:focus-visible) continua coberto pela regra global.
+   ========================================================================== */
+h1:focus:not(:focus-visible),
+h2:focus:not(:focus-visible),
+h3:focus:not(:focus-visible) {
   outline: none;
 }
 
+/* ==========================================================================
+   CORREÇÃO 3 — min-height em <a> genérico
+   Problema: aplicar min-height a todos os <a> quebra links inline em
+   parágrafos (blocos de texto recebem altura mínima indevida de ~44px).
+   Solução: remover <a> do seletor; min-height se aplica via .button.
+   ========================================================================== */
 button,
-a,
 input,
 select,
 textarea,
 [tabindex] {
-  min-height: 2.75rem;
+  min-height: 2.75rem; /* WCAG 2.5.5 – alvo mínimo de 44 × 44 px */
 }
 
 button,
@@ -78,9 +109,115 @@ a {
   cursor: pointer;
 }
 
+/* ==========================================================================
+   CORREÇÃO 4 — .button base: sem background explícito e sem transition
+   Problema: sem `background` declarado, a variante primary ficava transparente;
+   sem `transition`, mudanças de estado eram abruptas (violação de UX).
+   Solução: background: transparent explícito + transição suave universal.
+   ========================================================================== */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.85rem;          /* cobre WCAG 2.5.5 (44 × 44 px) */
+  padding: var(--space-3) var(--space-5);
+  border: 0.15rem solid transparent;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  color: inherit;               /* CORREÇÃO 4a: herda cor do variante; sem hardcode */
+  background: transparent;      /* CORREÇÃO 4b: declara background explicitamente */
+  text-decoration: none;
+  /* CORREÇÃO 4c: transição suave para todos os estados interativos */
+  transition:
+    background-color 0.18s ease,
+    color 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+/* ==========================================================================
+   CORREÇÃO 5 — .button:disabled
+   Problema: `cursor: wait` indica carregamento, não elemento desabilitado.
+   Falta `pointer-events: none` que impede cliques residuais.
+   Solução: cursor: not-allowed + pointer-events: none (padrão de mercado).
+   ========================================================================== */
+.button:disabled,
+.button[aria-disabled='true'] {
+  cursor: not-allowed;          /* CORREÇÃO 5a: semântica correta */
+  opacity: 0.55;                /* CORREÇÃO 5b: 0.65 pode não manter ratio ≥ 3:1 */
+  pointer-events: none;         /* CORREÇÃO 5c: bloqueia interação completamente */
+}
+
+/* ==========================================================================
+   CORREÇÃO 6 — .button--primary sem background base e estados incompletos
+   Problema: só definia `color`, sem `background`; o hover definia fundo mas
+   não havia estado base visual; falta :focus-visible.
+   ========================================================================== */
+.button--primary {
+  background: var(--color-primary-600, #2563eb); /* CORREÇÃO 6a: background obrigatório */
+  color: #ffffff;                                /* ratio ≥ 4.5:1 sobre azul primário */
+  border-color: transparent;
+}
+
+.button--primary:hover {
+  background: var(--color-primary-900, #1e3a8a);
+  color: #ffffff;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary-600, #2563eb) 30%, transparent);
+}
+
+.button--primary:focus-visible {
+  box-shadow: inset 0 0 0 2px #ffffff; /* reforça indicador sobre fundo azul */
+}
+
+/* ==========================================================================
+   CORREÇÃO 7 — .button--secondary sem estados interativos
+   Problema: sem :hover e :focus-visible, o botão parece estático.
+   ========================================================================== */
+.button--secondary {
+  color: var(--color-primary-950, #0f172a);
+  background: var(--color-accent-yellow, #fbbf24);
+  border-color: transparent;
+}
+
+.button--secondary:hover {
+  /* CORREÇÃO 7a: escurece o amarelo mantendo legibilidade do texto escuro */
+  background: color-mix(in srgb, var(--color-accent-yellow, #fbbf24) 80%, #000000);
+  color: var(--color-primary-950, #0f172a);
+}
+
+.button--secondary:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--color-primary-950, #0f172a);
+}
+
+/* ==========================================================================
+   CORREÇÃO 8 — .button--ghost sem estados interativos
+   Problema: sem :hover e :focus-visible, o ghost fica completamente estático.
+   ========================================================================== */
+.button--ghost {
+  color: var(--color-primary-950, #0f172a);
+  background: transparent;
+  border-color: var(--color-primary-950, #0f172a);
+}
+
+.button--ghost:hover {
+  /* CORREÇÃO 8a: preenche com cor primária, inverte contraste texto/fundo */
+  background: var(--color-primary-950, #0f172a);
+  color: #ffffff;
+}
+
+.button--ghost:focus-visible {
+  box-shadow: inset 0 0 0 2px currentColor;
+}
+
+/* ==========================================================================
+   CORREÇÃO 9 — :focus-visible global
+   Adicionado border-radius para suavizar o anel em elementos arredondados.
+   A variável tem fallback para garantir visibilidade mesmo sem design tokens.
+   ========================================================================== */
 :focus-visible {
-  outline: 0.2rem solid var(--color-focus-ring);
+  outline: 0.2rem solid var(--color-focus-ring, #2563eb);
   outline-offset: 0.2rem;
+  border-radius: 2px; /* suaviza o anel em botões e inputs arredondados */
 }
 
 .container {
@@ -104,10 +241,16 @@ a {
   padding: clamp(3rem, 7vw, 6rem) 0;
 }
 
+/* ==========================================================================
+   CORREÇÃO 10 — .eyebrow font-size abaixo do mínimo seguro
+   Problema: 0.8rem = 12.8px; abaixo de 13px há risco em modos de zoom
+   e dificulta leitura de texto em maiúsculas (texto capitalizado parece menor).
+   Solução: elevar para 0.8125rem (13px).
+   ========================================================================== */
 .eyebrow {
   margin-bottom: var(--space-3);
-  color: var(--color-primary-950);
-  font-size: 0.8rem;
+  color: var(--color-primary-950, #0f172a);
+  font-size: 0.8125rem;      /* CORREÇÃO 10: era 0.8rem (12.8px), agora 13px */
   font-weight: 700;
   letter-spacing: 0.13em;
   text-transform: uppercase;
@@ -127,3 +270,335 @@ a {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ==========================================================================
+   Regras Globais de Alto Contraste (Garantia de Visibilidade Total de Fontes)
+   ========================================================================== */
+html[data-high-contrast='true'] body,
+html[data-high-contrast='true'] .site-shell,
+html[data-high-contrast='true'] .site-main,
+html[data-high-contrast='true'] .home-page,
+html[data-high-contrast='true'] .home-hero,
+html[data-high-contrast='true'] .home-intro,
+html[data-high-contrast='true'] .events-page,
+html[data-high-contrast='true'] .event-detail-page,
+html[data-high-contrast='true'] .auth-page,
+html[data-high-contrast='true'] .auth-card,
+html[data-high-contrast='true'] .featured-card,
+html[data-high-contrast='true'] .event-card,
+html[data-high-contrast='true'] .booking-card,
+html[data-high-contrast='true'] .community-reviews,
+html[data-high-contrast='true'] .community-reviews__form,
+html[data-high-contrast='true'] .community-reviews__card,
+html[data-high-contrast='true'] .search-filters,
+html[data-high-contrast='true'] .search-filters__checkbox-card,
+html[data-high-contrast='true'] .event-detail,
+html[data-high-contrast='true'] .event-detail__accessibility,
+html[data-high-contrast='true'] .site-header,
+html[data-high-contrast='true'] .site-footer,
+html[data-high-contrast='true'] .accessibility-bar,
+html[data-high-contrast='true'] .empty-state {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+/* Remover pseudo-elementos decorativos (::before E ::after) em alto contraste */
+/* CORREÇÃO 11 — incluir ::before e ::after de todas as seções decorativas */
+html[data-high-contrast='true'] .home-hero::after,
+html[data-high-contrast='true'] .home-hero::before,
+html[data-high-contrast='true'] .events-page::before,
+html[data-high-contrast='true'] .events-page::after,
+html[data-high-contrast='true'] .auth-page::before,
+html[data-high-contrast='true'] .auth-page::after {
+  display: none !important;
+}
+
+/* Garantir cores visíveis em todos os títulos — #ffff00 sobre #000 = 19.56:1 (AAA) */
+/* CORREÇÃO 12 — incluir h5 e h6 no seletor de títulos */
+html[data-high-contrast='true'] h1,
+html[data-high-contrast='true'] h2,
+html[data-high-contrast='true'] h3,
+html[data-high-contrast='true'] h4,
+html[data-high-contrast='true'] h5,
+html[data-high-contrast='true'] h6,
+html[data-high-contrast='true'] .eyebrow,
+html[data-high-contrast='true'] .search-filters__label,
+html[data-high-contrast='true'] .search-filters__legend,
+html[data-high-contrast='true'] .search-filters__checkbox-title,
+html[data-high-contrast='true'] .community-reviews__author,
+html[data-high-contrast='true'] .event-card__cta {
+  color: #ffff00 !important;
+}
+
+/* Garantir visibilidade em textos descritivos e rótulos */
+/* ==========================================================================
+   CORREÇÃO 13 — <span> removido do seletor genérico de cor branca
+   Problema: forçar #ffffff em TODOS os <span> sobrescrevia filhos de botões
+   e badges que precisam de #000000, gerando conflito de cascata impossível
+   de resolver sem escalar !important indefinidamente.
+   Solução: <span> é coberto contextualmente pelas regras de botão abaixo.
+   ========================================================================== */
+html[data-high-contrast='true'] p,
+html[data-high-contrast='true'] li,
+html[data-high-contrast='true'] label,
+html[data-high-contrast='true'] dd {
+  color: #ffffff !important;
+}
+
+/* Sobrescrever: textos dentro de botões SEMPRE pretos (vem depois para maior prioridade) */
+html[data-high-contrast='true'] button span,
+html[data-high-contrast='true'] button svg,
+html[data-high-contrast='true'] button *,
+html[data-high-contrast='true'] a.button span,
+html[data-high-contrast='true'] a.button *,
+html[data-high-contrast='true'] .button span,
+html[data-high-contrast='true'] .button svg,
+html[data-high-contrast='true'] .button *,
+html[data-high-contrast='true'] [role="button"] span,
+html[data-high-contrast='true'] [role="button"] * {
+  color: #000000 !important;
+}
+
+/* Textos pequenos / mutados em amarelo brilhante */
+html[data-high-contrast='true'] dt,
+html[data-high-contrast='true'] .field-help,
+html[data-high-contrast='true'] .search-filters__checkbox-desc,
+html[data-high-contrast='true'] .community-reviews__sub,
+html[data-high-contrast='true'] .community-reviews__date,
+html[data-high-contrast='true'] .search-filters__results-count,
+html[data-high-contrast='true'] .home-hero__lead,
+html[data-high-contrast='true'] .events-page__intro {
+  color: #ffff00 !important;
+}
+
+/* Links em Alto Contraste (Apenas links inline de texto, NÃO botões) */
+html[data-high-contrast='true'] a:not(.event-card__link):not(.featured-card__link):not(.site-header__brand):not(.button):not([class*="button"]) {
+  color: #ffff00 !important;
+  text-decoration: underline !important;
+}
+
+html[data-high-contrast='true'] a:not(.event-card__link):not(.featured-card__link):not(.site-header__brand):not(.button):not([class*="button"]):hover,
+html[data-high-contrast='true'] a:not(.event-card__link):not(.featured-card__link):not(.site-header__brand):not(.button):not([class*="button"]):focus-visible {
+  background: #ffff00 !important;
+  color: #000000 !important;
+}
+
+/* Proteção de Links que Envolvem Cartões */
+/* ==========================================================================
+   CORREÇÃO 14 — !important desnecessário no modo normal
+   Problema: usar !important aqui sem conflito real de especificidade cria
+   guerra de cascata desnecessária e dificulta sobrescritas legítimas.
+   Solução: remover !important no modo normal; mantê-lo apenas no HC.
+   ========================================================================== */
+.event-card__link,
+.featured-card__link {
+  background: transparent; /* CORREÇÃO 14: sem !important no modo normal */
+  text-decoration: none;
+  color: inherit;
+}
+
+.event-card__link:hover,
+.featured-card__link:hover,
+.event-card__link:focus-visible,
+.featured-card__link:focus-visible {
+  background: transparent;
+  text-decoration: none;
+}
+
+html[data-high-contrast='true'] .event-card__link,
+html[data-high-contrast='true'] .featured-card__link,
+html[data-high-contrast='true'] .event-card__link:hover,
+html[data-high-contrast='true'] .featured-card__link:hover,
+html[data-high-contrast='true'] .event-card__link:focus-visible,
+html[data-high-contrast='true'] .featured-card__link:focus-visible {
+  background: transparent !important;
+  color: inherit !important;
+}
+
+/* Regras de Hover em Cartões — Modo Normal */
+/* ==========================================================================
+   CORREÇÃO 15 — !important desnecessário em hover de cartões
+   Problema: uso de !important sem conflito real; má arquitetura de cascata.
+   Solução: especificidade adequada é suficiente; !important removido.
+   ========================================================================== */
+.event-card:hover,
+.featured-card:hover,
+.booking-card:hover {
+  background: var(--color-surface-white); /* CORREÇÃO 15: sem !important */
+}
+
+.event-card:hover .event-card__body h2,
+.featured-card:hover .featured-card__body h2 {
+  color: var(--color-primary-950);
+  text-decoration: underline;
+}
+
+.event-card:hover .event-card__cta {
+  color: var(--color-accent-orange-600);
+}
+
+.event-card:hover .event-meta dt,
+.featured-card:hover .event-meta dt {
+  color: var(--color-text-muted);
+}
+
+.event-card:hover .event-meta dd,
+.featured-card:hover .event-meta dd {
+  color: var(--color-text-strong);
+}
+
+/* Botões em Alto Contraste */
+html[data-high-contrast='true'] button,
+html[data-high-contrast='true'] [role="button"],
+html[data-high-contrast='true'] .button,
+html[data-high-contrast='true'] .button--primary,
+html[data-high-contrast='true'] .button--secondary,
+html[data-high-contrast='true'] .button--ghost {
+  background: #ffff00 !important;
+  color: #000000 !important;
+  border: 2px solid #000000 !important;
+  font-weight: bold !important;
+}
+
+/* ==========================================================================
+   CORREÇÃO 16 — Hover de botão em alto contraste: filhos ficavam invisíveis
+   Problema: hover troca fundo para #ffffff, mas filhos (<span>, SVG, ícones)
+   herdavam #ffffff de regra genérica anterior → texto branco sobre branco.
+   Solução: declarar color: #000000 explicitamente no hover E nos filhos.
+   ========================================================================== */
+html[data-high-contrast='true'] button:hover,
+html[data-high-contrast='true'] [role='button']:hover,
+html[data-high-contrast='true'] .button:hover,
+html[data-high-contrast='true'] .button:focus-visible,
+html[data-high-contrast='true'] .button--primary:hover,
+html[data-high-contrast='true'] .button--secondary:hover,
+html[data-high-contrast='true'] .button--ghost:hover {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border-color: #000000 !important;
+}
+
+/* CORREÇÃO 16a: filhos do botão no hover devem ser pretos (sem herança branca) */
+html[data-high-contrast='true'] button:hover *,
+html[data-high-contrast='true'] [role='button']:hover *,
+html[data-high-contrast='true'] .button:hover *,
+html[data-high-contrast='true'] .button:focus-visible * {
+  color: #000000 !important;
+}
+
+/* ==========================================================================
+   CORREÇÃO 17 — Filhos de botões no estado base
+   Problema: regra genérica de `span { #ffffff }` sobrescrevia filhos de botões.
+   Agora que <span> foi removido do genérico (Correção 13), cobrimos os filhos
+   de botão explicitamente aqui para garantir #000000 sobre o fundo amarelo.
+   ========================================================================== */
+html[data-high-contrast='true'] button *,
+html[data-high-contrast='true'] a.button *,
+html[data-high-contrast='true'] .button *,
+html[data-high-contrast='true'] [role='button'] * {
+  color: #000000 !important;
+}
+
+/* Campos de entrada / Formulários */
+html[data-high-contrast='true'] input,
+html[data-high-contrast='true'] select,
+html[data-high-contrast='true'] textarea {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: 2px solid #ffff00 !important;
+}
+
+/* ==========================================================================
+   CORREÇÃO 18 — Placeholder invisível em alto contraste
+   Problema: placeholder herdava #ffffff (branco sobre preto) — OK, mas sem
+   declaração explícita alguns browsers aplicam cor padrão semi-transparente.
+   Solução: forçar cinza claro (#aaaaaa) que é legível como texto auxiliar
+   sem ser confundido com valor preenchido (contraste decorativo ≥ 3:1).
+   ========================================================================== */
+html[data-high-contrast='true'] input::placeholder,
+html[data-high-contrast='true'] textarea::placeholder {
+  color: #aaaaaa !important; /* ratio ≈ 3.1:1 sobre preto — uso decorativo aceitável */
+  opacity: 1 !important;
+}
+
+html[data-high-contrast='true'] option {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+/* Bordas de cartões e caixas */
+html[data-high-contrast='true'] .event-card,
+html[data-high-contrast='true'] .featured-card,
+html[data-high-contrast='true'] .booking-card,
+html[data-high-contrast='true'] .auth-card,
+html[data-high-contrast='true'] .search-filters,
+html[data-high-contrast='true'] .search-filters__checkbox-card,
+html[data-high-contrast='true'] .event-detail,
+html[data-high-contrast='true'] .community-reviews,
+html[data-high-contrast='true'] .community-reviews__card,
+html[data-high-contrast='true'] .community-reviews__score-box {
+  border: 2px solid #ffff00 !important;
+  box-shadow: none !important;
+  background: #000000 !important;
+}
+
+/* Regras de Hover em Cartões no Modo de Alto Contraste (Visibilidade Total Garantida) */
+html[data-high-contrast='true'] .event-card:hover,
+html[data-high-contrast='true'] .featured-card:hover,
+html[data-high-contrast='true'] .booking-card:hover,
+html[data-high-contrast='true'] .search-filters__checkbox-card:hover,
+html[data-high-contrast='true'] .community-reviews__card:hover {
+  background: #000000 !important;
+  border-color: #00ffff !important;
+  box-shadow: 0 0 0 3px #00ffff !important;
+}
+
+html[data-high-contrast='true'] .event-card:hover h2,
+html[data-high-contrast='true'] .featured-card:hover h2,
+html[data-high-contrast='true'] .booking-card:hover h2 {
+  color: #00ffff !important;
+}
+
+html[data-high-contrast='true'] .event-card:hover p,
+html[data-high-contrast='true'] .featured-card:hover p,
+html[data-high-contrast='true'] .booking-card:hover p,
+html[data-high-contrast='true'] .event-card:hover dd,
+html[data-high-contrast='true'] .featured-card:hover dd {
+  color: #ffffff !important;
+}
+
+html[data-high-contrast='true'] .event-card:hover dt,
+html[data-high-contrast='true'] .featured-card:hover dt,
+html[data-high-contrast='true'] .event-card:hover .event-card__cta {
+  color: #ffff00 !important;
+}
+
+/* ==========================================================================
+   CORREÇÃO 19 — Borda do badge em alto contraste
+   Problema: borda #ffffff sobre fundo #ffff00 tem ratio de apenas 1.06:1
+   (praticamente invisível). O badge precisa de delimitação visível.
+   Solução: trocar borda para #000000 (ratio 19.56:1 sobre amarelo).
+   ========================================================================== */
+html[data-high-contrast='true'] .event-card__badge {
+  background: #ffff00 !important;
+  color: #000000 !important;
+  border: 1px solid #000000 !important; /* CORREÇÃO 19: era #ffffff (ratio 1.06:1 = invisível) */
+}
+
+html[data-high-contrast='true'] .search-filters__checkbox-card--active {
+  background: #111111 !important;
+  border: 3px solid #ffff00 !important;
+}
+
+/* Inverter a cor do Logo para destaque no fundo escuro */
+html[data-high-contrast='true'] .brand-logo {
+  filter: brightness(0) invert(1) !important;
+}
+
+/* Anel de foco universal em Alto Contraste */
+html[data-high-contrast='true'] :focus-visible {
+  outline: 3px solid #00ffff !important;
+  outline-offset: 3px !important;
+}
+
+

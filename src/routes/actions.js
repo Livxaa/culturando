@@ -121,6 +121,7 @@ export async function checkoutAction({ request, params }) {
   const formData = await request.formData()
   const ticketType = asText(formData, 'ticketType')
   const quantity = Number(formData.get('quantity'))
+  const paymentMethod = asText(formData, 'paymentMethod') || 'pix'
   if (!event) return { ok: false, message: 'Não encontramos este evento.' }
   if (!TICKET_TYPES.includes(ticketType)) return { ok: false, message: 'Selecione um tipo de ingresso.' }
   if (!Number.isInteger(quantity) || quantity < 1 || quantity > 10) return { ok: false, message: 'Escolha entre 1 e 10 ingressos.' }
@@ -128,14 +129,22 @@ export async function checkoutAction({ request, params }) {
   const booking = await bookingsService.create({
     userId: session?.userId || 'guest',
     buyerName: session?.displayName || 'Pessoa visitante',
+    buyerEmail: session?.email || 'comprador@culturando.com.br',
     eventId: event.id,
     eventTitle: event.title,
     ticketType,
     quantity,
+    paymentMethod,
     unitPrice: event.ticketPrices[ticketType],
     total: event.ticketPrices[ticketType] * quantity,
   })
-  return { ok: true, message: 'Pedido registrado. Você receberá as instruções de pagamento.', total: booking.total, bookingId: booking.id }
+  return {
+    ok: true,
+    message: 'Pagamento Sandbox concluído com sucesso! Seu comprovante digital foi gerado.',
+    total: booking.total,
+    bookingId: booking.id,
+    booking,
+  }
 }
 
 export function legacyPaymentRedirect() {

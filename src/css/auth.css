@@ -18,12 +18,6 @@
   border-radius: 0 0 50% 50%;
 }
 
-.auth-page__brand {
-  position: absolute;
-  top: var(--space-8);
-  left: var(--space-8);
-  z-index: 1;
-}
 
 .auth-card {
   position: relative;
@@ -186,7 +180,7 @@
 }
 
 .button--primary {
-  color: var(--color-surface-white);
+  color: var(--color-accent-yellow);
   background: var(--color-accent-orange-600);
 }
 

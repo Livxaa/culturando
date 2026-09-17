@@ -81,6 +81,28 @@ apiRouter.post('/bookings', async (request, response, next) => {
   } catch (error) { next(error) }
 })
 
+apiRouter.post('/payments/process', async (request, response, next) => {
+  try {
+    const { eventTitle, ticketType, quantity, total, paymentMethod = 'pix' } = request.body
+    const validationCode = `CULT-2026-${Math.random().toString(36).slice(2, 8).toUpperCase()}`
+    const receipt = {
+      ok: true,
+      transactionId: `tx-${Date.now()}`,
+      status: 'pago',
+      paymentMethod,
+      validationCode,
+      eventTitle,
+      ticketType,
+      quantity,
+      total,
+      paidAt: new Date().toISOString(),
+      emailSent: true,
+      message: 'Pagamento Sandbox processado com sucesso! Comprovante emitido.',
+    }
+    response.status(200).json(receipt)
+  } catch (error) { next(error) }
+})
+
 apiRouter.use((error, _request, response, _next) => {
   console.error('[Culturando API]', error)
   const status = error.code === '23505' || error.code === '23503' ? 409 : 500

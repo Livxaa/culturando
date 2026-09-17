@@ -39,3 +39,34 @@
   --font-sans: 'Atkinson Hyperlegible', 'Trebuchet MS', sans-serif;
   --font-display: 'Space Grotesk', 'Atkinson Hyperlegible', sans-serif;
 }
+
+html[data-font-size='large'] {
+  font-size: 1.15rem;
+}
+
+html[data-font-size='xlarge'] {
+  font-size: 1.35rem;
+}
+
+html[data-high-contrast='true'] {
+  --color-primary-950: #000000;
+  --color-primary-900: #000000;
+  --color-primary-800: #111111;
+  --color-accent-yellow: #000000;
+  --color-accent-yellow-bright: #ffff00;
+  --color-accent-orange-500: #000000;
+  --color-accent-orange-600: #ffff00;
+  --color-surface-cream: #000000;
+  --color-surface-white: #000000;
+  --color-surface-soft: #000000;
+  --color-text-strong: #ffffff;
+  --color-text-muted: #ffff00;
+  --color-text-on-dark: #ffffff;
+  --color-border: #ffff00;
+  --color-focus-ring: #00ffff;
+  --color-success: #00ff00;
+  --color-danger: #ff3366;
+  --color-info: #00ffff;
+}
+
+

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
-import { Form, useActionData, useNavigation } from 'react-router-dom'
+import { Form, useActionData, useNavigate, useNavigation } from 'react-router-dom'
 import { useAuth } from '../../context/authContext.jsx'
+import { ROUTES } from '../../data/routes.js'
 import AuthLayout from './AuthLayout.jsx'
 import FormField from './FormField.jsx'
 import PasswordField from './PasswordField.jsx'
@@ -12,6 +13,7 @@ export default function AuthForm({ mode = 'login' }) {
   const isRegister = mode === 'register'
   const actionData = useActionData()
   const navigation = useNavigation()
+  const navigate = useNavigate()
   const { login } = useAuth()
   const [values, setValues] = useState(initialValues)
   const summaryRef = useRef(null)
@@ -20,9 +22,12 @@ export default function AuthForm({ mode = 'login' }) {
 
   useEffect(() => {
     if (actionData?.values) setValues((current) => ({ ...current, ...actionData.values }))
-    if (actionData?.ok && actionData.session) login(actionData.session)
+    if (actionData?.ok && actionData.session) {
+      login(actionData.session)
+      navigate(ROUTES.BOOKINGS, { replace: true })
+    }
     if (actionData && !actionData.ok) summaryRef.current?.focus()
-  }, [actionData, login])
+  }, [actionData, login, navigate])
 
   const update = (event) => setValues((current) => ({ ...current, [event.target.name]: event.target.value }))
   return <AuthLayout

@@ -39,6 +39,9 @@ export const eventsService = {
   remove(eventId) {
     return choose(() => postgresEventsService.remove(eventId), () => localEventsService.remove(eventId))
   },
+  addReview(eventId, reviewData) {
+    return localEventsService.addReview(eventId, reviewData)
+  },
 }
 
 export const authService = {

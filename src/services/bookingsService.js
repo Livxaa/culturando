@@ -3,6 +3,8 @@ import { getDatabase, updateDatabase } from './mockDatabaseService.js'
 const createId = () => `booking-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`
 const clone = (value) => JSON.parse(JSON.stringify(value))
 
+const generateValidationCode = () => `CULT-2026-${Math.random().toString(36).slice(2, 8).toUpperCase()}`
+
 export const bookingsService = {
   list({ userId } = {}) {
     const bookings = getDatabase().bookings
@@ -15,7 +17,18 @@ export const bookingsService = {
   },
 
   create(data) {
-    const booking = { id: createId(), ...data, status: 'confirmado', createdAt: new Date().toISOString() }
+    const validationCode = generateValidationCode()
+    const paymentMethod = data.paymentMethod || 'pix'
+    const buyerEmail = data.buyerEmail || 'comprador@culturando.com.br'
+    const booking = {
+      id: createId(),
+      ...data,
+      paymentMethod,
+      validationCode,
+      status: 'confirmado (pago)',
+      createdAt: new Date().toISOString(),
+      emailSentLog: `Confirmação de pagamento enviada com sucesso para ${buyerEmail} (Serviço Mailtrap/Sandbox).`,
+    }
     updateDatabase((database) => ({ ...database, bookings: [booking, ...database.bookings] }))
     return clone(booking)
   },

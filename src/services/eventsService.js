@@ -87,4 +87,28 @@ export const eventsService = {
     updateDatabase((current) => ({ ...current, events: current.events.filter((event) => event.id !== eventId) }))
     return getDatabase().events.length < before
   },
+
+  addReview(eventId, reviewData) {
+    let updated = null
+    const newReview = {
+      id: `rev-${Date.now()}`,
+      author: reviewData.author || 'Anônimo',
+      userRole: reviewData.userRole || 'Pessoa com Deficiência / Familiar',
+      accessibilityGroup: reviewData.accessibilityGroup || 'geral',
+      rating: Number(reviewData.rating) || 5,
+      date: new Date().toISOString().split('T')[0],
+      comment: reviewData.comment,
+    }
+    updateDatabase((database) => ({
+      ...database,
+      events: database.events.map((event) => {
+        if (event.id !== eventId) return event
+        const communityReviews = [newReview, ...(event.communityReviews || [])]
+        updated = { ...event, communityReviews }
+        return updated
+      }),
+    }))
+    return updated ? clone(updated) : null
+  },
 }
+

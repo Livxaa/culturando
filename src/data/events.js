@@ -26,6 +26,26 @@ export const events = [
       resources: ['Rampa de acesso', 'Intérprete de Libras', 'Audiodescrição', 'Espaço de pausa'],
       onsiteSupport: 'Equipe identificada na entrada principal e rota acessível sinalizada.',
     },
+    communityReviews: [
+      {
+        id: 'rev-1',
+        author: 'Mariana Silva',
+        userRole: 'PCD (Deficiência Auditiva)',
+        accessibilityGroup: 'auditiva',
+        rating: 5,
+        date: '2026-09-10',
+        comment: 'O intérprete de Libras ficou em local iluminado e perfeitamente visível. A equipe foi super atenciosa!',
+      },
+      {
+        id: 'rev-2',
+        author: 'Carlos Eduardo',
+        userRole: 'Familiar / Acompanhante',
+        accessibilityGroup: 'fisica',
+        rating: 5,
+        date: '2026-09-08',
+        comment: 'Rampas com inclinação adequada e banheiros totalmente adaptados. Meu pai usou a cadeira com total autonomia.',
+      },
+    ],
   },
   {
     id: 'feira-criativa',
@@ -46,6 +66,17 @@ export const events = [
       resources: ['Banheiro acessível', 'Mapa tátil', 'Assentos de descanso'],
       onsiteSupport: 'Ponto de acolhimento ao lado da entrada da praça.',
     },
+    communityReviews: [
+      {
+        id: 'rev-3',
+        author: 'Juliana Mendes',
+        userRole: 'PCD (Baixa Visão)',
+        accessibilityGroup: 'visual',
+        rating: 4,
+        date: '2026-09-05',
+        comment: 'O mapa tátil na entrada ajudou bastante na navegação. Seria ótimo se os cardápios das barracas também tivessem QR Code em áudio.',
+      },
+    ],
   },
   {
     id: 'teatro-de-portas-abertas',
@@ -66,6 +97,17 @@ export const events = [
       resources: ['Libras', 'Legenda descritiva', 'Audiodescrição', 'Sessão relaxada'],
       onsiteSupport: 'A equipe de acessibilidade estará disponível 45 minutos antes do início.',
     },
+    communityReviews: [
+      {
+        id: 'rev-4',
+        author: 'Pedro Rocha',
+        userRole: 'PCD (Neurodivergente / Autista)',
+        accessibilityGroup: 'neurodivergente',
+        rating: 5,
+        date: '2026-09-01',
+        comment: 'A sessão relaxada foi incrível! Luzes suaves, som controlado e sala de acomodação sensorial muito acolhedora.',
+      },
+    ],
   },
 ]
 
