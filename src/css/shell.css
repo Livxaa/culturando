@@ -183,6 +183,7 @@ html[data-high-contrast="true"] .main-nav__link[aria-current="page"] {
 
 /* Barra de Acessibilidade */
 .accessibility-bar {
+  /* position: fixed; */
   background: #09002d;
   color: #ffffff;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -198,7 +199,10 @@ html[data-high-contrast="true"] .accessibility-bar {
 
 .accessibility-bar__inner {
   position: fixed;
-  width: min(calc(100% - 2rem), var(--content-max));
+  /* width: min(calc(100% - 2rem), var(--content-max)); */
+  width: 100%;
+  top: 0;
+  background: #09002d;
   margin-inline: auto;
   display: flex;
   align-items: center;

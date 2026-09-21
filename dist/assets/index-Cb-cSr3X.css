@@ -2371,13 +2371,14 @@ html[data-high-contrast="true"] :focus-visible {
   outline: 3px solid #0ff !important;
 }
 .audio-reader-widget {
+  display: none;
   z-index: 9999;
   position: fixed;
   bottom: 1.5rem;
   right: 1.5rem;
 }
 .audio-reader-widget__container {
-  
+  display: none;
   background: var(--color-surface-white, #fff);
   border: 2px solid var(--color-primary-950, #14005d);
   border-radius: var(--radius-pill, 999px);
@@ -2892,6 +2893,7 @@ html[data-high-contrast="true"] .main-nav__link[aria-current="page"] {
   }
 }
 .accessibility-bar {
+  /* position: fixed; */
   color: #fff;
   background: #09002d;
   border-bottom: 1px solid #fff3;
@@ -2905,13 +2907,14 @@ html[data-high-contrast="true"] .accessibility-bar {
 }
 .accessibility-bar__inner {
   width: min(calc(100% - 2rem), var(--content-max));
+  height: 3px;
   align-items: center;
   gap: var(--space-4);
   flex-wrap: wrap;
+  background: #000;
   justify-content: flex-end;
   margin-inline: auto;
   display: flex;
-  background-color: #000;
 }
 .accessibility-bar__title {
   letter-spacing: 0.05em;
