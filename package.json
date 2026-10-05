@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "Culturando - Plataforma de eventos culturais acessíveis",
   "type": "module",
-  "scripts": {
+"scripts": {
     "dev": "vite",
     "start": "vite",
     "server": "node server/index.js",
-    "build": "npx vite build",
+    "build": "node ./node_modules/vite/bin/vite.js build",
     "preview": "vite preview"
   },
   "dependencies": {
